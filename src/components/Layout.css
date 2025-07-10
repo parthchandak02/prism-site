@@ -1,0 +1,14 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.layout--dark {
+  background-color: black;
+}
+
+.layout--light {
+  background-color: white;
+} 

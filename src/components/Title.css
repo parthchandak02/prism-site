@@ -1,0 +1,37 @@
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  pointer-events: none;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.title--light {
+  color: #333;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.title--dark {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.title__heading {
+  font-size: 3rem;
+  margin: 0;
+  letter-spacing: 0.1em;
+  transition: text-shadow 0.3s ease;
+}
+
+.title--light .title__heading {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.title--dark .title__heading {
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+} 

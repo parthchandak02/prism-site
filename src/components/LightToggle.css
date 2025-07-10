@@ -1,0 +1,41 @@
+.light-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: var(--font-heading);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.light-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.light-toggle--light {
+  background-color: #333;
+  color: #fff;
+}
+
+.light-toggle--dark {
+  background-color: #fff;
+  color: #333;
+}
+
+.light-toggle__icon {
+  font-size: 16px;
+}
+
+.light-toggle__text {
+  font-size: 14px;
+} 
