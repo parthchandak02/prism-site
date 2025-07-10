@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.f655801b.css",
-    "main.js": "/static/js/main.eb4315b8.js",
-    "index.html": "/index.html"
+    "main.css": "/prism-site/static/css/main.3491e2cc.css",
+    "main.js": "/prism-site/static/js/main.e2e2fc16.js",
+    "index.html": "/prism-site/index.html"
   },
   "entrypoints": [
-    "static/css/main.f655801b.css",
-    "static/js/main.eb4315b8.js"
+    "static/css/main.3491e2cc.css",
+    "static/js/main.e2e2fc16.js"
   ]
 }
