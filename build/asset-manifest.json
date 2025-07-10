@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/prism-site/static/css/main.dcd5cbbb.css",
+    "main.js": "/prism-site/static/js/main.0e126e40.js",
+    "index.html": "/prism-site/index.html",
+    "main.dcd5cbbb.css.map": "/prism-site/static/css/main.dcd5cbbb.css.map",
+    "main.0e126e40.js.map": "/prism-site/static/js/main.0e126e40.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dcd5cbbb.css",
+    "static/js/main.0e126e40.js"
+  ]
+}

@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
+  "homepage": "https://parthchandak02.github.io/prism-site",
   "dependencies": {
     "@react-three/drei": "10.0.7",
     "@react-three/fiber": "9.1.2",
@@ -14,12 +15,16 @@
     "react-scripts": "5.0.1",
     "three": "0.176.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
