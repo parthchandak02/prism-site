@@ -12,7 +12,7 @@ import { Box } from './components/Box'
 import { calculateRefractionAngle, lerp, lerpV3 } from './util'
 
 export default function App() {
-  const texture = useLoader(LUTCubeLoader, '/lut/F-6800-STD.cube')
+  const texture = useLoader(LUTCubeLoader, process.env.PUBLIC_URL + '/lut/F-6800-STD.cube')
   const [lightMode, setLightMode] = useState(false)
   
   return (
@@ -114,14 +114,14 @@ function Scene({ lightMode }) {
       <spotLight ref={spot} intensity={1} distance={7} angle={1} penumbra={1} position={[0, 0, 1]} />
       {/* Caption */}
       <Center position={[0, 1.2, 0]}>
-        <Text3D size={0.5} letterSpacing={-0.02} height={0.05} font="/fonts/Inter_Bold.json">
+        <Text3D size={0.5} letterSpacing={-0.02} height={0.05} font={process.env.PUBLIC_URL + "/fonts/Inter_Bold.json"}>
           Parth Chandak
           <meshStandardMaterial color={textColor} />
         </Text3D>
       </Center>
       {/* Attribution */}
       <Center position={[0, -4.5, 0]}>
-        <Text3D size={0.15} letterSpacing={-0.02} height={0.02} font="/fonts/Inter_Bold.json">
+        <Text3D size={0.15} letterSpacing={-0.02} height={0.02} font={process.env.PUBLIC_URL + "/fonts/Inter_Bold.json"}>
           taken from: https://codesandbox.io/p/sandbox/j3ycvl
           <meshStandardMaterial color={textColor} />
         </Text3D>
