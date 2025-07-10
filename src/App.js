@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { useRef, useCallback, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { Center, Text3D } from '@react-three/drei'
+
 import { Bloom, EffectComposer, LUT } from '@react-three/postprocessing'
 import { LUTCubeLoader } from 'postprocessing'
 import { Beam } from './components/Beam'
@@ -38,6 +38,47 @@ export default function App() {
       >
         {lightMode ? '🌙' : '☀️'} {lightMode ? 'Dark' : 'Light'}
       </button>
+      
+      {/* HTML Overlay Text */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 100,
+        pointerEvents: 'none',
+        textAlign: 'center',
+        fontFamily: 'Arial, sans-serif',
+        fontWeight: 'bold',
+        color: lightMode ? '#333' : '#fff',
+        textShadow: lightMode ? '0 0 10px rgba(255,255,255,0.8)' : '0 0 10px rgba(0,0,0,0.8)'
+      }}>
+        <h1 style={{ 
+          fontSize: '3rem', 
+          margin: '0 0 20px 0',
+          letterSpacing: '0.1em',
+          textShadow: lightMode ? '2px 2px 4px rgba(0,0,0,0.3)' : '2px 2px 4px rgba(255,255,255,0.3)'
+        }}>
+          Parth Chandak
+        </h1>
+      </div>
+      
+      {/* Attribution at bottom */}
+      <div style={{
+        position: 'absolute',
+        bottom: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 100,
+        pointerEvents: 'none',
+        textAlign: 'center',
+        fontFamily: 'Arial, sans-serif',
+        fontSize: '0.8rem',
+        color: lightMode ? '#666' : '#ccc',
+        textShadow: lightMode ? '1px 1px 2px rgba(0,0,0,0.3)' : '1px 1px 2px rgba(255,255,255,0.3)'
+      }}>
+        taken from: https://codesandbox.io/p/sandbox/j3ycvl
+      </div>
       
       <Canvas orthographic gl={{ antialias: false }} camera={{ position: [0, 0, 100], zoom: 60 }}>
         <color attach="background" args={[lightMode ? 'white' : 'black']} />
@@ -102,7 +143,7 @@ function Scene({ lightMode }) {
     lerp(ambient.current, 'intensity', lightMode ? 0.8 : 0, 0.025)
   })
 
-  const textColor = lightMode ? '#333' : '#fff'
+
 
   return (
     <>
@@ -112,20 +153,7 @@ function Scene({ lightMode }) {
       <pointLight position={[0, 10, 0]} intensity={0.05} />
       <pointLight position={[-10, 0, 0]} intensity={0.05} />
       <spotLight ref={spot} intensity={1} distance={7} angle={1} penumbra={1} position={[0, 0, 1]} />
-      {/* Caption */}
-      <Center position={[0, 1.2, 0]}>
-        <Text3D size={0.5} letterSpacing={-0.02} height={0.05} font={process.env.PUBLIC_URL + "/fonts/Inter_Bold.json"}>
-          Parth Chandak
-          <meshStandardMaterial color={textColor} />
-        </Text3D>
-      </Center>
-      {/* Attribution */}
-      <Center position={[0, -4.5, 0]}>
-        <Text3D size={0.15} letterSpacing={-0.02} height={0.02} font={process.env.PUBLIC_URL + "/fonts/Inter_Bold.json"}>
-          taken from: https://codesandbox.io/p/sandbox/j3ycvl
-          <meshStandardMaterial color={textColor} />
-        </Text3D>
-      </Center>
+
       {/* Prism + blocks + reflect beam */}
       <Beam ref={boxreflect} bounce={10} far={20}>
         <Prism position={[0, -0.5, 0]} onRayOver={rayOver} onRayOut={rayOut} onRayMove={rayMove} />
