@@ -1,13 +1,11 @@
 {
   "files": {
-    "main.css": "/prism-site/static/css/main.dcd5cbbb.css",
-    "main.js": "/prism-site/static/js/main.f4ec99b9.js",
-    "index.html": "/prism-site/index.html",
-    "main.dcd5cbbb.css.map": "/prism-site/static/css/main.dcd5cbbb.css.map",
-    "main.f4ec99b9.js.map": "/prism-site/static/js/main.f4ec99b9.js.map"
+    "main.css": "/static/css/main.f655801b.css",
+    "main.js": "/static/js/main.eb4315b8.js",
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.dcd5cbbb.css",
-    "static/js/main.f4ec99b9.js"
+    "static/css/main.f655801b.css",
+    "static/js/main.eb4315b8.js"
   ]
 }
