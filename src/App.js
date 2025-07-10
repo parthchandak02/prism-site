@@ -39,7 +39,7 @@ export default function App() {
         {lightMode ? '🌙' : '☀️'} {lightMode ? 'Dark' : 'Light'}
       </button>
       
-      <Canvas orthographic gl={{ antialias: false }} camera={{ position: [0, 0, 100], zoom: 70 }}>
+      <Canvas orthographic gl={{ antialias: false }} camera={{ position: [0, 0, 100], zoom: 60 }}>
         <color attach="background" args={[lightMode ? 'white' : 'black']} />
         <Scene lightMode={lightMode} />
         <EffectComposer disableNormalPass>
@@ -113,14 +113,14 @@ function Scene({ lightMode }) {
       <pointLight position={[-10, 0, 0]} intensity={0.05} />
       <spotLight ref={spot} intensity={1} distance={7} angle={1} penumbra={1} position={[0, 0, 1]} />
       {/* Caption */}
-      <Center top bottom position={[0, 1.5, 0]}>
-        <Text3D size={0.7} letterSpacing={-0.05} height={0.05} font="/fonts/Inter_Bold.json">
+      <Center position={[0, 1.2, 0]}>
+        <Text3D size={0.5} letterSpacing={-0.02} height={0.05} font="/fonts/Inter_Bold.json">
           Parth Chandak
           <meshStandardMaterial color={textColor} />
         </Text3D>
       </Center>
       {/* Attribution */}
-      <Center top bottom position={[0, -4.5, 0]}>
+      <Center position={[0, -4.5, 0]}>
         <Text3D size={0.15} letterSpacing={-0.02} height={0.02} font="/fonts/Inter_Bold.json">
           taken from: https://codesandbox.io/p/sandbox/j3ycvl
           <meshStandardMaterial color={textColor} />
