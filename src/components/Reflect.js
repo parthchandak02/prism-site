@@ -56,6 +56,7 @@ export const Reflect = forwardRef(({ children, start: _start = [0, 0, 0], end: _
 
         // Run a full cycle until bounces run out or the ray points into nothing
         // This is necessary for over/out hit-testing
+        // eslint-disable-next-line no-constant-condition
         while (true) {
           api.raycaster.set(vStart, vDir)
           intersect = api.raycaster.intersectObjects(api.objects, false)[0]
