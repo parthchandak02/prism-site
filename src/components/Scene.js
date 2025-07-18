@@ -7,6 +7,7 @@ import { Prism } from './Prism';
 import { Flare } from './Flare';
 import { Box } from './Box';
 import { calculateRefractionAngle, lerp, lerpV3 } from '../util';
+import useGlobalMouse from '../hooks/useGlobalMouse';
 
 const Scene = ({ lightMode }) => {
   const [isPrismHit, hitPrism] = useState(false);
@@ -16,8 +17,9 @@ const Scene = ({ lightMode }) => {
   const boxreflect = useRef(null);
   const rainbow = useRef(null);
   
-  // Use R3F's built-in pointer state for optimal performance
-  const { viewport, pointer } = useThree();
+  // Use reliable global mouse tracking that works across all UI layers
+  const { viewportPosition } = useGlobalMouse();
+  const { viewport } = useThree();
 
   const rayOut = useCallback(() => hitPrism(false), []);
   
@@ -55,9 +57,14 @@ const Scene = ({ lightMode }) => {
   }, []);
 
   useFrame((state) => {
-    // Tie beam to R3F's optimized pointer state (works across all UI layers via eventSource)
-    const mouseX = (pointer.x * viewport.width) / 2;
-    const mouseY = (pointer.y * viewport.height) / 2;
+    // Update flare position to follow mouse using global tracking
+    if (flare.current) {
+      lerpV3(flare.current.position, [viewportPosition.x * 4, viewportPosition.y * 4, 5], 0.1);
+    }
+    
+    // Tie beam to reliable global mouse tracking that works across all UI layers
+    const mouseX = (viewportPosition.x * viewport.width) / 2;
+    const mouseY = (viewportPosition.y * viewport.height) / 2;
     boxreflect.current.setRay([mouseX, mouseY, 0], [0, 0, 0]);
     
     // Animate rainbow intensity

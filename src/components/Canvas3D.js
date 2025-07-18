@@ -20,7 +20,7 @@ const Canvas3D = ({ lightMode }) => {
         width: '100%',
         height: '100%',
         zIndex: 0, // Behind UI elements
-        pointerEvents: 'auto' // Canvas receives mouse events for 3D tracking
+        pointerEvents: 'none' // Allow UI events to pass through, global tracking handles 3D
       }}
     >
       <color attach="background" args={[lightMode ? 'white' : 'black']} />

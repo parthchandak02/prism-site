@@ -93,7 +93,7 @@ p, span, div, button, input, textarea {
   width: 100%;
   max-width: 900px;
   
-  /* Allow canvas events to pass through empty areas while keeping UI interactive */
+  /* Allow global mouse tracking to work while keeping UI interactive */
   pointer-events: none;
   
   /* Hide scrollbar completely */
