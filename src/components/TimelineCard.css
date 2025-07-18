@@ -85,8 +85,13 @@
 
 /* Toggle button */
 .timeline-card__toggle {
-  background: none;
-  border: none;
+  /* Unified glass effect standard */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
   color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   padding: 4px;
@@ -97,11 +102,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 24px;
 }
 
 .timeline-card__toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+  /* Unified hover effect */
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -144,12 +153,33 @@
 
 .timeline-card__volume,
 .timeline-card__location {
+  /* Unified glass effect standard for meta pills */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px;
+  
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
+  padding: 2px 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.timeline-card__volume:hover,
+.timeline-card__location:hover {
+  /* Unified hover effect */
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .timeline-card__volume::before {
@@ -169,9 +199,15 @@
 
 .timeline-card__tag {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  
+  /* Unified glass effect standard */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  border-radius: 24px;
   padding: 4px 12px;
   font-family: var(--font-body);
   font-size: 11px;
@@ -179,12 +215,17 @@
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Category-specific colors */
-.timeline-card__tag {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.4);
+.timeline-card__tag:hover {
+  /* Unified hover effect */
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  color: rgba(255, 255, 255, 1);
 }
 
 /* Description */
