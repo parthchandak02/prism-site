@@ -60,6 +60,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: rgba(255, 255, 255, 0.9);
   transform: translateY(-1px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 .timeline__filter.active {
@@ -120,10 +121,11 @@
 
 /* Timeline Item Hover Effect */
 .timeline__item:hover .timeline__dot {
-  background: rgba(59, 130, 246, 0.3);
-  border-color: rgba(59, 130, 246, 0.8);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Timeline Card within Timeline */
