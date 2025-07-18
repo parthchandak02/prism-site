@@ -1,3 +1,91 @@
+/* ========================================
+   DESIGN SYSTEM - CSS CUSTOM PROPERTIES
+   ======================================== */
+
+:root {
+  /* Typography system */
+  --font-heading: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Bitcount Grid Single', monospace;
+
+  /* Glass Design Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --glass-blur-subtle: blur(8px) saturate(1.3);
+  --glass-blur-strong: blur(20px) saturate(1.5);
+  
+  /* Hover states */
+  --glass-bg-hover: rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.3);
+  --glass-shadow-hover: 0 4px 25px rgba(0, 0, 0, 0.15);
+  --glass-blur-subtle-hover: blur(12px) saturate(1.5);
+  --glass-blur-strong-hover: blur(24px) saturate(1.7);
+
+  /* Animation */
+  --transition-standard: all 0.3s ease;
+}
+
+/* ========================================
+   UNIVERSAL GLASS UTILITY CLASSES
+   ======================================== */
+
+/* Base glass properties */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur-subtle);
+  -webkit-backdrop-filter: var(--glass-blur-subtle);
+  transition: var(--transition-standard);
+}
+
+.glass:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+  backdrop-filter: var(--glass-blur-subtle-hover);
+  -webkit-backdrop-filter: var(--glass-blur-subtle-hover);
+}
+
+/* Glass variants */
+.glass-strong {
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+}
+
+.glass-strong:hover {
+  backdrop-filter: var(--glass-blur-strong-hover);
+  -webkit-backdrop-filter: var(--glass-blur-strong-hover);
+}
+
+/* Interactive behaviors */
+.glass-interactive {
+  cursor: pointer;
+}
+
+.glass-interactive:hover {
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   LAYOUT UTILITIES
+   ======================================== */
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -11,21 +99,12 @@ body,
   padding: 0;
 }
 
-:root {
-  /* Typography system */
-  --font-heading: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Bitcount Grid Single', monospace;
-}
-
 body {
   background: black;
   font-family: var(--font-body);
-  /* Better font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  /* Prevent fake bold/italic for variable fonts */
   font-synthesis: none;
 }
 
@@ -42,71 +121,30 @@ p, span, div, button, input, textarea {
   line-height: 1.5;
 }
 
-/* Typography utilities */
-.text-heading {
-  font-family: var(--font-heading);
-  font-weight: 700;
-}
-
-.text-body {
-  font-family: var(--font-body);
-  font-weight: 400;
-}
-
-.text-light {
-  font-weight: 300;
-}
-
-.text-medium {
-  font-weight: 500;
-}
-
-.text-semibold {
-  font-weight: 600;
-}
-
-.text-bold {
-  font-weight: 700;
-}
-
-.text-extrabold {
-  font-weight: 800;
-}
-
-/* Bitcount Grid Single - Clean Implementation */
-.text-display {
-  font-family: var(--font-display);
-  font-weight: 400;
-}
-
 /* Main Content Scroll Container */
 .main-content-scroll {
   position: absolute;
-  top: 10%;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  max-height: 85vh;
+  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 20px;
+  padding: 60px 20px 60px 20px;
   width: 100%;
   max-width: 900px;
   
-  /* Allow global mouse tracking to work while keeping UI interactive */
   pointer-events: none;
-  
-  /* Hide scrollbar completely */
   scrollbar-width: none;
   -ms-overflow-style: none;
   
-  /* Center content */
   display: flex;
   flex-direction: column;
   align-items: center;
+  scroll-behavior: smooth;
 }
 
-/* Title within scroll container */
 .title-in-scroll {
   position: relative !important;
   top: auto !important;
@@ -115,38 +153,24 @@ p, span, div, button, input, textarea {
   margin-bottom: 40px;
   width: 100%;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 0;
   background: transparent;
 }
 
-/* Remove text shadows in scroll context for cleaner glass aesthetic */
 .title-in-scroll.title--dark,
 .title-in-scroll.title--light {
   text-shadow: none;
 }
 
-/* Adjust title heading size in scroll context */
 .title-in-scroll .title__heading {
   font-size: 2.5rem;
   text-shadow: none;
 }
 
-@media (max-width: 768px) {
-  .title-in-scroll .title__heading {
-    font-size: 2rem;
-  }
-  
-  .title-in-scroll {
-    padding-top: 10px;
-    margin-bottom: 30px;
-  }
-}
-
-/* Timeline within scroll container */
 .timeline-in-scroll {
   width: 100%;
   padding: 0;
-  pointer-events: auto; /* Re-enable for interactive timeline */
+  pointer-events: auto;
 }
 
 .main-content-scroll::-webkit-scrollbar {
@@ -154,31 +178,35 @@ p, span, div, button, input, textarea {
   display: none;
 }
 
-/* Responsive main content positioning */
+/* Responsive design */
 @media (max-width: 1024px) {
   .main-content-scroll {
-    top: 8%;
-    max-height: 88vh;
     left: 10px;
     right: 10px;
     transform: none;
     width: calc(100% - 20px);
     max-width: none;
-    padding: 15px;
+    padding: 50px 15px 50px 15px;
   }
 }
 
 @media (max-width: 768px) {
   .main-content-scroll {
-    top: 5%;
-    max-height: 92vh;
     left: 5px;
     right: 5px;
     width: calc(100% - 10px);
-    padding: 10px;
+    padding: 40px 10px 40px 10px;
   }
   
   .title-in-scroll {
     margin-bottom: 20px;
+  }
+  
+  .title-in-scroll .title__heading {
+    font-size: 2rem;
+  }
+  
+  .title-in-scroll {
+    margin-bottom: 30px;
   }
 }

@@ -1,75 +1,71 @@
+/* Title Component - Simplified */
 .title {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
-  pointer-events: none;
+  z-index: 5;
   text-align: center;
-  font-family: var(--font-heading);
-  font-weight: bold;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.title--light {
-  color: #333;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.title--dark {
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  pointer-events: none;
 }
 
 .title__heading {
   font-family: var(--font-display);
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 400;
   margin: 0;
-  letter-spacing: 0.1em;
-  transition: text-shadow 0.3s ease;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
 }
 
 .title--light .title__heading {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .title--dark .title__heading {
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+  color: #000000;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .title__subtitle {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1.2rem;
-  font-weight: 400;
-  margin: 0.5rem 0 0 0;
-  opacity: 0.9;
-  min-height: 1.5em; /* Prevent layout shift */
-  transition: opacity 0.3s ease;
-}
-
-/* Typewriter cursor animation */
-.typewriter-cursor {
-  display: inline-block;
-  margin-left: 2px;
-  animation: blink 1s infinite;
-  opacity: 1;
-}
-
-@keyframes blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
-}
-
-/* Light mode adjustments */
-.title--light .title__subtitle {
+  font-weight: 300;
+  margin: 16px 0 0 0;
   opacity: 0.8;
+  letter-spacing: 0.05em;
+}
+
+.title--light .title__subtitle {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .title--dark .title__subtitle {
-  opacity: 0.9;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .title__heading {
+    font-size: 3rem;
+  }
+  
+  .title__subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title__heading {
+    font-size: 2.5rem;
+  }
+  
+  .title__subtitle {
+    font-size: 0.9rem;
+  }
 } 

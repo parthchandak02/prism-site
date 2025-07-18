@@ -4,15 +4,12 @@ import './LightToggle.css';
 const LightToggle = ({ lightMode, onToggle }) => {
   return (
     <button
-      className={`light-toggle ${lightMode ? 'light-toggle--light' : 'light-toggle--dark'}`}
+      className="light-toggle glass glass-interactive"
       onClick={onToggle}
       aria-label={`Switch to ${lightMode ? 'dark' : 'light'} mode`}
     >
       <span className="light-toggle__icon">
         {lightMode ? '🌙' : '☀️'}
-      </span>
-      <span className="light-toggle__text">
-        {lightMode ? 'Dark' : 'Light'}
       </span>
     </button>
   );

@@ -12,15 +12,17 @@ const GlassNavigation = () => {
   ];
 
   return (
-    <nav className="glass-navigation">
-      {navigationItems.map((item, index) => (
-        <GlassPill
-          key={index}
-          icon={item.icon}
-          text={item.text}
-          onClick={item.action}
-        />
-      ))}
+    <nav className="glass-navigation glass glass-interactive">
+      <div className="glass-navigation__grid">
+        {navigationItems.map((item, index) => (
+          <GlassPill
+            key={index}
+            icon={item.icon}
+            text={item.text}
+            onClick={item.action}
+          />
+        ))}
+      </div>
     </nav>
   );
 };

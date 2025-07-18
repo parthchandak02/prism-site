@@ -1,48 +1,41 @@
+/* Light Toggle Component - Simplified */
 .light-toggle {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
+  justify-content: center;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: var(--font-body);
-  
-  /* Glass morphism effect */
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  
-  /* Consistent transition */
-  transition: all 0.3s ease;
-}
-
-.light-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
-}
-
-.light-toggle--light {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.light-toggle--dark {
-  color: rgba(255, 255, 255, 0.9);
+  pointer-events: auto;
 }
 
 .light-toggle__icon {
-  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
 }
 
-.light-toggle__text {
-  font-size: 14px;
+.light-toggle:hover .light-toggle__icon {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .light-toggle {
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+  
+  .light-toggle__icon {
+    width: 18px;
+    height: 18px;
+  }
 } 

@@ -42,7 +42,7 @@ const Timeline = ({
           {categories.map(category => (
             <button
               key={category}
-              className={`timeline__filter ${activeFilter === category ? 'active' : ''}`}
+              className={`timeline__filter glass glass-interactive ${activeFilter === category ? 'active' : ''}`}
               onClick={() => setActiveFilter(category)}
             >
               {category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1)}
@@ -62,7 +62,7 @@ const Timeline = ({
             sortedData.map((item, index) => (
               <div key={index} className="timeline__item">
                 {/* Timeline dot with icon */}
-                <div className="timeline__dot">
+                <div className="timeline__dot glass glass-interactive">
                   {item.icon && <item.icon />}
                 </div>
                 <TimelineCard

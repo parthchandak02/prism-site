@@ -10,7 +10,7 @@ const GlassPill = ({
 }) => {
   return (
     <div
-      className={`glass-card ${className}`}
+      className={`glass-card glass glass-interactive ${className}`}
       onClick={onClick}
       {...props}
     >

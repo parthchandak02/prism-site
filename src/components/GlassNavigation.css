@@ -1,27 +1,30 @@
+/* Glass Navigation Component - Simplified */
 .glass-navigation {
-  position: relative;
-  display: flex;
-  flex-direction: row; /* Horizontal layout */
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-  margin: 30px auto 40px auto; /* Space above and below within scroll container */
-  width: 100%;
-  pointer-events: auto; /* Enable interactions */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  border-radius: 24px;
+  padding: 16px;
+  pointer-events: auto;
 }
 
-/* Responsive adjustments */
+.glass-navigation__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
   .glass-navigation {
-    margin: 25px auto 35px auto; /* Slightly less spacing on mobile */
-    gap: 12px;
-    flex-wrap: wrap; /* Allow wrapping on very small screens */
+    top: 16px;
+    left: 16px;
+    padding: 12px;
   }
-}
-
-@media (max-width: 480px) {
-  .glass-navigation {
-    margin: 20px auto 30px auto;
-    gap: 10px;
+  
+  .glass-navigation__grid {
+    gap: 8px;
   }
 } 

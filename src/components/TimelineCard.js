@@ -16,7 +16,7 @@ const TimelineCard = ({
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   return (
     <div 
-      className={`timeline-card ${isExpanded ? 'expanded' : 'collapsed'} ${className}`} 
+      className={`timeline-card glass glass-strong glass-interactive ${isExpanded ? 'expanded' : 'collapsed'} ${className}`} 
       {...props}
     >
       {/* Content container */}
@@ -30,7 +30,7 @@ const TimelineCard = ({
             <h3 className="timeline-card__title">{title}</h3>
             <span className="timeline-card__date">{date}</span>
           </div>
-          <button className="timeline-card__toggle">
+          <button className="timeline-card__toggle glass glass-interactive">
             <svg 
               viewBox="0 0 24 24" 
               fill="currentColor"
@@ -46,15 +46,15 @@ const TimelineCard = ({
           {/* Meta information */}
           {(volume || location) && (
             <div className="timeline-card__meta">
-              {volume && <span className="timeline-card__volume">{volume}</span>}
-              {location && <span className="timeline-card__location">{location}</span>}
+              {volume && <span className="timeline-card__volume glass glass-interactive">{volume}</span>}
+              {location && <span className="timeline-card__location glass glass-interactive">{location}</span>}
             </div>
           )}
           
           {/* Category tag */}
           {category && (
             <div className="timeline-card__category">
-              <span className="timeline-card__tag">{category}</span>
+              <span className="timeline-card__tag glass glass-interactive">{category}</span>
             </div>
           )}
           

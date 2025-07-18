@@ -1,14 +1,18 @@
+/* Layout Component - Simplified */
 .layout {
-  width: 100vw;
-  height: 100vh;
   position: relative;
-  transition: background-color 0.3s ease;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
 }
 
-.layout--dark {
-  background-color: black;
-}
-
-.layout--light {
-  background-color: white;
+.layout__ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
 } 
