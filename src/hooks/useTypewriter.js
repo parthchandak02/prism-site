@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
 
 const useTypewriter = ({ phrases, typeSpeed = 150, deleteSpeed = 100, delayBetweenPhrases = 2000 }) => {
+  const { updateCurrentPhrase } = useTypewriterHighlight();
   const [currentText, setCurrentText] = useState('');
   const timeoutRef = useRef(null);
   const phraseIndexRef = useRef(0);
@@ -22,7 +24,9 @@ const useTypewriter = ({ phrases, typeSpeed = 150, deleteSpeed = 100, delayBetwe
             timeoutRef.current = setTimeout(typeCharacter, typeSpeed);
             return newText;
           } else {
-            // Finished typing, wait then start deleting
+            // Finished typing - notify context about completed phrase
+            updateCurrentPhrase(currentPhrase);
+            // Wait then start deleting
             timeoutRef.current = setTimeout(() => {
               isDeleteRef.current = true;
               typeCharacter();
@@ -32,6 +36,10 @@ const useTypewriter = ({ phrases, typeSpeed = 150, deleteSpeed = 100, delayBetwe
         } else {
           // Deleting backward
           if (prevText.length > 0) {
+            // Start clearing highlight when deletion begins
+            if (prevText.length === currentPhrase.length) {
+              updateCurrentPhrase('');
+            }
             const newText = prevText.substring(0, prevText.length - 1);
             timeoutRef.current = setTimeout(typeCharacter, deleteSpeed);
             return newText;

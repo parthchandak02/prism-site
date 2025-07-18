@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import TimelineCard from './TimelineCard';
+import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
 import './Timeline.css';
 
 const Timeline = ({ 
@@ -11,6 +12,8 @@ const Timeline = ({
   ...props 
 }) => {
   const [activeFilter, setActiveFilter] = useState(defaultFilter);
+  const { getCurrentHighlights } = useTypewriterHighlight();
+  const highlights = getCurrentHighlights();
   
   // Get unique categories for filter buttons
   const categories = useMemo(() => {
@@ -75,6 +78,7 @@ const Timeline = ({
                   volume={item.volume}
                   lightMode={lightMode}
                   className="timeline__card"
+                  isHighlighted={highlights.timelineCards.includes(item.title)}
                 />
               </div>
             ))

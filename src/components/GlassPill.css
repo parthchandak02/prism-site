@@ -64,4 +64,18 @@
 .glass-card:hover .glass-card__text {
   display: block;
   opacity: 1;
-} 
+}
+
+/* Highlighted state for typewriter synchronization - subtle version */
+.glass-pill--highlighted {
+  /* Keep original size - no expansion */
+  /* Just add subtle blue highlight similar to timeline filters */
+  background: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+  
+  /* Very subtle scale - barely noticeable */
+  transform: scale(1.02);
+}
+
+/* Don't show text when highlighted - keep it compact */ 

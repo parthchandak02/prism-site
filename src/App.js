@@ -8,6 +8,7 @@ import Title from './components/Title';
 import Timeline from './components/Timeline';
 import useLightMode from './hooks/useLightMode';
 import { timelineData } from './data/timelineData';
+import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightContext';
 
 /**
  * Main App component - Clean, modular structure following React 2024 best practices
@@ -23,28 +24,30 @@ export default function App() {
   const { lightMode, toggleLightMode } = useLightMode(false);
 
   return (
-    <Layout darkMode={!lightMode}>
-      {/* 3D Canvas Background */}
-      <Canvas3D lightMode={lightMode} />
-      
-      {/* UI Overlay Layer */}
-      <div className="layout__ui">
-        {/* Fixed UI Components */}
-        <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
+    <TypewriterHighlightProvider>
+      <Layout darkMode={!lightMode}>
+        {/* 3D Canvas Background */}
+        <Canvas3D lightMode={lightMode} />
         
-        {/* Main Content Area with Title and Timeline */}
-        <div className="main-content-scroll">
-          <Title lightMode={lightMode} className="title-in-scroll" />
-          <GlassNavigation lightMode={lightMode} />
-          <Timeline 
-             data={timelineData}
-             showFilters={true}
-             defaultFilter="all"
-             lightMode={lightMode}
-             className="timeline-in-scroll"
-           />
+        {/* UI Overlay Layer */}
+        <div className="layout__ui">
+          {/* Fixed UI Components */}
+          <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
+          
+          {/* Main Content Area with Title and Timeline */}
+          <div className="main-content-scroll">
+            <Title lightMode={lightMode} className="title-in-scroll" />
+            <GlassNavigation lightMode={lightMode} />
+            <Timeline 
+               data={timelineData}
+               showFilters={true}
+               defaultFilter="all"
+               lightMode={lightMode}
+               className="timeline-in-scroll"
+             />
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </TypewriterHighlightProvider>
   );
 }
