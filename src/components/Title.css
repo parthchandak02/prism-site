@@ -22,7 +22,9 @@
 }
 
 .title__heading {
+  font-family: var(--font-display);
   font-size: 3rem;
+  font-weight: 400;
   margin: 0;
   letter-spacing: 0.1em;
   transition: text-shadow 0.3s ease;
@@ -34,4 +36,40 @@
 
 .title--dark .title__heading {
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.title__subtitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+  min-height: 1.5em; /* Prevent layout shift */
+  transition: opacity 0.3s ease;
+}
+
+/* Typewriter cursor animation */
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  opacity: 1;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Light mode adjustments */
+.title--light .title__subtitle {
+  opacity: 0.8;
+}
+
+.title--dark .title__subtitle {
+  opacity: 0.9;
 } 

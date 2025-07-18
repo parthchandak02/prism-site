@@ -1,0 +1,225 @@
+/* Timeline Card Component */
+.timeline-card {
+  /* Glass effect inspired by css.glass and existing GlassPill */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  /* Layout */
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 600px;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+  pointer-events: auto; /* Ensure cards are interactive */
+}
+
+/* Collapsed state */
+.timeline-card.collapsed {
+  padding: 16px 20px;
+}
+
+.timeline-card.collapsed .timeline-card__header {
+  padding-bottom: 0;
+}
+
+/* Hover state */
+.timeline-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+
+
+/* Content container */
+.timeline-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Expandable content area */
+.timeline-card__expandable {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.timeline-card__expandable.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.timeline-card__expandable.expanded {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.timeline-card__expandable > * {
+  margin-top: 8px;
+}
+
+/* Header section */
+.timeline-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-bottom: 8px;
+}
+
+.timeline-card__header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+/* Toggle button */
+.timeline-card__toggle {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 12px;
+  transition: all 0.3s ease;
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.timeline-card__toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Chevron icon */
+.timeline-card__chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.timeline-card__chevron.expanded {
+  transform: rotate(180deg);
+}
+
+/* Title */
+.timeline-card__title {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Date */
+.timeline-card__date {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Meta information */
+.timeline-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.timeline-card__volume,
+.timeline-card__location {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+}
+
+.timeline-card__volume::before {
+  content: "📄";
+  margin-right: 4px;
+}
+
+.timeline-card__location::before {
+  content: "📍";
+  margin-right: 4px;
+}
+
+/* Category tag */
+.timeline-card__category {
+  margin: 4px 0;
+}
+
+.timeline-card__tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Category-specific colors */
+.timeline-card__tag {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Description */
+.timeline-card__description {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .timeline-card {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .timeline-card__icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+  
+  .timeline-card__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .timeline-card__title {
+    font-size: 16px;
+  }
+  
+  .timeline-card__description {
+    font-size: 13px;
+  }
+} 

@@ -1,9 +1,27 @@
 .glass-navigation {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row; /* Horizontal layout */
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto 40px auto; /* Space above and below within scroll container */
+  width: 100%;
+  pointer-events: auto; /* Enable interactions */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .glass-navigation {
+    margin: 25px auto 35px auto; /* Slightly less spacing on mobile */
+    gap: 12px;
+    flex-wrap: wrap; /* Allow wrapping on very small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-navigation {
+    margin: 20px auto 30px auto;
+    gap: 10px;
+  }
 } 

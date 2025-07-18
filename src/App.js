@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Layout from './components/Layout';
 import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
 import LightToggle from './components/LightToggle';
 import Title from './components/Title';
 import Attribution from './components/Attribution';
+import Timeline from './components/Timeline';
 import useLightMode from './hooks/useLightMode';
+import { timelineData } from './data/timelineData';
 
 /**
  * Main App component - Clean, modular structure following React 2024 best practices
@@ -19,16 +21,28 @@ import useLightMode from './hooks/useLightMode';
  */
 export default function App() {
   const { lightMode, toggleLightMode } = useLightMode(false);
+  const mainContentRef = useRef(null);
 
   return (
     <Layout darkMode={!lightMode}>
       {/* 3D Canvas Background */}
-      <Canvas3D lightMode={lightMode} />
+      <Canvas3D lightMode={lightMode} eventSource={mainContentRef} />
       
       {/* UI Overlay Components */}
-      <GlassNavigation />
       <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
-      <Title lightMode={lightMode} />
+      
+      {/* Main Content Area with Title and Timeline */}
+      <div ref={mainContentRef} className="main-content-scroll">
+        <Title lightMode={lightMode} className="title-in-scroll" />
+        <GlassNavigation />
+        <Timeline 
+          data={timelineData}
+          showFilters={true}
+          defaultFilter="all"
+          className="timeline-in-scroll"
+        />
+      </div>
+      
       <Attribution lightMode={lightMode} />
     </Layout>
   );

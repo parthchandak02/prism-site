@@ -16,7 +16,7 @@
   "author": "Parth Chandak",
   "license": "MIT",
   "main": "src/index.js",
-  "homepage": "https://parthchandak02.github.io/prism-site",
+
   "repository": {
     "type": "git",
     "url": "https://github.com/parthchandak02/prism-site.git"
@@ -47,7 +47,7 @@
   },
   "scripts": {
     "prestart": "kill-port 3000",
-    "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
+    "start": "cross-env GENERATE_SOURCEMAP=false BROWSER=none react-scripts start",
     "dev": "npm run start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "build:analyze": "npm run build && npx source-map-explorer 'build/static/js/*.js'",

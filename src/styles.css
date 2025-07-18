@@ -13,13 +13,20 @@ body,
 
 :root {
   /* Typography system */
-  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Bitcount Grid Single', monospace;
 }
 
 body {
   background: black;
   font-family: var(--font-body);
+  /* Better font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Prevent fake bold/italic for variable fonts */
+  font-synthesis: none;
 }
 
 /* Typography hierarchy */
@@ -33,4 +40,145 @@ h1, h2, h3, h4, h5, h6 {
 p, span, div, button, input, textarea {
   font-family: var(--font-body);
   line-height: 1.5;
+}
+
+/* Typography utilities */
+.text-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+.text-medium {
+  font-weight: 500;
+}
+
+.text-semibold {
+  font-weight: 600;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-extrabold {
+  font-weight: 800;
+}
+
+/* Bitcount Grid Single - Clean Implementation */
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+/* Main Content Scroll Container */
+.main-content-scroll {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  width: 100%;
+  max-width: 900px;
+  
+  /* Allow 3D scene to receive mouse events in empty areas */
+  pointer-events: none;
+  
+  /* Hide scrollbar completely */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  /* Center content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title within scroll container */
+.title-in-scroll {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin-bottom: 40px;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  background: transparent;
+}
+
+/* Remove text shadows in scroll context for cleaner glass aesthetic */
+.title-in-scroll.title--dark,
+.title-in-scroll.title--light {
+  text-shadow: none;
+}
+
+/* Adjust title heading size in scroll context */
+.title-in-scroll .title__heading {
+  font-size: 2.5rem;
+  text-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .title-in-scroll .title__heading {
+    font-size: 2rem;
+  }
+  
+  .title-in-scroll {
+    padding-top: 10px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Timeline within scroll container */
+.timeline-in-scroll {
+  width: 100%;
+  padding: 0;
+  pointer-events: auto; /* Re-enable for interactive timeline */
+}
+
+.main-content-scroll::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+/* Responsive main content positioning */
+@media (max-width: 1024px) {
+  .main-content-scroll {
+    top: 8%;
+    max-height: 88vh;
+    left: 10px;
+    right: 10px;
+    transform: none;
+    width: calc(100% - 20px);
+    max-width: none;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content-scroll {
+    top: 5%;
+    max-height: 92vh;
+    left: 5px;
+    right: 5px;
+    width: calc(100% - 10px);
+    padding: 10px;
+  }
+  
+  .title-in-scroll {
+    margin-bottom: 20px;
+  }
 }

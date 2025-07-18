@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
 import * as THREE from 'three';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { Beam } from './Beam';
 import { Rainbow } from './Rainbow';
 import { Prism } from './Prism';
@@ -15,6 +15,9 @@ const Scene = ({ lightMode }) => {
   const spot = useRef(null);
   const boxreflect = useRef(null);
   const rainbow = useRef(null);
+  
+  // Use R3F's built-in pointer state for optimal performance
+  const { viewport, pointer } = useThree();
 
   const rayOut = useCallback(() => hitPrism(false), []);
   
@@ -52,8 +55,11 @@ const Scene = ({ lightMode }) => {
   }, []);
 
   useFrame((state) => {
-    // Tie beam to the mouse
-    boxreflect.current.setRay([(state.pointer.x * state.viewport.width) / 2, (state.pointer.y * state.viewport.height) / 2, 0], [0, 0, 0]);
+    // Tie beam to R3F's optimized pointer state (works across all UI layers via eventSource)
+    const mouseX = (pointer.x * viewport.width) / 2;
+    const mouseY = (pointer.y * viewport.height) / 2;
+    boxreflect.current.setRay([mouseX, mouseY, 0], [0, 0, 0]);
+    
     // Animate rainbow intensity
     lerp(rainbow.current.material, 'emissiveIntensity', isPrismHit ? 2.5 : 0, 0.1);
     spot.current.intensity = rainbow.current.material.emissiveIntensity;
