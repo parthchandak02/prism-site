@@ -4,7 +4,7 @@ import { Bloom, EffectComposer, LUT } from '@react-three/postprocessing';
 import { LUTCubeLoader } from 'postprocessing';
 import Scene from './Scene';
 
-const Canvas3D = ({ lightMode, eventSource }) => {
+const Canvas3D = ({ lightMode }) => {
   const texture = useLoader(LUTCubeLoader, process.env.PUBLIC_URL + '/lut/F-6800-STD.cube');
 
   return (
@@ -12,7 +12,6 @@ const Canvas3D = ({ lightMode, eventSource }) => {
       orthographic 
       gl={{ antialias: false }} 
       camera={{ position: [0, 0, 100], zoom: 60 }}
-      eventSource={eventSource}
       style={{ 
         position: 'fixed',
         top: 0,
@@ -20,7 +19,7 @@ const Canvas3D = ({ lightMode, eventSource }) => {
         width: '100%',
         height: '100%',
         zIndex: 0, // Behind UI elements
-        pointerEvents: 'none' // Allow UI events to pass through to main content
+        pointerEvents: 'auto' // Canvas receives mouse events for 3D tracking
       }}
     >
       <color attach="background" args={[lightMode ? 'white' : 'black']} />

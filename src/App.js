@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Layout from './components/Layout';
 import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
@@ -21,18 +21,17 @@ import { timelineData } from './data/timelineData';
  */
 export default function App() {
   const { lightMode, toggleLightMode } = useLightMode(false);
-  const mainContentRef = useRef(null);
 
   return (
     <Layout darkMode={!lightMode}>
       {/* 3D Canvas Background */}
-      <Canvas3D lightMode={lightMode} eventSource={mainContentRef} />
+      <Canvas3D lightMode={lightMode} />
       
       {/* UI Overlay Components */}
       <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
       
       {/* Main Content Area with Title and Timeline */}
-      <div ref={mainContentRef} className="main-content-scroll">
+      <div className="main-content-scroll">
         <Title lightMode={lightMode} className="title-in-scroll" />
         <GlassNavigation />
         <Timeline 
