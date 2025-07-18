@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-/* Filter Buttons */
+/* Filter Buttons Container */
 .timeline__filters {
   display: flex;
   justify-content: center;
@@ -18,13 +18,8 @@
   position: sticky;
   top: 0;
   
-  /* Glass effect matching timeline cards */
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Transparent background - no glass effect on container */
+  background: transparent;
   
   z-index: 20;
   padding: 16px 20px;
@@ -33,16 +28,10 @@
   max-width: 600px;
   align-self: center;
   
-  /* Hover effect matching timeline cards */
-  transition: all 0.3s ease;
   pointer-events: auto; /* Ensure filter buttons are clickable */
 }
 
-.timeline__filters:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-}
+
 
 .timeline__filter {
   /* Glass effect similar to existing components */
