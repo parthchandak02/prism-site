@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Simple icon components using SVG
 const ExperienceIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor">

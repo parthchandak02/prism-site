@@ -1,4 +1,3 @@
-import React from 'react';
 import './LightToggle.css';
 
 const LightToggle = ({ lightMode, onToggle }) => {

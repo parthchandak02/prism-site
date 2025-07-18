@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './TimelineCard.css';
 
 const TimelineCard = ({ 
@@ -10,13 +10,14 @@ const TimelineCard = ({
   location,
   volume,
   defaultExpanded = false,
+  lightMode = false,
   className = '',
   ...props 
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   return (
     <div 
-      className={`timeline-card glass glass-strong glass-interactive ${isExpanded ? 'expanded' : 'collapsed'} ${className}`} 
+      className={`timeline-card glass glass-strong glass-interactive ${isExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${className}`} 
       {...props}
     >
       {/* Content container */}

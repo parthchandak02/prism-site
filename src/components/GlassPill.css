@@ -12,6 +12,15 @@
   justify-content: center;
 }
 
+/* Light/Dark Mode Text Colors */
+.glass-card--light {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.glass-card--dark {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* Hover state - expanded */
 .glass-card:hover {
   width: auto;
@@ -29,7 +38,6 @@
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Logo SVG styling */
@@ -44,7 +52,6 @@
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
   white-space: nowrap;
   
   /* Initially hidden */

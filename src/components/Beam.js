@@ -75,7 +75,7 @@ export const Beam = forwardRef(({ children, position, stride = 4, width = 8, ...
   useImperativeHandle(fRef, () => reflect.current, [])
 
   useEffect(() => {
-    console.log(streaks.current)
+    // Effect runs once on mount
   }, [])
 
   return (

@@ -5,7 +5,6 @@ import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
 import LightToggle from './components/LightToggle';
 import Title from './components/Title';
-import Attribution from './components/Attribution';
 import Timeline from './components/Timeline';
 import useLightMode from './hooks/useLightMode';
 import { timelineData } from './data/timelineData';
@@ -28,22 +27,24 @@ export default function App() {
       {/* 3D Canvas Background */}
       <Canvas3D lightMode={lightMode} />
       
-      {/* UI Overlay Components */}
-      <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
-      
-      {/* Main Content Area with Title and Timeline */}
-      <div className="main-content-scroll">
-        <Title lightMode={lightMode} className="title-in-scroll" />
-        <GlassNavigation />
-        <Timeline 
-          data={timelineData}
-          showFilters={true}
-          defaultFilter="all"
-          className="timeline-in-scroll"
-        />
+      {/* UI Overlay Layer */}
+      <div className="layout__ui">
+        {/* Fixed UI Components */}
+        <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
+        
+        {/* Main Content Area with Title and Timeline */}
+        <div className="main-content-scroll">
+          <Title lightMode={lightMode} className="title-in-scroll" />
+          <GlassNavigation lightMode={lightMode} />
+          <Timeline 
+             data={timelineData}
+             showFilters={true}
+             defaultFilter="all"
+             lightMode={lightMode}
+             className="timeline-in-scroll"
+           />
+        </div>
       </div>
-      
-      <Attribution lightMode={lightMode} />
     </Layout>
   );
 }

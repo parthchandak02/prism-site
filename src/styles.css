@@ -135,9 +135,11 @@ p, span, div, button, input, textarea {
   width: 100%;
   max-width: 900px;
   
-  pointer-events: none;
+  pointer-events: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   
   display: flex;
   flex-direction: column;
@@ -157,14 +159,8 @@ p, span, div, button, input, textarea {
   background: transparent;
 }
 
-.title-in-scroll.title--dark,
-.title-in-scroll.title--light {
-  text-shadow: none;
-}
-
 .title-in-scroll .title__heading {
   font-size: 2.5rem;
-  text-shadow: none;
 }
 
 .timeline-in-scroll {

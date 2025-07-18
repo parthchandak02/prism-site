@@ -33,20 +33,33 @@
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   outline: none;
 }
 
-.timeline__filter:hover {
+/* Light/Dark Mode Filter Colors */
+.timeline.timeline--light .timeline__filter {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.timeline.timeline--light .timeline__filter:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.timeline.timeline--dark .timeline__filter {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.timeline.timeline--dark .timeline__filter:hover {
   color: rgba(255, 255, 255, 0.9);
 }
 
 .timeline__filter.active {
   background: rgba(59, 130, 246, 0.3);
   border: 1px solid rgba(59, 130, 246, 0.5);
-  color: rgba(255, 255, 255, 1);
   box-shadow: 0 4px 25px rgba(59, 130, 246, 0.2);
+  opacity: 1;
+  font-weight: 600;
 }
 
 /* Timeline Content */
@@ -83,7 +96,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.9);
   z-index: 5;
 }
 
@@ -93,8 +105,20 @@
   display: block;
 }
 
-/* Timeline Item Hover Effect */
-.timeline__item:hover .timeline__dot {
+/* Light/Dark Mode Dot Colors */
+.timeline.timeline--light .timeline__dot {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.timeline.timeline--light .timeline__item:hover .timeline__dot {
+  color: rgba(0, 0, 0, 1);
+}
+
+.timeline.timeline--dark .timeline__dot {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timeline.timeline--dark .timeline__item:hover .timeline__dot {
   color: rgba(255, 255, 255, 1);
 }
 
@@ -113,8 +137,16 @@
 .timeline__empty p {
   font-family: var(--font-body);
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
   margin: 0;
+}
+
+/* Light/Dark Mode Empty State Colors */
+.timeline.timeline--light .timeline__empty p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.timeline.timeline--dark .timeline__empty p {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Responsive Design */

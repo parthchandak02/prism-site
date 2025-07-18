@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import TimelineCard from './TimelineCard';
 import './Timeline.css';
 
@@ -7,6 +7,7 @@ const Timeline = ({
   className = '',
   showFilters = true,
   defaultFilter = 'all',
+  lightMode = false,
   ...props 
 }) => {
   const [activeFilter, setActiveFilter] = useState(defaultFilter);
@@ -35,7 +36,7 @@ const Timeline = ({
   }, [filteredData]);
   
   return (
-    <div className={`timeline ${className}`} {...props}>
+    <div className={`timeline ${lightMode ? 'timeline--light' : 'timeline--dark'} ${className}`} {...props}>
       {/* Filter buttons */}
       {showFilters && categories.length > 1 && (
         <div className="timeline__filters">
@@ -72,6 +73,7 @@ const Timeline = ({
                   description={item.description}
                   location={item.location}
                   volume={item.volume}
+                  lightMode={lightMode}
                   className="timeline__card"
                 />
               </div>

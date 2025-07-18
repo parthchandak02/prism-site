@@ -23,13 +23,13 @@
 }
 
 .title--light .title__heading {
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  color: #000000;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .title--dark .title__heading {
-  color: #000000;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .title__subtitle {
@@ -42,11 +42,11 @@
 }
 
 .title--light .title__subtitle {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .title--dark .title__subtitle {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Responsive design */
