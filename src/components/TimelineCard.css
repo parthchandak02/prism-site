@@ -1,11 +1,11 @@
 /* Timeline Card Component */
 .timeline-card {
-  /* Glass effect inspired by css.glass and existing GlassPill */
+  /* Unified glass effect standard */
   background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   
   /* Layout */
@@ -34,7 +34,7 @@
 .timeline-card:hover {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
 }
 
