@@ -5,7 +5,7 @@ import { Bloom, EffectComposer, LUT } from '@react-three/postprocessing';
 import { LUTCubeLoader } from 'postprocessing';
 import Scene from './Scene';
 
-const Canvas3D = ({ lightMode }) => {
+const Canvas3D = ({ lightMode, viewportPosition, isLocked }) => {
   const texture = useLoader(LUTCubeLoader, process.env.PUBLIC_URL + '/lut/F-6800-STD.cube');
 
   return (
@@ -26,7 +26,7 @@ const Canvas3D = ({ lightMode }) => {
       }}
     >
       <color attach="background" args={[lightMode ? 'white' : 'black']} />
-      <Scene lightMode={lightMode} />
+      <Scene lightMode={lightMode} viewportPosition={viewportPosition} isLocked={isLocked} />
       <EffectComposer disableNormalPass>
         <Bloom mipmapBlur levels={9} intensity={1.5} luminanceThreshold={1} luminanceSmoothing={1} />
         <LUT lut={texture} />

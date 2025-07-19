@@ -1,4 +1,4 @@
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Beam } from './Beam';
@@ -7,9 +7,8 @@ import { Prism } from './Prism';
 import { Flare } from './Flare';
 import { Box } from './Box';
 import { calculateRefractionAngle, lerp, lerpV3 } from '../util';
-import useGlobalMouse from '../hooks/useGlobalMouse';
 
-const Scene = ({ lightMode }) => {
+const Scene = ({ lightMode, viewportPosition, isLocked }) => {
   const [isPrismHit, hitPrism] = useState(false);
   const flare = useRef(null);
   const ambient = useRef(null);
@@ -17,9 +16,16 @@ const Scene = ({ lightMode }) => {
   const boxreflect = useRef(null);
   const rainbow = useRef(null);
   
-  // Use reliable global mouse tracking that works across all UI layers
-  const { viewportPosition } = useGlobalMouse();
-  const { viewport } = useThree();
+  const { viewport, invalidate } = useThree();
+
+  // Fix stale closure issue - use ref to store current lock state
+  const isLockedRef = useRef(false);
+  
+  // Update ref whenever lock state changes AND force re-render
+  useEffect(() => {
+    isLockedRef.current = isLocked;
+    invalidate(); // Force React Three Fiber to re-render
+  }, [isLocked, invalidate]);
 
   const rayOut = useCallback(() => hitPrism(false), []);
   
@@ -57,15 +63,18 @@ const Scene = ({ lightMode }) => {
   }, []);
 
   useFrame((state) => {
-    // Update flare position to follow mouse using global tracking
-    if (flare.current) {
-      lerpV3(flare.current.position, [viewportPosition.x * 4, viewportPosition.y * 4, 5], 0.1);
+    // Only update positions when NOT locked and viewportPosition is available
+    if (!isLockedRef.current && viewportPosition) {
+      // Update flare position
+      if (flare.current) {
+        lerpV3(flare.current.position, [viewportPosition.x * 4, viewportPosition.y * 4, 5], 0.1);
+      }
+      
+      // Update beam ray
+      const mouseX = (viewportPosition.x * viewport.width) / 2;
+      const mouseY = (viewportPosition.y * viewport.height) / 2;
+      boxreflect.current.setRay([mouseX, mouseY, 0], [0, 0, 0]);
     }
-    
-    // Tie beam to reliable global mouse tracking that works across all UI layers
-    const mouseX = (viewportPosition.x * viewport.width) / 2;
-    const mouseY = (viewportPosition.y * viewport.height) / 2;
-    boxreflect.current.setRay([mouseX, mouseY, 0], [0, 0, 0]);
     
     // Animate rainbow intensity
     lerp(rainbow.current.material, 'emissiveIntensity', isPrismHit ? 2.5 : 0, 0.1);

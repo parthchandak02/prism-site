@@ -25,7 +25,8 @@ import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightConte
  */
 export default function App() {
   const { lightMode, toggleLightMode } = useLightMode(false);
-  const { isLocked, toggleLock } = useGlobalMouse();
+  // Single source of truth for all mouse state
+  const { isLocked, toggleLock, viewportPosition } = useGlobalMouse();
 
   // Sync html and body background with light mode to prevent edge bleeding
   useEffect(() => {
@@ -37,8 +38,8 @@ export default function App() {
   return (
     <TypewriterHighlightProvider>
       <Layout darkMode={!lightMode}>
-        {/* 3D Canvas Background */}
-        <Canvas3D lightMode={lightMode} />
+        {/* 3D Canvas Background - pass mouse state down */}
+        <Canvas3D lightMode={lightMode} viewportPosition={viewportPosition} isLocked={isLocked} />
         
         {/* UI Overlay Layer */}
         <div className="layout__ui">

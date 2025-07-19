@@ -15,23 +15,34 @@ const useGlobalMouse = () => {
   const [isLocked, setIsLocked] = useState(false);
   
   const hasUserMoved = useRef(false);
+  // Use ref to store the current lock state for event handlers
+  const isLockedRef = useRef(false);
+  // Store the frozen position when locked
+  const frozenPositionRef = useRef(null);
+  // Store current live viewport position for capturing when locking
+  const currentViewportPositionRef = useRef({ 
+    x: (centerLeftX / window.innerWidth) * 2 - 1, 
+    y: -(centerLeftY / window.innerHeight) * 2 + 1 
+  });
 
   const updatePosition = useCallback((x, y) => {
     // CRITICAL: If locked, completely ignore ALL mouse input
-    if (isLocked) {
+    if (isLockedRef.current) {
       return;
     }
     
     hasUserMoved.current = true;
     
-    // Update both positions
-    setMousePosition({ x, y });
-    
     const normalizedX = (x / window.innerWidth) * 2 - 1;
     const normalizedY = -(y / window.innerHeight) * 2 + 1;
     
+    // Update both positions
+    setMousePosition({ x, y });
     setViewportPosition({ x: normalizedX, y: normalizedY });
-  }, [isLocked]);
+    
+    // Always keep track of current live position
+    currentViewportPositionRef.current = { x: normalizedX, y: normalizedY };
+  }, []); // No dependencies needed
 
   const updateMousePosition = useCallback((e) => {
     updatePosition(e.clientX, e.clientY);
@@ -45,32 +56,51 @@ const useGlobalMouse = () => {
   }, [updatePosition]);
 
   const setAutomaticPosition = useCallback((pixelX, pixelY) => {
-    if (hasUserMoved.current || isLocked) return;
-    
-    setMousePosition({ x: pixelX, y: pixelY });
+    if (hasUserMoved.current || isLockedRef.current) return;
     
     const normalizedX = (pixelX / window.innerWidth) * 2 - 1;
     const normalizedY = -(pixelY / window.innerHeight) * 2 + 1;
     
+    setMousePosition({ x: pixelX, y: pixelY });
     setViewportPosition({ x: normalizedX, y: normalizedY });
-  }, [isLocked]);
+    
+    // Update current position ref
+    currentViewportPositionRef.current = { x: normalizedX, y: normalizedY };
+  }, []);
 
-  // Simple lock toggle - just flips the boolean
+  // Fixed lock toggle - no circular dependency on viewportPosition
   const toggleLock = useCallback(() => {
-    setIsLocked(!isLocked);
+    setIsLocked(prev => {
+      const newLockState = !prev;
+      if (newLockState) {
+        // Capture current live position when locking
+        frozenPositionRef.current = { ...currentViewportPositionRef.current };
+        console.log('🔒 HOOK LOCKED - Position frozen', frozenPositionRef.current);
+      } else {
+        // Clear frozen position when unlocking
+        console.log('🔓 HOOK UNLOCKED - Position live');
+        frozenPositionRef.current = null;
+      }
+      return newLockState;
+    });
+  }, []); // No dependencies needed - we use refs for current values
+
+  // Update ref whenever lock state changes
+  useEffect(() => {
+    isLockedRef.current = isLocked;
   }, [isLocked]);
 
   useEffect(() => {
     // Initial automatic positioning
     const initTimer = setTimeout(() => {
-      if (!hasUserMoved.current && !isLocked) {
+      if (!hasUserMoved.current && !isLockedRef.current) {
         const initialX = window.innerWidth * 0.15;
         const initialY = window.innerHeight * 0.5;
         setAutomaticPosition(initialX, initialY);
       }
     }, 100);
 
-    // Event listeners
+    // Event listeners - only attach once, not dependent on lock state
     document.addEventListener('mousemove', updateMousePosition, { passive: true });
     document.addEventListener('touchstart', updateTouchPosition, { passive: true });
     document.addEventListener('touchmove', updateTouchPosition, { passive: true });
@@ -81,11 +111,14 @@ const useGlobalMouse = () => {
       document.removeEventListener('touchstart', updateTouchPosition);
       document.removeEventListener('touchmove', updateTouchPosition);
     };
-  }, [updateMousePosition, updateTouchPosition, setAutomaticPosition, isLocked]);
+  }, [updateMousePosition, updateTouchPosition, setAutomaticPosition]);
+
+  // Calculate the return value - return frozen position when locked, live position when unlocked
+  const returnedPosition = isLocked && frozenPositionRef.current ? frozenPositionRef.current : viewportPosition;
 
   return {
     mousePosition,
-    viewportPosition, // This stays frozen when locked because updatePosition is blocked
+    viewportPosition: returnedPosition,
     setAutomaticPosition,
     hasUserMoved: hasUserMoved.current,
     isLocked,

@@ -30,8 +30,8 @@ const useTypewriter = ({
             timeoutRef.current = setTimeout(typeCharacter, typeSpeed);
             return newText;
           } else {
-            // Finished typing - notify context about completed phrase
-            updateCurrentPhrase(currentPhrase);
+            // Finished typing - notify context about completed phrase (async to avoid React warning)
+            setTimeout(() => updateCurrentPhrase(currentPhrase), 0);
             // Wait then start deleting
             timeoutRef.current = setTimeout(() => {
               isDeleteRef.current = true;
@@ -42,9 +42,9 @@ const useTypewriter = ({
         } else {
           // Deleting backward
           if (prevText.length > 0) {
-            // Start clearing highlight when deletion begins
+            // Start clearing highlight when deletion begins (async to avoid React warning)
             if (prevText.length === currentPhrase.length) {
-              updateCurrentPhrase('');
+              setTimeout(() => updateCurrentPhrase(''), 0);
             }
             const newText = prevText.substring(0, prevText.length - 1);
             timeoutRef.current = setTimeout(typeCharacter, deleteSpeed);

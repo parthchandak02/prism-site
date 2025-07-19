@@ -46,7 +46,9 @@
     "rimraf": "^5.0.8"
   },
   "scripts": {
+    "prestart": "kill-port 3000",
     "start": "cross-env GENERATE_SOURCEMAP=false BROWSER=none react-scripts start",
+    "predev": "kill-port 3000",
     "dev": "npm run start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "build:analyze": "npm run build && npx source-map-explorer 'build/static/js/*.js'",
