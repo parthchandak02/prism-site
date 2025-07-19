@@ -18,7 +18,7 @@ const TimelineCard = ({
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   return (
     <div 
-      className={`timeline-card glass glass-strong glass-interactive ${isExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isHighlighted ? 'timeline-card--highlighted' : ''} ${className}`} 
+      className={`timeline-card glass glass-strong glass-interactive ${isExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isHighlighted ? 'timeline-card--highlighted highlight-subtle' : ''} ${className}`} 
       {...props}
     >
       {/* Content container */}

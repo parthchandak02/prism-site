@@ -46,7 +46,7 @@ const Timeline = ({
           {categories.map(category => (
             <button
               key={category}
-              className={`timeline__filter glass glass-interactive ${activeFilter === category ? 'active' : ''}`}
+              className={`timeline__filter glass glass-interactive ${activeFilter === category ? 'active highlight-active' : ''}`}
               onClick={() => setActiveFilter(category)}
             >
               {category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1)}

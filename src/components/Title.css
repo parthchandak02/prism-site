@@ -33,7 +33,7 @@
 }
 
 .title__subtitle {
-  font-family: var(--font-body);
+  font-family: var(--font-typewriter);
   font-size: 1.2rem;
   font-weight: 300;
   margin: 16px 0 0 0;

@@ -32,12 +32,12 @@ const Scene = ({ lightMode }) => {
     rainbow.current.material.emissiveIntensity = 20;
   }, []);
 
-  const vec = new THREE.Vector3();
+  const vecRef = useRef(new THREE.Vector3());
   
   const rayMove = useCallback(({ api, position, direction, normal }) => {
     if (!normal) return;
     // Extend the line to the prisms center
-    vec.toArray(api.positions, api.number++ * 3);
+    vecRef.current.toArray(api.positions, api.number++ * 3);
     // Set flare
     flare.current.position.set(position.x, position.y, -0.5);
     flare.current.rotation.set(0, 0, -Math.atan2(direction.x, direction.y));

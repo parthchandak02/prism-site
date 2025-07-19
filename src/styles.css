@@ -3,10 +3,49 @@
    ======================================== */
 
 :root {
-  /* Typography system */
-  --font-heading: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Bitcount Grid Single', monospace;
+  /* Typography system - Granular Control */
+  --font-heading: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Main name heading */
+  --font-body: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;    /* Default fallback */
+  --font-display: 'Bitcount Grid Single', monospace;                                                      /* Main "Parth Chandak" title */
+  
+  /* Specialized fonts for different components */
+  --font-typewriter: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;      /* "Creative Technologist" animated text */
+  --font-navigation: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;      /* Glass navigation pill text */
+  --font-timeline-filter: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Timeline filter buttons */
+  
+  /* Timeline card fonts - granular control */
+  --font-card-title: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;   /* Card titles (job/research titles) */
+  --font-card-date: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;    /* Card dates */
+  --font-card-content: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Card descriptions */
+  --font-card-tag: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;     /* Category tags (experience/research/etc) */
+  --font-card-meta: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;    /* Location and volume info */
+
+  /* Color system */
+  --color-text-light: rgba(0, 0, 0, 0.9);
+  --color-text-light-secondary: rgba(0, 0, 0, 0.8);
+  --color-text-dark: rgba(255, 255, 255, 0.9);
+  --color-text-dark-secondary: rgba(255, 255, 255, 0.8);
+  
+  /* Highlighting system */
+  --color-highlight-bg: rgba(249, 115, 22, 0.08);
+  --color-highlight-border: rgba(249, 115, 22, 0.25);
+  --color-highlight-shadow: rgba(249, 115, 22, 0.15);
+  --color-highlight-active-bg: rgba(19, 20, 21, 0.3);
+  --color-highlight-active-border: rgba(249, 115, 22, 0.5);
+  --color-highlight-active-shadow: rgba(249, 115, 22, 0.2);
+
+  /* Spacing system */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border radius system */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 50rem;
 
   /* Glass Design Tokens */
   --glass-bg: rgba(255, 255, 255, 0.1);
@@ -22,8 +61,10 @@
   --glass-blur-subtle-hover: blur(12px) saturate(1.5);
   --glass-blur-strong-hover: blur(24px) saturate(1.7);
 
-  /* Animation */
+  /* Animation system */
   --transition-standard: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+  --scale-subtle: 1.02;
 }
 
 /* ========================================
@@ -80,6 +121,24 @@
 
 .text-center {
   text-align: center;
+}
+
+/* ========================================
+   HIGHLIGHTING UTILITIES
+   ======================================== */
+
+/* Subtle highlight for typewriter synchronization */
+.highlight-subtle {
+  background: var(--color-highlight-bg);
+  border-color: var(--color-highlight-border);
+  box-shadow: 0 2px 8px var(--color-highlight-shadow);
+}
+
+/* Active highlight for selected/pressed states */
+.highlight-active {
+  background: var(--color-highlight-active-bg);
+  border-color: var(--color-highlight-active-border);
+  box-shadow: 0 4px 25px var(--color-highlight-active-shadow);
 }
 
 /* ========================================

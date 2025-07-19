@@ -114,7 +114,7 @@
 
 /* Title */
 .timeline-card__title {
-  font-family: var(--font-body);
+  font-family: var(--font-card-title);
   font-size: 18px;
   font-weight: 600;
   margin: 0;
@@ -123,7 +123,7 @@
 
 /* Date */
 .timeline-card__date {
-  font-family: var(--font-body);
+  font-family: var(--font-card-date);
   font-size: 14px;
   font-weight: 400;
   opacity: 0.8;
@@ -140,7 +140,7 @@
 .timeline-card__volume,
 .timeline-card__location {
   border-radius: 24px;
-  font-family: var(--font-body);
+  font-family: var(--font-card-meta);
   font-size: 12px;
   font-weight: 400;
   opacity: 0.6;
@@ -173,7 +173,7 @@
   display: inline-block;
   border-radius: 24px;
   padding: 4px 12px;
-  font-family: var(--font-body);
+  font-family: var(--font-card-tag);
   font-size: 11px;
   font-weight: 600;
   opacity: 0.9;
@@ -187,7 +187,7 @@
 
 /* Description */
 .timeline-card__description {
-  font-family: var(--font-body);
+  font-family: var(--font-card-content);
   font-size: 14px;
   font-weight: 400;
   opacity: 0.8;
@@ -222,11 +222,8 @@
   }
 }
 
-/* Highlighted state for typewriter synchronization */
+/* Highlighted state for typewriter synchronization - using utility classes */
 .timeline-card--highlighted {
-  /* Blue highlight similar to active timeline filter */
-  background: rgba(59, 130, 246, 0.15) !important;
-  border: 1px solid rgba(59, 130, 246, 0.4) !important;
-  transform: scale(1.02);
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+  /* No additional styles needed - utility class handles highlighting */
+  /* No transform scale to prevent expansion */
 } 

@@ -1,9 +1,9 @@
-/* Timeline Container Component - Simplified with Design System */
+/* Timeline Container Component - Using Design System Tokens */
 .timeline {
   width: 100%;
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
-  padding: 0 20px 20px 20px;
+  padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
   display: flex;
   flex-direction: column;
 }
@@ -12,52 +12,50 @@
 .timeline__filters {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 32px;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
   flex-wrap: wrap;
   position: sticky;
   top: 0;
   background: transparent;
   z-index: 20;
-  padding: 16px 20px;
-  margin: 0 0 32px 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin: 0 0 var(--spacing-xl) 0;
   width: 100%;
-  max-width: 600px;
+  max-width: 37.5rem;
   align-self: center;
   pointer-events: auto;
 }
 
 .timeline__filter {
-  border-radius: 24px;
-  padding: 8px 16px;
-  font-family: var(--font-body);
-  font-size: 13px;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: var(--font-timeline-filter);
+  font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
   outline: none;
 }
 
-/* Light/Dark Mode Filter Colors */
+/* Light/Dark Mode Filter Colors - Using Design System */
 .timeline.timeline--light .timeline__filter {
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--color-text-light-secondary);
 }
 
 .timeline.timeline--light .timeline__filter:hover {
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--color-text-light);
 }
 
 .timeline.timeline--dark .timeline__filter {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-dark-secondary);
 }
 
 .timeline.timeline--dark .timeline__filter:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-dark);
 }
 
 .timeline__filter.active {
-  background: rgba(59, 130, 246, 0.3);
-  border: 1px solid rgba(59, 130, 246, 0.5);
-  box-shadow: 0 4px 25px rgba(59, 130, 246, 0.2);
+  /* Using utility class for consistency */
   opacity: 1;
   font-weight: 600;
 }
