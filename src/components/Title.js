@@ -1,8 +1,11 @@
 import './Title.css';
-import useTypewriter from '../hooks/useTypewriter';
-// import useTypewriterAdvanced from '../hooks/useTypewriterAdvanced'; // TypeIt version (needs DOM ref)
+import { ReactTyped } from 'react-typed';
+import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
+// import useTypewriter from '../hooks/useTypewriter'; // Original implementation (backup)
 
 const Title = ({ lightMode, className = '' }) => {
+  const { updateCurrentPhrase } = useTypewriterHighlight();
+
   // Comprehensive phrases reflecting full skill range and career achievements
   const typewriterPhrases = [
     // Core Programming & Development
@@ -43,22 +46,35 @@ const Title = ({ lightMode, className = '' }) => {
     'Automation Specialist'
   ];
 
-  // ⚡ Optimized timing for comprehensive phrase cycling
-  const { currentText } = useTypewriter({ 
-    phrases: typewriterPhrases, 
-    typeSpeed: 180,           // Slightly slower for readability with more phrases
-    deleteSpeed: 60,          // Fast deletion
-    delayBetweenPhrases: 2800, // Longer pause to appreciate each complete phrase
-    startDelay: 300           // Brief startup delay
-  });
-
   return (
     <div className={`title ${lightMode ? 'title--light' : 'title--dark'} ${className}`}>
       <h1 className="title__heading">
         Parth Chandak
       </h1>
       <p className="title__subtitle">
-        {currentText}
+        <ReactTyped
+          strings={typewriterPhrases}
+          typeSpeed={60}
+          backSpeed={40}
+          backDelay={1800}
+          startDelay={300}
+          loop={true}
+          showCursor={false}
+          smartBackspace={true}
+          onStringTyped={(arrayPos) => {
+            // Update context when string is fully typed
+            const phrase = typewriterPhrases[arrayPos];
+            setTimeout(() => updateCurrentPhrase(phrase), 0);
+          }}
+          preStringTyped={() => {
+            // Clear highlight before typing new string
+            setTimeout(() => updateCurrentPhrase(''), 0);
+          }}
+          onBegin={() => {
+            // Clear highlight when animation begins
+            setTimeout(() => updateCurrentPhrase(''), 0);
+          }}
+        />
         <span className="typewriter-cursor">|</span>
       </p>
     </div>
