@@ -10,6 +10,33 @@
   pointer-events: auto;
   isolation: isolate;
   position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass morphism highlighting for timeline cards */
+.timeline-card--highlighted {
+  background: var(--color-highlight-bg) !important;
+  border-color: var(--color-highlight-border) !important;
+  box-shadow: 
+    0 8px 32px var(--color-highlight-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px var(--color-highlight-border) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  transform: scale(1.02) !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.timeline-card--highlighted:hover {
+  background: var(--color-highlight-active-bg) !important;
+  border-color: var(--color-highlight-active-border) !important;
+  box-shadow: 
+    0 12px 48px var(--color-highlight-active-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 0 2px var(--color-highlight-active-border) !important;
+  backdrop-filter: blur(25px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+  transform: scale(1.04) translateY(-2px) !important;
 }
 
 /* Light/Dark Mode Text Colors - Following Design System */
@@ -220,10 +247,4 @@
   .timeline-card__description {
     font-size: 13px;
   }
-}
-
-/* Highlighted state for typewriter synchronization - using utility classes */
-.timeline-card--highlighted {
-  /* No additional styles needed - utility class handles highlighting */
-  /* No transform scale to prevent expansion */
 } 
