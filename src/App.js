@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from './components/Layout';
 import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
@@ -22,6 +22,13 @@ import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightConte
  */
 export default function App() {
   const { lightMode, toggleLightMode } = useLightMode(false);
+
+  // Sync html and body background with light mode to prevent edge bleeding
+  useEffect(() => {
+    const className = lightMode ? 'light-mode' : 'dark-mode';
+    document.documentElement.className = className;
+    document.body.className = className;
+  }, [lightMode]);
 
   return (
     <TypewriterHighlightProvider>

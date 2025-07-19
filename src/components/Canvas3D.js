@@ -17,8 +17,10 @@ const Canvas3D = ({ lightMode }) => {
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
+        width: '100vw', // Use viewport units for better coverage
+        height: '100vh', // Use viewport units for better coverage
+        minWidth: '100%', // Fallback for better support
+        minHeight: '100%', // Fallback for better support
         zIndex: 0, // Behind UI elements
         pointerEvents: 'none' // Allow UI events to pass through, global tracking handles 3D
       }}

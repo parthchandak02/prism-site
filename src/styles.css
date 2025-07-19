@@ -149,7 +149,23 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Dynamic html backgrounds to prevent any edge bleeding */
+html.dark-mode {
+  background: black;
+}
+
+html.light-mode {
+  background: white;
+}
+
 body,
 #root {
   width: 100%;
@@ -159,12 +175,21 @@ body,
 }
 
 body {
-  background: black;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-synthesis: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Dynamic body backgrounds based on mode */
+body.dark-mode {
+  background: black;
+}
+
+body.light-mode {
+  background: white;
 }
 
 /* Typography hierarchy */
