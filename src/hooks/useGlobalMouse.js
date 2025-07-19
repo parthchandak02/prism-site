@@ -75,10 +75,8 @@ const useGlobalMouse = () => {
       if (newLockState) {
         // Capture current live position when locking
         frozenPositionRef.current = { ...currentViewportPositionRef.current };
-        console.log('🔒 HOOK LOCKED - Position frozen', frozenPositionRef.current);
       } else {
         // Clear frozen position when unlocking
-        console.log('🔓 HOOK UNLOCKED - Position live');
         frozenPositionRef.current = null;
       }
       return newLockState;
