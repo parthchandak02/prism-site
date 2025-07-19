@@ -1,35 +1,18 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
 
 const useTypewriter = ({ 
   phrases, 
-  typeSpeed = 80, 
-  deleteSpeed = 40, 
-  delayBetweenPhrases = 1500,
-  variableSpeed = true, // Add natural typing rhythm
-  startDelay = 200 
+  typeSpeed = 80,        // Medium-fast typing (optimal: 50-100ms)
+  deleteSpeed = 30,      // Fast deletion (optimal: 20-50ms)
+  delayBetweenPhrases = 1500, // 1.5 second hold (optimal: 1-2 seconds)
+  startDelay = 500       // Initial delay before starting
 }) => {
   const { updateCurrentPhrase } = useTypewriterHighlight();
   const [currentText, setCurrentText] = useState('');
   const timeoutRef = useRef(null);
   const phraseIndexRef = useRef(0);
   const isDeleteRef = useRef(false);
-
-  // Get variable speed for more natural typing
-  const getVariableSpeed = useCallback((baseSpeed, currentChar) => {
-    if (!variableSpeed) return baseSpeed;
-    
-    // Add randomness for more human-like typing
-    const variation = baseSpeed * 0.2; // 20% variation
-    const randomVariation = (Math.random() - 0.5) * variation;
-    
-    // Common letters type faster, uncommon letters slower
-    const commonChars = 'etaoinshrdlcumwfgypbvkjxqz ';
-    const isCommon = commonChars.includes(currentChar?.toLowerCase());
-    const speedModifier = isCommon ? 0.8 : 1.2;
-    
-    return Math.max(20, baseSpeed * speedModifier + randomVariation);
-  }, [variableSpeed]);
 
   useEffect(() => {
     if (!phrases || phrases.length === 0) return;
@@ -44,9 +27,7 @@ const useTypewriter = ({
           // Typing forward
           if (prevText.length < currentPhrase.length) {
             const newText = currentPhrase.substring(0, prevText.length + 1);
-            const nextChar = currentPhrase[prevText.length];
-            const speed = getVariableSpeed(typeSpeed, nextChar);
-            timeoutRef.current = setTimeout(typeCharacter, speed);
+            timeoutRef.current = setTimeout(typeCharacter, typeSpeed);
             return newText;
           } else {
             // Finished typing - notify context about completed phrase
@@ -66,15 +47,13 @@ const useTypewriter = ({
               updateCurrentPhrase('');
             }
             const newText = prevText.substring(0, prevText.length - 1);
-            const speed = getVariableSpeed(deleteSpeed, '');
-            timeoutRef.current = setTimeout(typeCharacter, speed);
+            timeoutRef.current = setTimeout(typeCharacter, deleteSpeed);
             return newText;
           } else {
             // Finished deleting, move to next phrase
             isDeleteRef.current = false;
             phraseIndexRef.current = (phraseIndexRef.current + 1) % phrases.length;
-            const speed = getVariableSpeed(typeSpeed, '');
-            timeoutRef.current = setTimeout(typeCharacter, speed);
+            timeoutRef.current = setTimeout(typeCharacter, typeSpeed);
             return '';
           }
         }
@@ -89,7 +68,7 @@ const useTypewriter = ({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [phrases, typeSpeed, deleteSpeed, delayBetweenPhrases, updateCurrentPhrase, getVariableSpeed, startDelay]);
+  }, [phrases, typeSpeed, deleteSpeed, delayBetweenPhrases, updateCurrentPhrase, startDelay]);
 
   return { currentText };
 };

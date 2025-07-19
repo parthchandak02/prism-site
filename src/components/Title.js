@@ -10,14 +10,13 @@ const Title = ({ lightMode, className = '' }) => {
     'Leader'
   ];
 
-  // ✨ Enhanced original typewriter with modern features
+  // ⚡ Super fast timing: ~1 second to type, 0.5 second to delete, 1.5 seconds hold
   const { currentText } = useTypewriter({ 
     phrases, 
-    typeSpeed: 60,           // Faster, more modern feel
-    deleteSpeed: 30,         // Quick deletion
-    delayBetweenPhrases: 1200, // Shorter pause for better UX
-    variableSpeed: true,     // Natural human-like typing rhythm
-    startDelay: 300
+    typeSpeed: 200,           // Much faster: ~1 second for longest phrase
+    deleteSpeed: 50,         // Very fast deletion: ~0.4 seconds
+    delayBetweenPhrases: 2500, // 1.5 second hold when fully written
+    startDelay: 200          // Minimal delay
   });
 
   return (
