@@ -92,7 +92,7 @@ const Scene = ({ lightMode }) => {
       </Beam>
       
       {/* Rainbow and flares */}
-      <Rainbow ref={rainbow} startRadius={0} endRadius={0.5} fade={0} />
+      <Rainbow ref={rainbow} lightMode={lightMode} startRadius={0} endRadius={0.5} fade={0} />
       <Flare ref={flare} visible={isPrismHit} renderOrder={10} scale={1.25} streak={[12.5, 20, 1]} />
     </>
   );

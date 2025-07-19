@@ -1,6 +1,7 @@
 import { forwardRef, useRef } from 'react'
 import { extend, useFrame, useThree } from '@react-three/fiber'
 import { shaderMaterial } from '@react-three/drei'
+import * as THREE from 'three'
 
 // Based on
 // "Improving the Rainbow" by Alan Zucconi: https://www.alanzucconi.com/2017/07/15/improving-the-rainbow-2/
@@ -14,7 +15,8 @@ const RainbowMaterial = shaderMaterial(
     startRadius: 1,
     endRadius: 0,
     emissiveIntensity: 2.5,
-    ratio: 1
+    ratio: 1,
+    lightMode: false
   },
   /*glsl*/ ` varying vec2 vUv;
     void main() {
@@ -30,6 +32,7 @@ const RainbowMaterial = shaderMaterial(
     uniform float emissiveIntensity;
     uniform float time;
     uniform float ratio;
+    uniform bool lightMode;
   
     vec2 mp;
     // ratio: 1/3 = neon, 1/4 = refracted, 1/5+ = approximate white
@@ -96,7 +99,22 @@ const RainbowMaterial = shaderMaterial(
       float area = uv.y < 0. ? 0. : 1.;
       float brightness = smoothstep(0., 0.5, c.x + c.y + c.z);
       vec3 co = c / iridescence(uv.x * 0.5 * 3.14159, 1.0 - uv.y + time / 10.0) / 20.0;      
-      gl_FragColor = vec4(area * co * l * brightness * emissiveIntensity, 1.0);
+      
+      // Adapt colors based on background mode
+      vec3 finalColor = area * co * l * brightness * emissiveIntensity;
+      
+      if (lightMode) {
+        // For light backgrounds: invert dark areas and enhance contrast
+        float luminance = dot(finalColor, vec3(0.299, 0.587, 0.114));
+        // If it's too dark, make it more transparent instead of visible
+        if (luminance < 0.1) {
+          discard; // Remove dark edges entirely on light backgrounds
+        }
+        // Boost mid-tones and highlights for better visibility
+        finalColor = pow(finalColor, vec3(0.8)) * 1.2;
+      }
+      
+      gl_FragColor = vec4(finalColor, 1.0);
       if (gl_FragColor.r + gl_FragColor.g + gl_FragColor.b < 0.01) discard;
       #include <colorspace_fragment>
     }`
@@ -104,16 +122,39 @@ const RainbowMaterial = shaderMaterial(
 
 extend({ RainbowMaterial })
 
-export const Rainbow = forwardRef(({ startRadius = 0, endRadius = 0.5, emissiveIntensity = 2.5, fade = 0.25, ...props }, fRef) => {
+export const Rainbow = forwardRef(({ lightMode, startRadius = 0, endRadius = 0.5, emissiveIntensity = 2.5, fade = 0.25, ...props }, fRef) => {
   const material = useRef(null)
   const { width, height } = useThree((state) => state.viewport)
   // calculate the maximum length the rainbow has to have to reach all screen corners
   const length = Math.hypot(width, height) + 1.5 // add 1.5 to due motion of the rainbow
-  useFrame((state, delta) => (material.current.time += delta * material.current.speed))
+  
+  useFrame((state, delta) => {
+    if (material.current) {
+      material.current.time += delta * material.current.speed;
+      // Update the lightMode uniform
+      material.current.lightMode = lightMode;
+    }
+  });
+  
+  // Dynamic blending based on background mode
+  // Use additive for dark backgrounds (traditional), normal for light backgrounds (shader-handled)
+  const blendingMode = lightMode ? THREE.NormalBlending : THREE.AdditiveBlending;
+  
   return (
     <mesh ref={fRef} scale={[length, length, 1]} {...props}>
       <planeGeometry />
-      <rainbowMaterial ref={material} key={RainbowMaterial.key} fade={fade} startRadius={startRadius} endRadius={endRadius} ratio={1} toneMapped={false} />
+      <rainbowMaterial 
+        ref={material} 
+        key={RainbowMaterial.key} 
+        fade={fade} 
+        startRadius={startRadius} 
+        endRadius={endRadius} 
+        ratio={1} 
+        toneMapped={false}
+        blending={blendingMode}
+        transparent={true}
+        lightMode={lightMode}
+      />
     </mesh>
   )
 })
