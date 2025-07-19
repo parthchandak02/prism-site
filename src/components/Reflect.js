@@ -32,6 +32,7 @@ export const Reflect = forwardRef(({ children, start: _start = [0, 0, 0], end: _
   let intersect = null
   let intersects = []
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps  
   const api = useMemo(
     () => ({
       number: 0,
@@ -47,6 +48,7 @@ export const Reflect = forwardRef(({ children, start: _start = [0, 0, 0], end: _
       },
       update: () => {
         api.number = 0
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         intersects = []
 
         vStart.copy(api.start)
@@ -59,6 +61,7 @@ export const Reflect = forwardRef(({ children, start: _start = [0, 0, 0], end: _
         // eslint-disable-next-line no-constant-condition
         while (true) {
           api.raycaster.set(vStart, vDir)
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           intersect = api.raycaster.intersectObjects(api.objects, false)[0]
           if (api.number < bounce && intersect && intersect.face) {
             //intersects.push({ point: intersect.point.clone(), direction: vDir.clone(), object: intersect.object });
@@ -93,6 +96,7 @@ export const Reflect = forwardRef(({ children, start: _start = [0, 0, 0], end: _
         })
 
         // Check onRayOver
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         for (intersect of intersects) {
           api.number++
           // If the intersect hasn't been hit before
@@ -126,9 +130,11 @@ export const Reflect = forwardRef(({ children, start: _start = [0, 0, 0], end: _
     [bounce, far]
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => void api.setRay(_start, _end), [..._start, ..._end])
   useImperativeHandle(fRef, () => api, [api])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     // Collect all objects that fulfill the criteria
     api.objects = []
