@@ -4,9 +4,11 @@ import Layout from './components/Layout';
 import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
 import LightToggle from './components/LightToggle';
+import LockToggle from './components/LockToggle';
 import Title from './components/Title';
 import Timeline from './components/Timeline';
 import useLightMode from './hooks/useLightMode';
+import useGlobalMouse from './hooks/useGlobalMouse';
 import { timelineData } from './data/timelineData';
 import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightContext';
 
@@ -19,9 +21,11 @@ import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightConte
  * - Custom hooks for state management
  * - CSS modules for styling
  * - Reusable components
+ * - Light beam lock/unlock functionality
  */
 export default function App() {
   const { lightMode, toggleLightMode } = useLightMode(false);
+  const { isLocked, toggleLock } = useGlobalMouse();
 
   // Sync html and body background with light mode to prevent edge bleeding
   useEffect(() => {
@@ -40,6 +44,7 @@ export default function App() {
         <div className="layout__ui">
           {/* Fixed UI Components */}
           <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
+          <LockToggle isLocked={isLocked} onToggle={toggleLock} />
           
           {/* Main Content Area with Title and Timeline */}
           <div className="main-content-scroll">

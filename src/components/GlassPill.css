@@ -7,8 +7,8 @@
   
   /* Initial state - contracted with symmetrical padding */
   width: 3rem;
-  height: 3rem;
-  padding: var(--spacing-sm);
+  min-height: 3rem; /* Consistent height with timeline filters */
+  padding: var(--spacing-sm); /* Same padding as timeline filters */
   justify-content: center;
 }
 
@@ -72,4 +72,23 @@
   transform: scale(var(--scale-subtle));
 }
 
-/* Don't show text when highlighted - keep it compact */ 
+/* Don't show text when highlighted - keep it compact */
+
+/* Responsive consistency with timeline filters */
+@media (max-width: 768px) {
+  .glass-card {
+    width: 2.75rem; /* Slightly smaller on mobile */
+    min-height: 2.75rem; /* Match timeline filters mobile height */
+    padding: var(--spacing-xs); /* Tighter padding on mobile */
+  }
+  
+  .glass-card__logo {
+    width: 1.25rem; /* Slightly smaller icon on mobile */
+    height: 1.25rem;
+  }
+  
+  .glass-card:hover {
+    min-width: 6.5rem; /* Smaller expansion on mobile */
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+} 

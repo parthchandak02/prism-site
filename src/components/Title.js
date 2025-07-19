@@ -3,20 +3,53 @@ import useTypewriter from '../hooks/useTypewriter';
 // import useTypewriterAdvanced from '../hooks/useTypewriterAdvanced'; // TypeIt version (needs DOM ref)
 
 const Title = ({ lightMode, className = '' }) => {
-  const phrases = [
+  // Comprehensive phrases reflecting full skill range and career achievements
+  const typewriterPhrases = [
+    // Core Programming & Development
+    'Full Stack Developer',
+    'Python Developer', 
+    'JavaScript Engineer',
+    'Systems Programmer',
+    
+    // Hardware & Embedded Systems
+    'Hardware Engineer',
+    'Embedded Systems Developer',
+    'Robotics Engineer',
+    
+    // Design & CAD Expertise  
+    'CAD Specialist',
+    'UX Designer',
     'Creative Technologist',
-    'Engineer', 
-    'Researcher',
-    'Leader'
+    '3D Designer',
+    
+    // Professional & Project Management
+    'Project Manager',
+    'Technical Lead',
+    'Game Developer',
+    
+    // Manufacturing & Engineering
+    'Manufacturing Engineer',
+    'Design Engineer', 
+    'Prototyping Expert',
+    
+    // Research & Innovation
+    'Research Engineer',
+    'AI Researcher',
+    
+    // Specialized Roles
+    'Patent Inventor',
+    'Technical Writer',
+    'Data Analyst',
+    'Automation Specialist'
   ];
 
-  // ⚡ Super fast timing: ~1 second to type, 0.5 second to delete, 1.5 seconds hold
+  // ⚡ Optimized timing for comprehensive phrase cycling
   const { currentText } = useTypewriter({ 
-    phrases, 
-    typeSpeed: 200,           // Much faster: ~1 second for longest phrase
-    deleteSpeed: 50,         // Very fast deletion: ~0.4 seconds
-    delayBetweenPhrases: 2500, // 1.5 second hold when fully written
-    startDelay: 200          // Minimal delay
+    phrases: typewriterPhrases, 
+    typeSpeed: 180,           // Slightly slower for readability with more phrases
+    deleteSpeed: 60,          // Fast deletion
+    delayBetweenPhrases: 2800, // Longer pause to appreciate each complete phrase
+    startDelay: 300           // Brief startup delay
   });
 
   return (

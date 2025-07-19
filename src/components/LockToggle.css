@@ -1,0 +1,73 @@
+/* Lock Toggle Component - Positioned underneath LightToggle */
+.lock-toggle {
+  position: fixed;
+  top: 78px; /* Positioned below the LightToggle (48px height + 30px gap) */
+  right: 20px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.lock-toggle__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.lock-toggle__icon svg {
+  stroke: currentColor;
+  transition: stroke 0.3s ease;
+}
+
+/* Dark mode styling (default) */
+.dark-mode .lock-toggle__icon {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .lock-toggle:hover .lock-toggle__icon {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Light mode styling */
+.light-mode .lock-toggle__icon {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.light-mode .lock-toggle:hover .lock-toggle__icon {
+  color: rgba(0, 0, 0, 1);
+}
+
+/* Visual feedback for locked state - overrides light/dark mode */
+.lock-toggle.locked {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lock-toggle.locked .lock-toggle__icon {
+  color: rgba(255, 215, 0, 0.9) !important; /* Golden color when locked - important to override light/dark mode */
+}
+
+.lock-toggle.locked:hover .lock-toggle__icon {
+  color: rgba(255, 215, 0, 1) !important; /* Brighter golden on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .lock-toggle {
+    top: 70px; /* Adjusted for smaller LightToggle on mobile (44px + 26px gap) */
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+  
+  .lock-toggle__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+} 

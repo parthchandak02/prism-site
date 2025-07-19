@@ -1,12 +1,15 @@
-/* Glass Navigation Component - Simplified */
+/* Glass Navigation Component - Triangular Prism Layout */
 .glass-navigation {
   width: 100%;
-  max-width: 600px;
-  margin: 32px auto;
+  max-width: 42rem; /* Wider to accommodate the triangle base */
+  margin: -20px auto 24px auto; /* Move triangle higher with negative top margin */
   padding: 16px 20px;
   pointer-events: auto;
+  position: relative;
+  z-index: 10; /* Ensure it stays above background elements */
 }
 
+/* Original 2-column grid (preserved for compatibility) */
 .glass-navigation__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -14,14 +17,137 @@
   align-items: center;
 }
 
-/* Responsive design */
+/* ORIGINAL: Compact flex layout (preserved) */
+.glass-navigation__compact-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm, 8px);
+  flex-wrap: wrap;
+  align-items: center;
+  padding: var(--spacing-md, 12px) var(--spacing-lg, 16px);
+}
+
+/* NEW: Triangular pyramid layout mimicking the prism */
+.glass-navigation__triangle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm, 8px); /* Vertical spacing between rows */
+  padding: var(--spacing-md, 12px) var(--spacing-lg, 16px);
+  transform: translateY(-10px); /* Additional fine-tuning to move triangle up */
+}
+
+.glass-navigation__triangle-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm, 8px); /* Horizontal spacing within rows */
+  flex-wrap: nowrap; /* Keep rows intact */
+}
+
+/* Triangle row specific spacing adjustments */
+.glass-navigation__triangle-row:first-child {
+  margin-bottom: var(--spacing-xs, 4px); /* Tighter spacing at the top */
+}
+
+.glass-navigation__triangle-row:last-child {
+  margin-top: var(--spacing-xs, 4px); /* Slight adjustment at bottom */
+}
+
+/* Enhanced responsive design for triangle layout */
 @media (max-width: 768px) {
   .glass-navigation {
-    margin: 24px auto;
+    margin: -30px auto 20px auto; /* More aggressive upward movement on mobile */
     padding: 12px 16px;
+    max-width: 100%;
   }
   
   .glass-navigation__grid {
     gap: 8px;
+  }
+  
+  .glass-navigation__compact-grid {
+    gap: var(--spacing-xs, 6px);
+    padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+  }
+  
+  /* Triangle responsive adjustments */
+  .glass-navigation__triangle {
+    gap: var(--spacing-xs, 6px); /* Tighter vertical spacing on mobile */
+    padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+    transform: translateY(-15px); /* More upward movement on mobile */
+  }
+  
+  .glass-navigation__triangle-row {
+    gap: var(--spacing-xs, 6px); /* Tighter horizontal spacing on mobile */
+    flex-wrap: wrap; /* Allow wrapping on very small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-navigation__compact-grid {
+    gap: var(--spacing-xs, 4px);
+    padding: var(--spacing-xs, 6px) var(--spacing-sm, 8px);
+  }
+  
+  .glass-navigation {
+    padding: 8px 12px;
+    margin: -35px auto 16px auto; /* Even more upward movement on small screens */
+  }
+  
+  /* Very compact triangle on small screens */
+  .glass-navigation__triangle {
+    gap: var(--spacing-xs, 4px);
+    padding: var(--spacing-xs, 6px) var(--spacing-sm, 8px);
+    transform: translateY(-20px); /* Maximum upward adjustment for small screens */
+  }
+  
+  .glass-navigation__triangle-row {
+    gap: var(--spacing-xs, 4px);
+  }
+  
+  /* Allow more aggressive wrapping on very small screens */
+  .glass-navigation__triangle-row:nth-child(n+5) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Larger screens - more spacious triangle */
+@media (min-width: 1024px) {
+  .glass-navigation {
+    margin: -10px auto 24px auto; /* Subtle upward movement on desktop */
+  }
+  
+  .glass-navigation__compact-grid {
+    gap: var(--spacing-sm, 10px);
+    padding: var(--spacing-md, 16px) var(--spacing-lg, 20px);
+  }
+  
+  /* Enhanced triangle spacing on desktop */
+  .glass-navigation__triangle {
+    gap: var(--spacing-md, 10px); /* More vertical breathing room */
+    padding: var(--spacing-md, 16px) var(--spacing-lg, 20px);
+    transform: translateY(-5px); /* Minimal adjustment on large screens */
+  }
+  
+  .glass-navigation__triangle-row {
+    gap: var(--spacing-md, 10px); /* More horizontal spacing */
+  }
+}
+
+/* Extra large screens - maximum spacing */
+@media (min-width: 1440px) {
+  .glass-navigation {
+    margin: 0px auto 24px auto; /* Balanced positioning on very large screens */
+  }
+  
+  .glass-navigation__triangle {
+    gap: var(--spacing-md, 12px);
+    transform: translateY(0px); /* No additional transform needed on very large screens */
+  }
+  
+  .glass-navigation__triangle-row {
+    gap: var(--spacing-md, 12px);
   }
 } 

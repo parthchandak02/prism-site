@@ -11,57 +11,66 @@ const useGlobalMouse = () => {
     y: -(centerLeftY / window.innerHeight) * 2 + 1 
   });
   
+  // Lock state - when true, position is completely frozen
+  const [isLocked, setIsLocked] = useState(false);
+  
   const hasUserMoved = useRef(false);
 
   const updatePosition = useCallback((x, y) => {
+    // CRITICAL: If locked, completely ignore ALL mouse input
+    if (isLocked) {
+      return;
+    }
+    
     hasUserMoved.current = true;
     
-    // Raw pixel coordinates
+    // Update both positions
     setMousePosition({ x, y });
     
-    // Normalized coordinates (-1 to 1) for R3F
     const normalizedX = (x / window.innerWidth) * 2 - 1;
     const normalizedY = -(y / window.innerHeight) * 2 + 1;
     
     setViewportPosition({ x: normalizedX, y: normalizedY });
-  }, []);
+  }, [isLocked]);
 
   const updateMousePosition = useCallback((e) => {
     updatePosition(e.clientX, e.clientY);
   }, [updatePosition]);
 
   const updateTouchPosition = useCallback((e) => {
-    // Use first touch point without preventing default behavior (allows scrolling)
     const touch = e.touches[0] || e.changedTouches[0];
     if (touch) {
       updatePosition(touch.clientX, touch.clientY);
     }
   }, [updatePosition]);
 
-  // Programmatic position setter for automatic positioning
   const setAutomaticPosition = useCallback((pixelX, pixelY) => {
-    if (hasUserMoved.current) return; // Don't override user input
+    if (hasUserMoved.current || isLocked) return;
     
     setMousePosition({ x: pixelX, y: pixelY });
     
-    // Convert to normalized coordinates
     const normalizedX = (pixelX / window.innerWidth) * 2 - 1;
     const normalizedY = -(pixelY / window.innerHeight) * 2 + 1;
     
     setViewportPosition({ x: normalizedX, y: normalizedY });
-  }, []);
+  }, [isLocked]);
+
+  // Simple lock toggle - just flips the boolean
+  const toggleLock = useCallback(() => {
+    setIsLocked(!isLocked);
+  }, [isLocked]);
 
   useEffect(() => {
-    // Set initial position on page load (slight delay to ensure proper initialization)
+    // Initial automatic positioning
     const initTimer = setTimeout(() => {
-      if (!hasUserMoved.current) {
-        const initialX = window.innerWidth * 0.15; // 15% from left
-        const initialY = window.innerHeight * 0.5; // Center vertically
+      if (!hasUserMoved.current && !isLocked) {
+        const initialX = window.innerWidth * 0.15;
+        const initialY = window.innerHeight * 0.5;
         setAutomaticPosition(initialX, initialY);
       }
     }, 100);
 
-    // Add event listeners for both mouse and touch events
+    // Event listeners
     document.addEventListener('mousemove', updateMousePosition, { passive: true });
     document.addEventListener('touchstart', updateTouchPosition, { passive: true });
     document.addEventListener('touchmove', updateTouchPosition, { passive: true });
@@ -72,13 +81,16 @@ const useGlobalMouse = () => {
       document.removeEventListener('touchstart', updateTouchPosition);
       document.removeEventListener('touchmove', updateTouchPosition);
     };
-  }, [updateMousePosition, updateTouchPosition, setAutomaticPosition]);
+  }, [updateMousePosition, updateTouchPosition, setAutomaticPosition, isLocked]);
 
   return {
     mousePosition,
-    viewportPosition,
+    viewportPosition, // This stays frozen when locked because updatePosition is blocked
     setAutomaticPosition,
-    hasUserMoved: hasUserMoved.current
+    hasUserMoved: hasUserMoved.current,
+    isLocked,
+    toggleLock,
+    lockedPosition: null // Simplified - not needed with this approach
   };
 };
 

@@ -29,12 +29,17 @@
 
 .timeline__filter {
   border-radius: var(--radius-lg);
-  padding: var(--spacing-xs) var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md); /* Increased top/bottom padding to match navigation */
   font-family: var(--font-timeline-filter);
   font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
   outline: none;
+  height: auto; /* Let padding determine height naturally */
+  min-height: 3rem; /* Same as navigation pills */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Light/Dark Mode Filter Colors - Using Design System */
@@ -58,6 +63,15 @@
   /* Using utility class for consistency */
   opacity: 1;
   font-weight: 600;
+}
+
+/* Responsive consistency with navigation pills */
+@media (max-width: 768px) {
+  .timeline__filter {
+    min-height: 2.75rem; /* Slightly smaller on mobile to match navigation */
+    padding: var(--spacing-xs) var(--spacing-sm); /* Tighter padding on mobile */
+    font-size: 0.75rem; /* Slightly smaller text on mobile */
+  }
 }
 
 /* Timeline Content */
