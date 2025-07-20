@@ -1,6 +1,5 @@
 // Timeline data - using clean data structure with centralized icon mapping
 import { 
-  ExternalLink, FileText, MapPin,
   // Navigation icons from Lucide React
   Code, Database, GitBranch, Globe, Cpu, Terminal, Settings, Zap,
   CircuitBoard, Microchip, Figma, Palette, Layers, Box,
