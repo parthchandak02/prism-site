@@ -503,4 +503,36 @@ export const timelineData = [
   }
 ];
 
+// Typewriter data with direct references to timeline cards by ID
+export const typewriterData = [
+  {
+    prefix: 'I am a',
+    title: 'Creative Technologist',
+    navigationIcons: ['Figma', 'Blender', 'Unity', 'ProtoPie'],
+    timelineCardIds: [1, 23], // Creative Technologist (User Experience Prototyping), UC Berkeley Extension
+    sidebarCategories: ['experience']
+  },
+  {
+    prefix: 'I am a',
+    title: 'Full Stack Developer',
+    navigationIcons: ['Python', 'JavaScript', 'React', 'Database'],
+    timelineCardIds: [14, 15, 16], // LLM Assisted Research Platform, Google Apps Script, Trading API
+    sidebarCategories: ['projects']
+  },
+  {
+    prefix: 'I am a',
+    title: 'Research Engineer',
+    navigationIcons: ['MATLAB', 'Python', 'C++'],
+    timelineCardIds: [29, 12], // Boeing: Damping Ratios, Ethical AI Health Assistants
+    sidebarCategories: ['research']
+  },
+  {
+    prefix: 'I am a',
+    title: 'Patent Inventor',
+    navigationIcons: ['Python', 'C++', 'Unity'],
+    timelineCardIds: [2], // Audio Prioritization Patent (Pending)
+    sidebarCategories: ['patent']
+  }
+];
+
 export default timelineData; 

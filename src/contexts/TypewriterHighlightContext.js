@@ -1,124 +1,34 @@
 import { createContext, useContext, useState } from 'react';
+import timelineData, { typewriterData } from '../data/timelineData';
 
 /**
  * =============================================================================
- * TYPEWRITER HIGHLIGHT SYSTEM - LUCIDE REACT INTEGRATION
+ * TYPEWRITER HIGHLIGHT SYSTEM - SINGLE SOURCE OF TRUTH
  * =============================================================================
  * 
- * ✅ Updated to work with new Lucide React icon names
- * ✅ Maintains comprehensive skills & achievements showcase
- * ✅ Preserves thematic groupings and career connections
- * ✅ Optimized for the new compact layout
+ * ✅ All data now lives in timelineData.js - single source of truth!
+ * ✅ Typewriter data directly references timeline cards by ID
+ * ✅ No more string matching or sync issues
+ * ✅ Cleaner architecture with data separated from logic
  */
 
-// Enhanced highlight mappings linking typewriter phrases to navigation icons and timeline cards
-const highlightMappings = {
-  // CORE PROGRAMMING (Triangle Row 1-3)
-  'Full Stack Developer': {
-    navigationIcons: ['Python', 'JavaScript', 'C++', 'MATLAB', 'React'],
-    timelineCards: ['LLM Assisted Research Platform', 'Google Apps Script AI Integration Framework', 'Financial Trading API for Interactive Brokers (IBKR)', 'Calendar and Alarm Productivity System']
-  },
-  'Python Developer': {
-    navigationIcons: ['Python', 'MATLAB', 'Database'],
-    timelineCards: ['LLM Assisted Research Platform', 'Google Apps Script AI Integration Framework']
-  },
-  'JavaScript Engineer': {
-    navigationIcons: ['JavaScript', 'React', 'Database'],
-    timelineCards: ['Google Apps Script AI Integration Framework', 'Calendar and Alarm Productivity System']
-  },
-  'Systems Programmer': {
-    navigationIcons: ['C++', 'MATLAB', 'Linux'],
-    timelineCards: ['Boeing: Damping Ratios of Piloted Systems']
-  },
-
-  // HARDWARE & DEVELOPMENT (Triangle Row 4)
-  'Hardware Engineer': {
-    navigationIcons: ['Arduino', 'Raspberry Pi', 'C++', 'MATLAB'],
-    timelineCards: ['IEEE Hardware Hackathon (WSU)', 'Center for Materials Research (WSU)']
-  },
-  'Embedded Systems Developer': {
-    navigationIcons: ['Arduino', 'Raspberry Pi', 'C++', 'Linux'],
-    timelineCards: ['IEEE Hardware Hackathon (WSU)', 'Crimson Code Software Hackathon (WSU)']
-  },
-  'Robotics Engineer': {
-    navigationIcons: ['Arduino', 'Raspberry Pi', 'Python', 'C++'],
-    timelineCards: ['IEEE Hardware Hackathon (WSU)', 'Crimson Code Software Hackathon (WSU)']
-  },
-
-  // DESIGN & CAD TOOLS (Triangle Row 5)
-  'CAD Specialist': {
-    navigationIcons: ['SolidWorks', 'Fusion 360', '3D Printing'],
-    timelineCards: ['Center for Materials Research (WSU)', 'Tesla Motors']
-  },
-  'UX Designer': {
-    navigationIcons: ['Figma', 'ProtoPie', 'Miro'],
-    timelineCards: ['UC Berkeley Extension', 'Creative Technologist (User Experience Prototyping)']
-  },
-  'Creative Technologist': {
-    navigationIcons: ['Figma', 'Blender', 'Unity', 'ProtoPie'],
-    timelineCards: ['Creative Technologist (User Experience Prototyping)', 'UC Berkeley Extension']
-  },
-  '3D Designer': {
-    navigationIcons: ['Blender', 'SolidWorks', 'Fusion 360', '3D Printing'],
-    timelineCards: ['Tesla Motors', 'Center for Materials Research (WSU)']
-  },
-
-  // PROFESSIONAL TOOLS & PLATFORMS (Triangle Row 6)
-  'Project Manager': {
-    navigationIcons: ['JIRA', 'Confluence', 'G-Suite', 'Miro'],
-    timelineCards: ['Creative Technologist (User Experience Prototyping)', 'Manufacturing Engineer, Advanced Hardware Manufacturing Operations']
-  },
-  'Technical Lead': {
-    navigationIcons: ['Git', 'JIRA', 'Confluence', 'Python'],
-    timelineCards: ['Boeing: Damping Ratios of Piloted Systems', 'Creative Technologist (User Experience Prototyping)']
-  },
-  'Game Developer': {
-    navigationIcons: ['Unity', 'C++', 'Blender'],
-    timelineCards: ['Crimson Code Software Hackathon (WSU)', 'IEEE Hardware Hackathon (WSU)']
-  },
-
-  // MANUFACTURING & ENGINEERING
-  'Manufacturing Engineer': {
-    navigationIcons: ['SolidWorks', 'MATLAB', 'Python', '3D Printing'],
-    timelineCards: ['Zoox - Manufacturing Engineer', 'Tesla Motors', 'BERG Manufacturing']
-  },
-  'Design Engineer': {
-    navigationIcons: ['SolidWorks', 'Fusion 360', 'Figma', '3D Printing'],
-    timelineCards: ['Tesla Motors', 'Center for Materials Research (WSU)']
-  },
-  'Prototyping Expert': {
-    navigationIcons: ['3D Printing', 'SolidWorks', 'Arduino', 'Fusion 360'],
-    timelineCards: ['Creative Technologist (User Experience Prototyping)', 'Center for Materials Research (WSU)']
-  },
-
-  // RESEARCH & INNOVATION
-  'Research Engineer': {
-    navigationIcons: ['MATLAB', 'Python', 'Blender'],
-    timelineCards: ['Boeing: Damping Ratios of Piloted Systems', 'Center for Materials Research (WSU)', 'Ethical, Governance, and Usability Challenges in AI-Powered Virtual Health Assistants']
-  },
-  'AI Researcher': {
-    navigationIcons: ['Python', 'MATLAB', 'Unity'],
-    timelineCards: ['LLM Assisted Research Platform', 'Ethical, Governance, and Usability Challenges in AI-Powered Virtual Health Assistants', 'Augmented Reality Enhances Telemedicine Training']
-  },
-
-  // SPECIALIZED ROLES
-  'Patent Inventor': {
-    navigationIcons: ['Python', 'C++', 'Unity'],
-    timelineCards: ['AUDIO PRIORITIZATION']
-  },
-  'Technical Writer': {
-    navigationIcons: ['Confluence', 'G-Suite', 'Figma'],
-    timelineCards: ['Ethical, Governance, and Usability Challenges in AI-Powered Virtual Health Assistants', 'Augmented Reality Enhances Telemedicine Training', 'The Evolution of Haptic Feedback Systems and User Experience']
-  },
-  'Data Analyst': {
-    navigationIcons: ['Python', 'MATLAB', 'Database', 'G-Suite'],
-    timelineCards: ['LLM Assisted Research Platform', 'Financial Trading API for Interactive Brokers (IBKR)']
-  },
-  'Automation Specialist': {
-    navigationIcons: ['Python', 'Arduino', 'Linux', 'Git'],
-    timelineCards: ['Google Apps Script AI Integration Framework', 'Calendar and Alarm Productivity System']
-  }
+// Helper function to resolve timeline card IDs to card titles
+const resolveTimelineCards = (cardIds) => {
+  return cardIds.map(id => {
+    const card = timelineData.find(item => item.id === id);
+    return card ? card.title : `Unknown Card ${id}`;
+  });
 };
+
+// Create legacy highlight mappings from timelineData for backward compatibility
+const highlightMappings = typewriterData.reduce((acc, item) => {
+  acc[item.title] = {
+    navigationIcons: item.navigationIcons,
+    timelineCards: resolveTimelineCards(item.timelineCardIds),
+    sidebarCategories: item.sidebarCategories
+  };
+  return acc;
+}, {});
 
 // Create the context
 const TypewriterHighlightContext = createContext();
@@ -131,9 +41,9 @@ export const TypewriterHighlightProvider = ({ children }) => {
   // Get current highlight configuration
   const getCurrentHighlights = () => {
     if (isUserActive || !currentPhrase) {
-      return { navigationIcons: [], timelineCards: [] };
+      return { navigationIcons: [], timelineCards: [], sidebarCategories: [] };
     }
-    return highlightMappings[currentPhrase] || { navigationIcons: [], timelineCards: [] };
+    return highlightMappings[currentPhrase] || { navigationIcons: [], timelineCards: [], sidebarCategories: [] };
   };
 
   // Update the current phrase (called by typewriter when phrase is complete)
@@ -146,13 +56,23 @@ export const TypewriterHighlightProvider = ({ children }) => {
     setIsUserActive(active);
   };
 
+  // Get typewriter data for the UITypewriter component (imported from timelineData.js)
+  const getTypewriterData = () => typewriterData;
+  
+  // Get full sentences for typing (generated from imported data)
+  const getFullSentences = () => {
+    return typewriterData.map(item => `${item.prefix} ${item.title}`);
+  };
+
   const value = {
     currentPhrase,
     updateCurrentPhrase,
     getCurrentHighlights,
     isUserActive,
     setUserActivity,
-    highlightMappings
+    highlightMappings,
+    getTypewriterData,
+    getFullSentences
   };
 
   return (
