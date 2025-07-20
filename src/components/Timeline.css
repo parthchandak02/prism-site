@@ -71,7 +71,7 @@
     0 0 0 1px var(--color-highlight-border) !important;
   backdrop-filter: var(--glass-blur-strong) !important;
   -webkit-backdrop-filter: var(--glass-blur-strong) !important;
-  transform: scale(1.03) !important;
+  transform: scaleY(1.03) !important;
   opacity: 1;
   font-weight: 600;
   transition: var(--transition-bounce) !important;
@@ -86,7 +86,7 @@
     0 0 0 2px var(--color-highlight-active-border) !important;
   backdrop-filter: var(--glass-blur-strong-hover) !important;
   -webkit-backdrop-filter: var(--glass-blur-strong-hover) !important;
-  transform: scale(var(--transform-scale-medium)) translateY(-1px) !important;
+  transform: scaleY(var(--transform-scale-medium)) translateY(-1px) !important;
 }
 
 /* Cards Container */
