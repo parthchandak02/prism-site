@@ -23,7 +23,7 @@ const RightSidebar = ({
     { 
       icon: Linkedin, 
       text: 'LinkedIn', 
-      url: 'https://linkedin.com/in/pratikchandak', 
+      url: 'https://linkedin.com/in/parthchandak02', 
       external: true 
     },
     { 
