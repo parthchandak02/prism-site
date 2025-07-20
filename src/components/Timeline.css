@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 50rem;
   margin: 0 auto;
-  padding: 0 var(--space-300) var(--space-300) var(--space-300);
+  padding: var(--space-200) var(--space-300) var(--space-300) var(--space-300);
   display: flex;
   flex-direction: column;
 }
@@ -110,46 +110,11 @@
 
 .timeline__item {
   position: relative;
-  margin-bottom: 24px;
-  padding-left: 48px;
+  margin-bottom: 16px; /* Tighter spacing for cleaner look without dots */
+  /* Removed padding-left for clean layout without dots */
 }
 
-/* Timeline Item Dot */
-.timeline__dot {
-  position: absolute;
-  left: -28px;
-  top: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-}
-
-.timeline__dot svg {
-  width: 20px;
-  height: 20px;
-  display: block;
-}
-
-/* Light/Dark Mode Dot Colors */
-.timeline.timeline--light .timeline__dot {
-  color: rgba(0, 0, 0, 0.9);
-}
-
-.timeline.timeline--light .timeline__item:hover .timeline__dot {
-  color: rgba(0, 0, 0, 1);
-}
-
-.timeline.timeline--dark .timeline__dot {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.timeline.timeline--dark .timeline__item:hover .timeline__dot {
-  color: rgba(255, 255, 255, 1);
-}
+/* Timeline dots removed for cleaner design */
 
 /* Timeline Card within Timeline */
 .timeline__card {
@@ -179,8 +144,18 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .timeline {
+    max-width: 55rem; /* Intermediate size for tablets */
+    margin: 0 auto; /* Reset to normal centering on tablets/mobile */
+    padding: var(--space-150) var(--space-200);
+  }
+}
+
 @media (max-width: 768px) {
   .timeline {
+    max-width: none; /* Full width on mobile */
+    margin: 0 auto; /* Reset to normal centering on mobile */
     padding: 16px;
   }
   
@@ -196,27 +171,19 @@
     font-size: 12px;
   }
   
+  /* Removed leftover padding from circular dots */
   .timeline__content {
-    padding-left: 16px;
+    padding-left: 0; /* Was 16px - leftover from dots */
   }
   
   .timeline__item {
-    padding-left: 32px;
+    padding-left: 0; /* Was 32px - leftover from dots */
   }
   
-  .timeline__dot {
-    left: -20px;
-    width: 32px;
-    height: 32px;
-  }
-  
-  .timeline__dot svg {
-    width: 16px;
-    height: 16px;
-  }
+  /* Removed all .timeline__dot references - no longer needed */
   
   .timeline__empty {
-    margin-left: -32px;
+    margin-left: 0; /* Was -32px - compensating for padding that no longer exists */
     padding: 32px 16px;
   }
-} 
+}
