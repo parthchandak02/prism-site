@@ -38,7 +38,15 @@ export default function App() {
   
   // Play mode state - toggle between interactive mode and resume reading mode
   const [isPlayMode, setIsPlayMode] = useState(false);
-  const togglePlayMode = () => setIsPlayMode(!isPlayMode);
+  const togglePlayMode = () => {
+    const newPlayMode = !isPlayMode;
+    setIsPlayMode(newPlayMode);
+    
+    // Automatically unlock the light beam when entering play mode for better UX
+    if (newPlayMode && isLocked) {
+      toggleLock();
+    }
+  };
   
   // Track which category section is currently visible and centermost card when in 'all' mode
   const { visibleCategory, centermostCard } = useScrollHighlight(activeFilter);
