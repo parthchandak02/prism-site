@@ -52,11 +52,11 @@ const highlightMappings = {
   },
   'UX Designer': {
     navigationIcons: ['Figma', 'ProtoPie', 'Miro'],
-    timelineCards: ['UC Berkeley Extension', 'Zoox - Creative Technologist']
+    timelineCards: ['UC Berkeley Extension', 'Creative Technologist (User Experience Prototyping)']
   },
   'Creative Technologist': {
     navigationIcons: ['Figma', 'Blender', 'Unity', 'ProtoPie'],
-    timelineCards: ['Zoox - Creative Technologist', 'UC Berkeley Extension']
+    timelineCards: ['Creative Technologist (User Experience Prototyping)', 'UC Berkeley Extension']
   },
   '3D Designer': {
     navigationIcons: ['Blender', 'SolidWorks', 'Fusion 360', '3D Printing'],
@@ -66,11 +66,11 @@ const highlightMappings = {
   // PROFESSIONAL TOOLS & PLATFORMS (Triangle Row 6)
   'Project Manager': {
     navigationIcons: ['JIRA', 'Confluence', 'G-Suite', 'Miro'],
-    timelineCards: ['Zoox - Creative Technologist', 'Zoox - Manufacturing Engineer']
+    timelineCards: ['Creative Technologist (User Experience Prototyping)', 'Manufacturing Engineer, Advanced Hardware Manufacturing Operations']
   },
   'Technical Lead': {
     navigationIcons: ['Git', 'JIRA', 'Confluence', 'Python'],
-    timelineCards: ['Boeing: Damping Ratios of Piloted Systems', 'Zoox - Creative Technologist']
+    timelineCards: ['Boeing: Damping Ratios of Piloted Systems', 'Creative Technologist (User Experience Prototyping)']
   },
   'Game Developer': {
     navigationIcons: ['Unity', 'C++', 'Blender'],
@@ -88,7 +88,7 @@ const highlightMappings = {
   },
   'Prototyping Expert': {
     navigationIcons: ['3D Printing', 'SolidWorks', 'Arduino', 'Fusion 360'],
-    timelineCards: ['Zoox - Creative Technologist', 'Center for Materials Research (WSU)']
+    timelineCards: ['Creative Technologist (User Experience Prototyping)', 'Center for Materials Research (WSU)']
   },
 
   // RESEARCH & INNOVATION

@@ -75,7 +75,7 @@ const Timeline = ({
                   url={item.url}
                   lightMode={lightMode}
                   className="timeline__card"
-                  isHighlighted={highlights.timelineCards.includes(item.title)}
+                  isHighlighted={highlights.timelineCards.includes(item.title) || item.title === centermostCard}
                   autoExpanded={activeFilter === 'all' && item.title === centermostCard}
                 />
               </div>
