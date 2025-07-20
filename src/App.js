@@ -56,7 +56,7 @@ export default function App() {
   };
   
   // Track which category section is currently visible and centermost card when no filters are active
-  const { visibleCategory, centermostCard } = useScrollHighlight(activeFilters.length === 0 ? 'all' : 'filtered');
+  const { visibleCategory, centermostCard } = useScrollHighlight('all'); // Always enable scroll highlighting
 
   // Get unique categories for filter buttons (excluding 'all')
   const categories = useMemo(() => {

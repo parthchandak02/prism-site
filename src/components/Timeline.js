@@ -59,30 +59,34 @@ const Timeline = ({
         {/* Timeline items */}
         <div className="timeline__items">
           {sortedData.length > 0 ? (
-            sortedData.map((item, index) => (
-              <div 
-                key={index} 
-                className="timeline__item"
-                data-category={item.category?.toLowerCase() || 'other'}
-                data-index={index}
-                data-debug={`${item.category}-${index}`}
-              >
-                <TimelineCard
-                  title={item.title}
-                  date={item.date}
-                  category={item.category}
-                  description={item.description}
-                  location={item.location}
-                  volume={item.volume}
-                  url={item.url}
-                  navigationIcons={item.navigationIcons || []}
-                  lightMode={lightMode}
-                  className="timeline__card"
-                  isHighlighted={highlights.timelineCards.includes(item.title) || item.title === centermostCard}
-                  autoExpanded={(activeFilters.length === 0 && item.title === centermostCard) || (highlights.timelineCards.includes(item.title) && item.isTypewriterPrimary)}
-                />
-              </div>
-            ))
+            sortedData.map((item, index) => {
+              const shouldExpand = (activeFilters.length === 0 && item.title === centermostCard) || highlights.timelineCards.includes(item.title);
+              
+              return (
+                <div 
+                  key={index} 
+                  className="timeline__item"
+                  data-category={item.category?.toLowerCase() || 'other'}
+                  data-index={index}
+                  data-debug={`${item.category}-${index}`}
+                >
+                  <TimelineCard
+                    title={item.title}
+                    date={item.date}
+                    category={item.category}
+                    description={item.description}
+                    location={item.location}
+                    volume={item.volume}
+                    url={item.url}
+                    navigationIcons={item.navigationIcons || []}
+                    lightMode={lightMode}
+                    className="timeline__card"
+                    isHighlighted={highlights.timelineCards.includes(item.title) || item.title === centermostCard}
+                    autoExpanded={shouldExpand}
+                  />
+                </div>
+              );
+            })
           ) : (
             <div className="timeline__empty">
               <p>No items found for the selected filters.</p>
