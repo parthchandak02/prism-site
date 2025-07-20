@@ -29,42 +29,45 @@ const useScrollHighlight = (activeFilter) => {
     const containerRect = scrollContainer.getBoundingClientRect();
     const viewportCenter = containerRect.top + containerRect.height * 0.5; // True center of viewport
 
+    // Check if we've actually scrolled into the timeline area
+    // If the user is still at the very top, don't apply any scroll highlighting
+    const timeline = document.querySelector('.timeline');
+    if (timeline) {
+      const timelineRect = timeline.getBoundingClientRect();
+      // Only apply scroll highlighting if the timeline is meaningfully visible
+      // (at least 20% of the timeline container is visible)
+      const timelineVisibleHeight = Math.min(timelineRect.bottom, containerRect.bottom) - Math.max(timelineRect.top, containerRect.top);
+      const timelineVisibilityRatio = timelineVisibleHeight / timelineRect.height;
+      
+      if (timelineVisibilityRatio < 0.2) {
+        // Timeline is not meaningfully visible yet - reset highlighting
+        setCentermostCard(null);
+        setVisibleCategory('all');
+        return;
+      }
+    }
+
     let centermostItem = null;
     let smallestDistance = Infinity;
     let centermostCategory = 'all';
 
-    // Calculate max possible distance for normalization
-    const maxDistance = containerRect.height * 0.75; // Use 75% of viewport height as max
-
     // Find the timeline item whose center is closest to the viewport center
-    // AND apply dynamic blur/opacity to all visible items
     timelineItems.forEach((item, index) => {
       const rect = item.getBoundingClientRect();
       const itemCenter = rect.top + rect.height * 0.5;
       const distanceFromCenter = Math.abs(itemCenter - viewportCenter);
 
-      // Only consider items that are at least partially visible
-      const isVisible = rect.bottom > containerRect.top && rect.top < containerRect.bottom;
+      // Only consider items that are substantially visible (not just barely peeking)
+      const itemVisibleHeight = Math.min(rect.bottom, containerRect.bottom) - Math.max(rect.top, containerRect.top);
+      const itemHeight = rect.height;
+      const itemVisibilityRatio = itemVisibleHeight / itemHeight;
       
-      if (isVisible) {
+      if (itemVisibilityRatio > 0.3) { // Item must be at least 30% visible
         // Find centermost for highlighting
         if (distanceFromCenter < smallestDistance) {
           smallestDistance = distanceFromCenter;
           centermostItem = item;
           centermostCategory = item.getAttribute('data-category') || 'all';
-        }
-
-        // Apply dynamic blur and opacity based on distance
-        const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1); // 0-1 scale
-        const blurIntensity = Math.max(0.3, 1 - normalizedDistance); // 0.3 to 1.0
-        const opacityValue = Math.max(0.4, 1 - normalizedDistance * 0.6); // 0.4 to 1.0
-
-        // Find the timeline card within this item
-        const timelineCard = item.querySelector('.timeline-card');
-        if (timelineCard) {
-          // Set CSS custom properties for dynamic styling
-          timelineCard.style.setProperty('--dynamic-blur-intensity', blurIntensity);
-          timelineCard.style.setProperty('--dynamic-opacity', opacityValue);
         }
       }
     });

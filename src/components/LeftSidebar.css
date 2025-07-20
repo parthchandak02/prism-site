@@ -50,12 +50,15 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-/* Active pill styling - rich teal color with underline */
+/* Active pill styling - white highlight with underline */
 .left-sidebar__pill--active {
-  color: #4dd0e1; /* Richer, more vibrant teal */
+  color: rgba(255, 255, 255, 1); /* Pure white for click state */
   font-weight: 500;
   position: relative;
-  text-shadow: 0 0 8px rgba(77, 208, 225, 0.5); /* Subtle glow effect */
+  background: rgba(255, 255, 255, 0.15); /* White card background */
+  border-radius: var(--radius-sm);
+  padding: var(--space-075) var(--space-100);
+  /* Remove blue tint and glow effects */
 }
 
 .left-sidebar__pill--active::after {
@@ -66,41 +69,63 @@
   transform: translateX(-50%);
   width: 60%;
   height: 1px;
-  background: #4dd0e1; /* Rich teal underline matching text */
-  box-shadow: 0 0 6px rgba(77, 208, 225, 0.6); /* Glowing underline */
+  background: rgba(255, 255, 255, 0.8); /* White underline */
   transition: all 0.2s ease;
+  /* Remove blue glow effects */
 }
 
 .left-sidebar--light .left-sidebar__pill--active {
-  color: #00acc1; /* Richer teal for light mode */
-  text-shadow: 0 0 6px rgba(0, 172, 193, 0.4); /* Subtle glow for light mode */
+  color: rgba(0, 0, 0, 1); /* Pure black for light mode */
+  background: rgba(0, 0, 0, 0.15); /* Dark card background for light mode */
+  /* Remove blue tint */
 }
 
 .left-sidebar--light .left-sidebar__pill--active::after {
-  background: #00acc1; /* Rich teal underline for light mode */
-  box-shadow: 0 0 4px rgba(0, 172, 193, 0.5); /* Lighter glow for light mode */
+  background: rgba(0, 0, 0, 0.8); /* Dark underline for light mode */
+  /* Remove blue glow */
 }
 
-/* Scroll-based highlight styling - bright white but slightly less emphasis */
+/* Scroll-based highlight styling - just underline, no background */
 .left-sidebar__pill--scroll-highlight {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 450;
+  position: relative;
+}
+
+.left-sidebar__pill--scroll-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6); /* Subtle white underline */
+  transition: all 0.2s ease;
 }
 
 .left-sidebar--light .left-sidebar__pill--scroll-highlight {
   color: rgba(0, 0, 0, 0.9);
 }
 
-/* Typewriter-based highlight styling - rich teal color from rainbow */
+.left-sidebar--light .left-sidebar__pill--scroll-highlight::after {
+  background: rgba(0, 0, 0, 0.6); /* Subtle dark underline for light mode */
+}
+
+/* Typewriter-based highlight styling - just white highlight, no underline */
 .left-sidebar__pill--typewriter-highlight {
-  color: #4dd0e1; /* Rich teal highlight from rainbow beam */
+  color: rgba(255, 255, 255, 1); /* Pure white highlight */
   font-weight: 450;
-  text-shadow: 0 0 6px rgba(77, 208, 225, 0.4); /* Subtle glow effect */
+  background: rgba(255, 255, 255, 0.12); /* Subtle white background */
+  border-radius: var(--radius-sm);
+  padding: var(--space-075) var(--space-100);
+  /* Remove blue tint and glow effects */
 }
 
 .left-sidebar--light .left-sidebar__pill--typewriter-highlight {
-  color: #00acc1; /* Richer teal for light mode visibility */
-  text-shadow: 0 0 4px rgba(0, 172, 193, 0.3); /* Subtle glow for light mode */
+  color: rgba(0, 0, 0, 1); /* Pure black for light mode */
+  background: rgba(0, 0, 0, 0.12); /* Subtle dark background for light mode */
+  /* Remove blue tint */
 }
 
 /* ========================================
