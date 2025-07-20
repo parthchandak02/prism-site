@@ -84,7 +84,7 @@ const GlassNavigation = ({ lightMode = false }) => {
       { icon: Palette, text: 'ProtoPie', action: () => {} },
       { icon: Monitor, text: 'Miro', action: () => {} },
       { icon: Trello, text: 'JIRA', action: () => {} },
-      { icon: Mail, text: 'Google Suite', action: () => {} },
+      { icon: Mail, text: 'G-Suite', action: () => {} },
       { icon: FileText, text: 'Confluence', action: () => {} }
     ]
   ];

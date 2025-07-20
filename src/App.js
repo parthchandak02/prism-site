@@ -10,6 +10,7 @@ import RightSidebar from './components/RightSidebar';
 import UITypewriter from './components/UITypewriter';
 import useLightMode from './hooks/useLightMode';
 import useGlobalMouse from './hooks/useGlobalMouse';
+import useScrollHighlight from './hooks/useScrollHighlight';
 import { timelineData } from './data/timelineData';
 import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightContext';
 
@@ -33,6 +34,9 @@ export default function App() {
   
   // Filter state for the timeline
   const [activeFilter, setActiveFilter] = useState('all');
+  
+  // Track which category section is currently visible when in 'all' mode
+  const visibleCategory = useScrollHighlight(activeFilter);
 
   // Get unique categories for filter buttons
   const categories = useMemo(() => {
@@ -63,6 +67,7 @@ export default function App() {
           <LeftSidebar
             filters={filters}
             activeFilter={activeFilter}
+            visibleCategory={visibleCategory}
             onFilterChange={setActiveFilter}
             lightMode={lightMode}
           />

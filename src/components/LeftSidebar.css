@@ -80,6 +80,25 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Scroll-based highlight styling - more subtle than active */
+.left-sidebar__pill--scroll-highlight {
+  opacity: 0.9;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(1px);
+}
+
+.left-sidebar--light .left-sidebar__pill--scroll-highlight {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.left-sidebar--dark .left-sidebar__pill--scroll-highlight {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 /* ========================================
    RESPONSIVE DESIGN
    ======================================== */

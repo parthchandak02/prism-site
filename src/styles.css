@@ -351,7 +351,7 @@ p, span, div, button, input, textarea {
 
 @media (max-width: 1024px) {
   .main-content-scroll {
-    left: var(--space-150);
+    left: var(--space-150); /* Reset offset for mobile - sidebars move to top/bottom */
     right: var(--space-150);
     transform: none;
     width: calc(100% - var(--space-300));

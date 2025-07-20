@@ -65,7 +65,7 @@ const highlightMappings = {
 
   // PROFESSIONAL TOOLS & PLATFORMS (Triangle Row 6)
   'Project Manager': {
-    navigationIcons: ['JIRA', 'Confluence', 'Google Suite', 'Miro'],
+    navigationIcons: ['JIRA', 'Confluence', 'G-Suite', 'Miro'],
     timelineCards: ['Zoox - Creative Technologist', 'Zoox - Manufacturing Engineer']
   },
   'Technical Lead': {
@@ -107,11 +107,11 @@ const highlightMappings = {
     timelineCards: ['AUDIO PRIORITIZATION']
   },
   'Technical Writer': {
-    navigationIcons: ['Confluence', 'Google Suite', 'Figma'],
+    navigationIcons: ['Confluence', 'G-Suite', 'Figma'],
     timelineCards: ['Ethical, Governance, and Usability Challenges in AI-Powered Virtual Health Assistants', 'Augmented Reality Enhances Telemedicine Training', 'The Evolution of Haptic Feedback Systems and User Experience']
   },
   'Data Analyst': {
-    navigationIcons: ['Python', 'MATLAB', 'Database', 'Google Suite'],
+    navigationIcons: ['Python', 'MATLAB', 'Database', 'G-Suite'],
     timelineCards: ['LLM Assisted Research Platform', 'Financial Trading API for Interactive Brokers (IBKR)']
   },
   'Automation Specialist': {
