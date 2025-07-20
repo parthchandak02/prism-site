@@ -113,23 +113,26 @@ export default function App() {
           <LockToggle isLocked={isLocked} onToggle={toggleLock} />
           <PlayModeToggle isPlayMode={isPlayMode} onToggle={togglePlayMode} />
           
-          {/* Typewriter that always shows regardless of play mode */}
-          <UITypewriter lightMode={lightMode} />
-          
-          {/* Main Content Area with Timeline - Hidden in play mode */}
-          {!isPlayMode && (
-            <div className="main-content-scroll">
-              <GlassNavigation lightMode={lightMode} />
-              <Timeline 
-               data={timelineData}
-               activeFilter={activeFilter}
-               showFilters={false} // Filters are now handled by LeftSidebar
-               lightMode={lightMode}
-               className="timeline-in-scroll"
-               centermostCard={centermostCard}
-             />
-            </div>
-          )}
+          {/* Main Content Area - Typewriter always shows, other content conditional */}
+          <div className="main-content-scroll">
+            {/* Typewriter that always shows regardless of play mode */}
+            <UITypewriter lightMode={lightMode} />
+            
+            {/* Resume content - Hidden in play mode */}
+            {!isPlayMode && (
+              <>
+                <GlassNavigation lightMode={lightMode} />
+                <Timeline 
+                 data={timelineData}
+                 activeFilter={activeFilter}
+                 showFilters={false} // Filters are now handled by LeftSidebar
+                 lightMode={lightMode}
+                 className="timeline-in-scroll"
+                 centermostCard={centermostCard}
+               />
+              </>
+            )}
+          </div>
         </div>
       </Layout>
     </TypewriterHighlightProvider>
