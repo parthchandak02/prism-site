@@ -113,12 +113,12 @@ export default function App() {
           <LockToggle isLocked={isLocked} onToggle={toggleLock} />
           <PlayModeToggle isPlayMode={isPlayMode} onToggle={togglePlayMode} />
           
+          {/* Typewriter that always shows regardless of play mode */}
+          <UITypewriter lightMode={lightMode} />
+          
           {/* Main Content Area with Timeline - Hidden in play mode */}
           {!isPlayMode && (
             <div className="main-content-scroll">
-              {/* Typewriter that scrolls with content */}
-              <UITypewriter lightMode={lightMode} />
-              
               <GlassNavigation lightMode={lightMode} />
               <Timeline 
                data={timelineData}
