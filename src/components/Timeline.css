@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 50rem;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  padding: 0 var(--space-300) var(--space-300) var(--space-300);
   display: flex;
   flex-direction: column;
 }
@@ -12,15 +12,15 @@
 .timeline__filters {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
+  gap: var(--space-100);
+  margin-bottom: var(--space-400);
   flex-wrap: wrap;
   position: sticky;
   top: 0;
   background: transparent;
   z-index: 20;
-  padding: var(--spacing-md) var(--spacing-lg);
-  margin: 0 0 var(--spacing-xl) 0;
+  padding: var(--space-150) var(--space-300);
+  margin: 0 0 var(--space-400) 0;
   width: 100%;
   max-width: 37.5rem;
   align-self: center;
@@ -29,38 +29,38 @@
 
 .timeline__filter {
   border-radius: var(--radius-lg);
-  padding: var(--spacing-sm) var(--spacing-md); /* Increased top/bottom padding to match navigation */
-  font-family: var(--font-timeline-filter);
+  padding: var(--space-100) var(--space-150);
+  font-family: var(--font-family-primary);
   font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
   outline: none;
-  height: auto; /* Let padding determine height naturally */
-  min-height: 3rem; /* Same as navigation pills */
+  height: auto;
+  min-height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition-standard);
 }
 
-/* Light/Dark Mode Filter Colors - Using Design System */
+/* Light/Dark Mode Filter Colors */
 .timeline.timeline--light .timeline__filter {
-  color: var(--color-text-light-secondary);
+  color: var(--color-text-secondary);
 }
 
 .timeline.timeline--light .timeline__filter:hover {
-  color: var(--color-text-light);
+  color: var(--color-text-primary);
 }
 
 .timeline.timeline--dark .timeline__filter {
-  color: var(--color-text-dark-secondary);
+  color: var(--color-text-secondary);
 }
 
 .timeline.timeline--dark .timeline__filter:hover {
-  color: var(--color-text-dark);
+  color: var(--color-text-primary);
 }
 
 .timeline__filter.active {
-  /* Using the new glass morphism highlight system */
   background: var(--color-highlight-bg) !important;
   border-color: var(--color-highlight-border) !important;
   box-shadow: 
@@ -72,7 +72,7 @@
   transform: scale(1.03) !important;
   opacity: 1;
   font-weight: 600;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition: var(--transition-bounce) !important;
 }
 
 .timeline__filter.active:hover {
@@ -84,22 +84,17 @@
     0 0 0 2px var(--color-highlight-active-border) !important;
   backdrop-filter: blur(25px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
-  transform: scale(1.06) translateY(-1px) !important;
+  transform: scale(var(--transform-scale-medium)) translateY(-1px) !important;
 }
 
-/* Responsive consistency with navigation pills */
-@media (max-width: 768px) {
-  .timeline__filter {
-    min-height: 2.75rem; /* Slightly smaller on mobile to match navigation */
-    padding: var(--spacing-xs) var(--spacing-sm); /* Tighter padding on mobile */
-    font-size: 0.75rem; /* Slightly smaller text on mobile */
-  }
-}
-
-/* Timeline Content */
-.timeline__content {
-  position: relative;
-  padding-left: 24px;
+/* Cards Container */
+.timeline__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-300);
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
 }
 
 /* Timeline Line - Hidden due to alignment issues with dots */
@@ -169,7 +164,7 @@
 }
 
 .timeline__empty p {
-  font-family: var(--font-body);
+  font-family: var(--font-family-primary);
   font-size: 16px;
   margin: 0;
 }

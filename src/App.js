@@ -1,12 +1,13 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Layout from './components/Layout';
 import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
 import LightToggle from './components/LightToggle';
 import LockToggle from './components/LockToggle';
-import Title from './components/Title';
 import Timeline from './components/Timeline';
+import LeftSidebar from './components/LeftSidebar';
+import RightSidebar from './components/RightSidebar';
+import UITypewriter from './components/UITypewriter';
 import useLightMode from './hooks/useLightMode';
 import useGlobalMouse from './hooks/useGlobalMouse';
 import { timelineData } from './data/timelineData';
@@ -22,11 +23,30 @@ import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightConte
  * - CSS modules for styling
  * - Reusable components
  * - Light beam lock/unlock functionality
+ * - Responsive sidebar layout with timeline filters and social links
+ * - Fast typewriter effect in UI layer
  */
 export default function App() {
   const { lightMode, toggleLightMode } = useLightMode(false);
   // Single source of truth for all mouse state
   const { isLocked, toggleLock, viewportPosition } = useGlobalMouse();
+  
+  // Filter state for the timeline
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  // Get unique categories for filter buttons
+  const categories = useMemo(() => {
+    const cats = ['all', ...new Set(timelineData.map(item => item.category?.toLowerCase()).filter(Boolean))];
+    return cats;
+  }, []);
+
+  // Format filters for sidebar components
+  const filters = useMemo(() => {
+    return categories.map(category => ({
+      key: category,
+      label: category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1)
+    }));
+  }, [categories]);
 
   // Sync html and body background with light mode to prevent edge bleeding
   useEffect(() => {
@@ -37,9 +57,28 @@ export default function App() {
 
   return (
     <TypewriterHighlightProvider>
-      <Layout darkMode={!lightMode}>
-        {/* 3D Canvas Background - pass mouse state down */}
-        <Canvas3D lightMode={lightMode} viewportPosition={viewportPosition} isLocked={isLocked} />
+      <Layout 
+        darkMode={!lightMode}
+        leftSidebar={categories.length > 1 ? (
+          <LeftSidebar
+            filters={filters}
+            activeFilter={activeFilter}
+            onFilterChange={setActiveFilter}
+            lightMode={lightMode}
+          />
+        ) : null}
+        rightSidebar={
+          <RightSidebar
+            lightMode={lightMode}
+          />
+        }
+      >
+        {/* 3D Canvas Background */}
+        <Canvas3D 
+          lightMode={lightMode} 
+          viewportPosition={viewportPosition} 
+          isLocked={isLocked}
+        />
         
         {/* UI Overlay Layer */}
         <div className="layout__ui">
@@ -47,14 +86,16 @@ export default function App() {
           <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
           <LockToggle isLocked={isLocked} onToggle={toggleLock} />
           
-          {/* Main Content Area with Title and Timeline */}
+          {/* Main Content Area with Timeline */}
           <div className="main-content-scroll">
-            <Title lightMode={lightMode} className="title-in-scroll" />
+            {/* Typewriter that scrolls with content */}
+            <UITypewriter lightMode={lightMode} />
+            
             <GlassNavigation lightMode={lightMode} />
             <Timeline 
                data={timelineData}
-               showFilters={true}
-               defaultFilter="all"
+               activeFilter={activeFilter}
+               showFilters={false} // Filters are now handled by LeftSidebar
                lightMode={lightMode}
                className="timeline-in-scroll"
              />

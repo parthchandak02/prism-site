@@ -26,7 +26,11 @@ const Canvas3D = ({ lightMode, viewportPosition, isLocked }) => {
       }}
     >
       <color attach="background" args={[lightMode ? 'white' : 'black']} />
-      <Scene lightMode={lightMode} viewportPosition={viewportPosition} isLocked={isLocked} />
+      <Scene 
+        lightMode={lightMode} 
+        viewportPosition={viewportPosition} 
+        isLocked={isLocked}
+      />
       <EffectComposer disableNormalPass>
         <Bloom mipmapBlur levels={9} intensity={1.5} luminanceThreshold={1} luminanceSmoothing={1} />
         <LUT lut={texture} />

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import TimelineCard from './TimelineCard';
 import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
 import './Timeline.css';
@@ -6,20 +6,13 @@ import './Timeline.css';
 const Timeline = ({ 
   data = [], 
   className = '',
-  showFilters = true,
-  defaultFilter = 'all',
+  showFilters = false, // Now controlled by parent
+  activeFilter = 'all', // Received from parent
   lightMode = false,
   ...props 
 }) => {
-  const [activeFilter, setActiveFilter] = useState(defaultFilter);
   const { getCurrentHighlights } = useTypewriterHighlight();
   const highlights = getCurrentHighlights();
-  
-  // Get unique categories for filter buttons
-  const categories = useMemo(() => {
-    const cats = ['all', ...new Set(data.map(item => item.category?.toLowerCase()).filter(Boolean))];
-    return cats;
-  }, [data]);
   
   // Filter data based on active filter
   const filteredData = useMemo(() => {
@@ -40,20 +33,6 @@ const Timeline = ({
   
   return (
     <div className={`timeline ${lightMode ? 'timeline--light' : 'timeline--dark'} ${className}`} {...props}>
-      {/* Filter buttons */}
-      {showFilters && categories.length > 1 && (
-        <div className="timeline__filters">
-          {categories.map(category => (
-            <button
-              key={category}
-              className={`timeline__filter glass glass-interactive ${activeFilter === category ? 'active highlight-active' : ''}`}
-              onClick={() => setActiveFilter(category)}
-            >
-              {category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          ))}
-        </div>
-      )}
       
       {/* Timeline content */}
       <div className="timeline__content">

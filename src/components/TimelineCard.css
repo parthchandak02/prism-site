@@ -141,7 +141,7 @@
 
 /* Title */
 .timeline-card__title {
-  font-family: var(--font-card-title);
+  font-family: var(--font-family-primary);
   font-size: 18px;
   font-weight: 600;
   margin: 0;
@@ -150,7 +150,7 @@
 
 /* Date */
 .timeline-card__date {
-  font-family: var(--font-card-date);
+  font-family: var(--font-family-primary);
   font-size: 14px;
   font-weight: 400;
   opacity: 0.8;
@@ -167,7 +167,7 @@
 .timeline-card__volume,
 .timeline-card__location {
   border-radius: 24px;
-  font-family: var(--font-card-meta);
+  font-family: var(--font-family-primary);
   font-size: 12px;
   font-weight: 400;
   opacity: 0.6;
@@ -200,7 +200,7 @@
   display: inline-block;
   border-radius: 24px;
   padding: 4px 12px;
-  font-family: var(--font-card-tag);
+  font-family: var(--font-family-primary);
   font-size: 11px;
   font-weight: 600;
   opacity: 0.9;
@@ -214,7 +214,7 @@
 
 /* Description */
 .timeline-card__description {
-  font-family: var(--font-card-content);
+  font-family: var(--font-family-primary);
   font-size: 14px;
   font-weight: 400;
   opacity: 0.8;

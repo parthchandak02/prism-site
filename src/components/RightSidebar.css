@@ -1,0 +1,124 @@
+/* Right Sidebar - Glass slab with social links */
+.right-sidebar {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  padding: var(--space-150);
+  transition: var(--transition-standard);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Social links container */
+.right-sidebar__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-075);
+  width: 100%;
+}
+
+/* Individual social link buttons - icon only */
+.right-sidebar__link {
+  font-family: var(--font-family-primary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: var(--space-100);
+  border-radius: var(--radius-md);
+  width: 100%;
+  min-height: 3rem;
+  
+  background: transparent;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  
+  transition: var(--transition-standard);
+  color: inherit;
+  opacity: 0.7;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-sidebar__link:hover {
+  opacity: 1;
+  transform: translateX(-2px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Link icon */
+.right-sidebar__link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Light/Dark mode text colors */
+.right-sidebar--light .right-sidebar__link {
+  color: var(--color-text-secondary);
+}
+
+.right-sidebar--light .right-sidebar__link:hover {
+  color: var(--color-text-primary);
+}
+
+.right-sidebar--dark .right-sidebar__link {
+  color: var(--color-text-secondary);
+}
+
+.right-sidebar--dark .right-sidebar__link:hover {
+  color: var(--color-text-primary);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .right-sidebar {
+    flex-direction: row;
+    align-items: center;
+    padding: var(--space-100) var(--space-150);
+    width: auto;
+    max-width: none;
+  }
+  
+  .right-sidebar__links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-075);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .right-sidebar__link {
+    width: auto;
+    min-width: 3rem;
+    padding: var(--space-075);
+    font-size: 0.75rem;
+  }
+  
+  .right-sidebar__link:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 768px) {
+  .right-sidebar {
+    padding: var(--space-075) var(--space-100);
+  }
+  
+  .right-sidebar__link {
+    min-width: 2.5rem;
+    padding: var(--space-050);
+    font-size: 0.7rem;
+  }
+  
+  .right-sidebar__link-icon {
+    font-size: 0.9rem;
+  }
+} 
