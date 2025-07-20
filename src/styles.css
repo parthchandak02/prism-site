@@ -242,8 +242,7 @@
 
 /* Glass morphism highlighting */
 .glass-pill--highlighted,
-.timeline__filter.active,
-.timeline-card--highlighted {
+.timeline__filter.active {
   background: var(--color-highlight-bg) !important;
   border-color: var(--color-highlight-border) !important;
   box-shadow: 
@@ -254,6 +253,19 @@
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   transform: scale(1.03) !important;
   transition: var(--transition-bounce) !important;
+}
+
+/* Timeline cards get subtle highlighting - no glow effects */
+.timeline-card--highlighted {
+  background: var(--color-highlight-bg) !important;
+  /* Remove prominent border and shadow effects */
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  /* Keep minimal backdrop blur */
+  backdrop-filter: blur(20px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(120%) !important;
+  /* Remove scale transform - keep normal size */
+  transform: none !important;
+  transition: var(--transition-standard) !important;
 }
 
 .glass-pill--highlighted:hover,
@@ -267,6 +279,16 @@
   backdrop-filter: blur(25px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
   transform: scale(var(--transform-scale-medium)) translateY(-1px) !important;
+}
+
+/* Timeline cards get subtle hover effects */
+.timeline-card--highlighted:hover {
+  background: var(--color-highlight-active-bg) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(130%) !important;
+  /* Keep subtle hover effect without dramatic scaling */
+  transform: translateY(-1px) !important;
 }
 
 /* ========================================
