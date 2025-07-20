@@ -3,7 +3,7 @@ import {
   // Navigation icons from Lucide React
   Code, Database, GitBranch, Globe, Cpu, Terminal, Settings, Zap,
   CircuitBoard, Microchip, Figma, Palette, Layers, Box,
-  Printer, PenTool, Gamepad2, Trello, Mail, Monitor
+  Printer, PenTool, Gamepad2, Trello, Mail, Monitor, FileText
 } from 'lucide-react';
 
 // Centralized icon mapping - all navigation icons defined in one place
