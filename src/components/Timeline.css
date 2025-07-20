@@ -4,6 +4,8 @@
   max-width: 50rem;
   margin: 0 auto;
   padding: var(--space-200) var(--space-300) var(--space-300) var(--space-300);
+  /* Add bottom spacing to allow last card to reach viewport center for scroll highlighting */
+  padding-bottom: calc(var(--space-300) + 50vh);
   display: flex;
   flex-direction: column;
 }
@@ -149,6 +151,8 @@
     max-width: 55rem; /* Intermediate size for tablets */
     margin: 0 auto; /* Reset to normal centering on tablets/mobile */
     padding: var(--space-150) var(--space-200);
+    /* Maintain bottom spacing for scroll highlighting on tablets */
+    padding-bottom: calc(var(--space-200) + 50vh);
   }
 }
 
@@ -157,6 +161,8 @@
     max-width: none; /* Full width on mobile */
     margin: 0 auto; /* Reset to normal centering on mobile */
     padding: 16px;
+    /* Maintain bottom spacing for scroll highlighting on mobile */
+    padding-bottom: calc(16px + 50vh);
   }
   
   .timeline__filters {
