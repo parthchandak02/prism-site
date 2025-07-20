@@ -1,37 +1,7 @@
 import { useState, useEffect } from 'react';
-import { 
-  ExternalLink, FileText, MapPin,
-  // Navigation icons from the old GlassNavigation
-  Code, Database, GitBranch, Globe, Cpu, Terminal, Settings, Zap,
-  CircuitBoard, Microchip, Figma, Palette, Layers, Box,
-  Printer, PenTool, Gamepad2, Trello, Mail, Monitor
-} from 'lucide-react';
+import { ExternalLink, FileText, MapPin } from 'lucide-react';
+import { iconMap } from '../data/timelineData';
 import './TimelineCard.css';
-
-// Icon mapping for navigation icons
-const iconMap = {
-  'Python': Code,
-  'JavaScript': Terminal,
-  'React': Zap,
-  'Database': Database,
-  'C++': Settings,
-  'MATLAB': Cpu,
-  'Figma': Figma,
-  'Blender': Layers,
-  'Unity': Gamepad2,
-  'ProtoPie': Palette,
-  'Linux': Globe,
-  'Git': GitBranch,
-  'Arduino': CircuitBoard,
-  'Raspberry Pi': Microchip,
-  'SolidWorks': PenTool,
-  'Fusion 360': Box,
-  '3D Printing': Printer,
-  'Miro': Monitor,
-  'JIRA': Trello,
-  'G-Suite': Mail,
-  'Confluence': FileText
-};
 
 const TimelineCard = ({ 
   title,
@@ -148,9 +118,22 @@ const TimelineCard = ({
           {/* Navigation Icons - at the bottom */}
           {navigationIcons && navigationIcons.length > 0 && (
             <div className="timeline-card__navigation-icons">
-              {navigationIcons.map((iconName, index) => {
-                const IconComponent = iconMap[iconName];
+              {navigationIcons.map((iconData, index) => {
+                // Support both old string format and new object format
+                let IconComponent, iconName;
+                
+                if (typeof iconData === 'string') {
+                  // Old string format - use iconMap for backwards compatibility
+                  IconComponent = iconMap[iconData];
+                  iconName = iconData;
+                } else {
+                  // New object format with component and name
+                  IconComponent = iconData.component;
+                  iconName = iconData.name;
+                }
+                
                 const isClicked = clickedIcons.has(iconName);
+                
                 return IconComponent ? (
                   <div 
                     key={index}

@@ -1,4 +1,36 @@
-// Timeline data - using clean data structure without unused custom icons
+// Timeline data - using clean data structure with centralized icon mapping
+import { 
+  ExternalLink, FileText, MapPin,
+  // Navigation icons from Lucide React
+  Code, Database, GitBranch, Globe, Cpu, Terminal, Settings, Zap,
+  CircuitBoard, Microchip, Figma, Palette, Layers, Box,
+  Printer, PenTool, Gamepad2, Trello, Mail, Monitor
+} from 'lucide-react';
+
+// Centralized icon mapping - all navigation icons defined in one place
+export const iconMap = {
+  'Python': Code,
+  'JavaScript': Terminal,
+  'React': Zap,
+  'Database': Database,
+  'C++': Settings,
+  'MATLAB': Cpu,
+  'Figma': Figma,
+  'Blender': Layers,
+  'Unity': Gamepad2,
+  'ProtoPie': Palette,
+  'Linux': Globe,
+  'Git': GitBranch,
+  'Arduino': CircuitBoard,
+  'Raspberry Pi': Microchip,
+  'SolidWorks': PenTool,
+  'Fusion 360': Box,
+  '3D Printing': Printer,
+  'Miro': Monitor,
+  'JIRA': Trello,
+  'G-Suite': Mail,
+  'Confluence': FileText
+};
 
 // Comprehensive timeline data from resume
 export const timelineData = [
@@ -12,7 +44,12 @@ export const timelineData = [
     description: "Created a UX focused robot platform and creative lab for designing 20+ visual and sonic experience projects. Reduced design iteration time from weeks to 1-2 days (90% reduction). Tested 40+ digital and mechanical designs on autonomous vehicle platforms.",
     typewriterTitle: "Creative Technologist",
     typewriterPrefix: "I am a",
-    navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"]
+    navigationIcons: [
+      { component: iconMap.Figma, name: "Figma" },
+      { component: iconMap.Blender, name: "Blender" },
+      { component: iconMap.Unity, name: "Unity" },
+      { component: iconMap.ProtoPie, name: "ProtoPie" }
+    ]
   },
 
   // === RECENT ACHIEVEMENTS 2024-2025 ===
@@ -25,7 +62,7 @@ export const timelineData = [
     description: "Innovative patent pending for audio prioritization technology, demonstrating cutting-edge research in autonomous vehicle audio systems and user experience optimization.",
     typewriterTitle: "Inventor",
     typewriterPrefix: "I am an ",
-    navigationIcons: ["Python", "C++", "Unity"]
+    navigationIcons: [iconMap.Python, iconMap["C++"], iconMap.Unity]
   },
   {
     id: 3,
@@ -112,7 +149,7 @@ export const timelineData = [
     description: "Systematic exploration of ethical frameworks and governance challenges in AI health assistants, focusing on user experience and regulatory compliance.",
     typewriterTitle: "Research Engineer",
     typewriterPrefix: "I am a",
-    navigationIcons: ["MATLAB", "Python", "C++"]
+    navigationIcons: [iconMap.MATLAB, iconMap.Python, iconMap["C++"]]
   },
   {
     id: 13,
@@ -133,7 +170,7 @@ export const timelineData = [
     url: "https://github.com/parthchandak02/research-assistant",
     typewriterTitle: "Full Stack Developer",
     typewriterPrefix: "I am a",
-    navigationIcons: ["Python", "JavaScript", "React", "Database"],
+    navigationIcons: [iconMap.Python, iconMap.JavaScript, iconMap.React, iconMap.Database],
   },
   {
     id: 15,
@@ -144,7 +181,7 @@ export const timelineData = [
     url: "https://github.com/parthchandak02/gapps-script-gemini",
     typewriterTitle: "Full Stack Developer",
     typewriterPrefix: "I am a",
-    navigationIcons: ["Python", "JavaScript", "React", "Database"],
+    navigationIcons: [iconMap.Python, iconMap.JavaScript, iconMap.React, iconMap.Database],
   },
   {
     id: 16,
@@ -155,7 +192,7 @@ export const timelineData = [
     url: "https://github.com/parthchandak02/ibkr-ibind-rest-api",
     typewriterTitle: "Full Stack Developer",
     typewriterPrefix: "I am a",
-    navigationIcons: ["Python", "JavaScript", "React", "Database"],
+    navigationIcons: [iconMap.Python, iconMap.JavaScript, iconMap.React, iconMap.Database],
   },
   {
     id: 17,
@@ -220,7 +257,7 @@ export const timelineData = [
     volume: "Grade: 97.6/100",
     typewriterTitle: "Creative Technologist",
     typewriterPrefix: "I am a",
-    navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"],
+    navigationIcons: [iconMap.Figma, iconMap.Blender, iconMap.Unity, iconMap.ProtoPie],
   },
 
   // === MAJOR AWARDS & ACHIEVEMENTS ===
@@ -275,7 +312,7 @@ export const timelineData = [
     description: "Served as Team Technical Lead and Liaison. Developed innovative damping ratio analysis tool using advanced mathematical techniques for piloted aircraft systems, contributing to aerospace engineering research.",
     typewriterTitle: "Programmer",
     typewriterPrefix: "I am a",
-    navigationIcons: ["MATLAB", "Python", "C++"],
+    navigationIcons: [iconMap.MATLAB, iconMap.Python, iconMap["C++"]],
   },
   {
     id: 30,
