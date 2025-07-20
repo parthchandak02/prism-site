@@ -1,4 +1,4 @@
-import React from 'react';
+// React import removed - not needed with modern JSX transform
 import { ReactTyped } from 'react-typed';
 import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
 import './UITypewriter.css';

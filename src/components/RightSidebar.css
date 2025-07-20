@@ -64,7 +64,10 @@
 .right-sidebar__link:hover {
   opacity: 1;
   transform: translateX(-2px);
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
+  color: var(--orange-bright) !important;
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+  filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.1));
 }
 
 /* Link icon */
@@ -81,7 +84,9 @@
 }
 
 .right-sidebar--light .right-sidebar__link:hover {
-  color: var(--color-text-primary);
+  color: var(--orange-bright) !important;
+  text-shadow: 0 0 6px rgba(255, 107, 53, 0.3);
+  filter: drop-shadow(0 1px 2px rgba(255, 107, 53, 0.1));
 }
 
 .right-sidebar--dark .right-sidebar__link {
@@ -89,7 +94,9 @@
 }
 
 .right-sidebar--dark .right-sidebar__link:hover {
-  color: var(--color-text-primary);
+  color: var(--orange-bright) !important;
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+  filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.1));
 }
 
 /* ========================================
@@ -122,6 +129,9 @@
   
   .right-sidebar__link:hover {
     transform: translateY(-1px);
+    color: var(--orange-bright) !important;
+    text-shadow: 0 0 6px rgba(255, 107, 53, 0.3);
+    filter: drop-shadow(0 1px 2px rgba(255, 107, 53, 0.1));
   }
 }
 
