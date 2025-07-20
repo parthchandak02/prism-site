@@ -26,7 +26,14 @@ const UITypewriter = ({ lightMode }) => {
       {/* Cycling professional titles typewriter */}
       <div className={`ui-typewriter-cycling ${lightMode ? 'ui-typewriter--light' : 'ui-typewriter--dark'}`}>
         <ReactTyped
-          strings={fullSentences}
+          strings={fullSentences.map(sentence => {
+            // Find the corresponding data item to get prefix and title
+            const dataItem = professionalTitles.find(item => sentence === `${item.prefix} ${item.title}`);
+            if (dataItem) {
+              return `<span class="prefix-part">${dataItem.prefix}</span> <span class="title-part">${dataItem.title}</span>`;
+            }
+            return sentence;
+          })}
           typeSpeed={80}
           backSpeed={50}
           backDelay={2500}
@@ -34,6 +41,7 @@ const UITypewriter = ({ lightMode }) => {
           loop={true}
           showCursor={true}
           smartBackspace={true}
+          html={true} // Enable HTML parsing for spans
           onStringTyped={(arrayPos) => {
             // Only pass the title part (not the prefix) to the highlight context
             const titleOnly = professionalTitles[arrayPos].title;

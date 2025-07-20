@@ -69,16 +69,28 @@
   gap: 2px;
 }
 
-/* Styling for when we need to distinguish prefix vs title parts */
+/* Styling for prefix vs title parts */
 .ui-typewriter-cycling .prefix-part {
-  opacity: 0.8;
   font-weight: 500;
+  /* Inherits color from parent - no special styling needed */
 }
 
 .ui-typewriter-cycling .title-part {
   font-weight: 700;
-  color: #FF6B35; /* Vibrant orange matching the prism spectrum */
-  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4); /* Subtle orange glow */
+}
+
+/* Orange styling for title parts in dark mode */
+.ui-typewriter-cycling.ui-typewriter--dark .title-part {
+  color: #FF6B35 !important; /* Vibrant orange matching the prism spectrum */
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4) !important; /* Subtle orange glow */
+  filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.1)); /* Subtle orange depth */
+}
+
+/* Orange styling for title parts in light mode */
+.ui-typewriter-cycling.ui-typewriter--light .title-part {
+  color: #E55A2B !important; /* Darker orange for better contrast on light backgrounds */
+  text-shadow: 0 0 6px rgba(229, 90, 43, 0.2) !important; /* Lighter glow for light mode */
+  filter: drop-shadow(0 1px 2px rgba(229, 90, 43, 0.1)); /* Subtle orange shadow for light mode */
 }
 
 /* Text container */
@@ -158,19 +170,21 @@
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
-/* Bright orange text effect matching the prism colors */
+/* Remove global orange styling - let individual parts control their own colors */
 .ui-typewriter-cycling.ui-typewriter--dark {
-  /* Simple orange color - no gradients or animations needed */
-  color: #FF6B35; /* Vibrant orange from the rainbow spectrum */
-  text-shadow: 0 0 8px rgba(255, 107, 53, 0.3); /* Subtle orange glow */
-  filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.1)); /* Subtle orange depth */
+  /* Use normal text color for prefix, orange will be applied only to title-part */
+  color: #ffffff;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .ui-typewriter-cycling.ui-typewriter--light {
-  /* Darker orange for better contrast on light backgrounds */
-  color: #E55A2B; /* Darker orange for light backgrounds */
-  text-shadow: 0 0 6px rgba(229, 90, 43, 0.2); /* Lighter glow for light mode */
-  filter: drop-shadow(0 1px 2px rgba(229, 90, 43, 0.1)); /* Subtle orange shadow for light mode */
+  /* Use normal text color for prefix, orange will be applied only to title-part */
+  color: #1a1a1a;
+  text-shadow: 
+    0 1px 2px rgba(255, 255, 255, 0.5),
+    0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 /* Rainbow spectrum animation - flows full ROYGBIV through text */
