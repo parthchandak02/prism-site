@@ -9,6 +9,7 @@ const Timeline = ({
   showFilters = false, // Now controlled by parent
   activeFilter = 'all', // Received from parent
   lightMode = false,
+  centermostCard = null, // Card title to highlight based on scroll position
   ...props 
 }) => {
   const { getCurrentHighlights } = useTypewriterHighlight();
@@ -64,10 +65,6 @@ const Timeline = ({
                 data-index={index}
                 data-debug={`${item.category}-${index}`}
               >
-                {/* Timeline dot with icon */}
-                <div className="timeline__dot glass glass-interactive">
-                  {item.icon && <item.icon />}
-                </div>
                 <TimelineCard
                   title={item.title}
                   date={item.date}
@@ -75,9 +72,11 @@ const Timeline = ({
                   description={item.description}
                   location={item.location}
                   volume={item.volume}
+                  url={item.url}
                   lightMode={lightMode}
                   className="timeline__card"
                   isHighlighted={highlights.timelineCards.includes(item.title)}
+                  autoExpanded={activeFilter === 'all' && item.title === centermostCard}
                 />
               </div>
             ))
