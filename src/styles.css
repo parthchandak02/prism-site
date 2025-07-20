@@ -255,6 +255,66 @@
 
 
 /* ========================================
+   CLEAN PILL SYSTEM - White/Orange Design
+   ======================================== */
+
+/* Base clean pill styling - white default, orange hover/active */
+.clean-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-family-primary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  /* No backdrop blur - clean design */
+}
+
+.clean-pill:hover {
+  border-color: var(--orange-bright);
+  color: var(--orange-bright);
+  text-shadow: 0 0 6px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.1);
+  /* No transform to avoid displacement */
+}
+
+.clean-pill.active,
+.clean-pill--active {
+  border-color: var(--orange-bright);
+  color: var(--orange-bright);
+  text-shadow: 0 0 6px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.1);
+}
+
+/* Light mode styling for clean pills */
+.clean-pill--light {
+  border-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.clean-pill--light:hover {
+  border-color: var(--orange-bright);
+  color: var(--orange-bright);
+  text-shadow: 0 0 4px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.05);
+}
+
+.clean-pill--light.active,
+.clean-pill--light.clean-pill--active {
+  border-color: var(--orange-bright);
+  color: var(--orange-bright);
+  text-shadow: 0 0 4px rgba(255, 107, 53, 0.2);
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.05);
+}
+
+/* ========================================
    UTILITY CLASSES
    ======================================== */
 

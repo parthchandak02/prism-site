@@ -51,6 +51,7 @@ const TimelineCard = ({
   ...props 
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const [clickedIcons, setClickedIcons] = useState(new Set()); // Track clicked nav icons
   const [smoothAutoExpanded, setSmoothAutoExpanded] = useState(autoExpanded);
   
   // Smooth out auto-expansion changes to prevent animation interruption
@@ -64,6 +65,18 @@ const TimelineCard = ({
   
   // Use auto-expansion if specified, otherwise use internal state
   const effectiveExpanded = smoothAutoExpanded !== false ? smoothAutoExpanded : isExpanded;
+
+  // Handle navigation icon clicks for persistent orange state
+  const handleIconClick = (iconName, event) => {
+    event.stopPropagation(); // Prevent card expansion
+    const newClickedIcons = new Set(clickedIcons);
+    if (newClickedIcons.has(iconName)) {
+      newClickedIcons.delete(iconName); // Toggle off if already clicked
+    } else {
+      newClickedIcons.add(iconName); // Toggle on
+    }
+    setClickedIcons(newClickedIcons);
+  };
   
   // Generate category-specific class name
   const categoryClass = category ? `timeline-card--category-${category.toLowerCase()}` : '';
@@ -137,13 +150,15 @@ const TimelineCard = ({
             <div className="timeline-card__navigation-icons">
               {navigationIcons.map((iconName, index) => {
                 const IconComponent = iconMap[iconName];
+                const isClicked = clickedIcons.has(iconName);
                 return IconComponent ? (
                   <div 
                     key={index}
-                                          className={`timeline-card__nav-icon ${(isScrollHighlighted || isTypewriterHighlighted) ? 'timeline-card__nav-icon--highlighted' : ''}`}
+                    className={`clean-pill ${lightMode ? 'clean-pill--light' : ''} ${isClicked ? 'clean-pill--active' : ''}`}
+                    onClick={(e) => handleIconClick(iconName, e)}
                   >
                     <IconComponent size={16} />
-                    <span className="timeline-card__nav-icon-text">{iconName}</span>
+                    <span>{iconName}</span>
                   </div>
                 ) : null;
               })}

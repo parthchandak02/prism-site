@@ -354,61 +354,31 @@
   display: flex; /* Show in expanded state */
 }
 
-.timeline-card__nav-icon {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: var(--glass-bg-base);
-  border: 1px solid var(--glass-border-base);
-  backdrop-filter: var(--glass-blur-subtle);
-  transition: all 0.2s ease;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-}
+/* Navigation icons now use the clean pill system from styles.css */
+/* Previous glass morphism styling removed in favor of unified clean-pill classes */
 
-.timeline-card__nav-icon:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
-}
-
-.timeline-card__nav-icon--highlighted {
-  /* Remove blue tint - just expand the icon */
-  transform: scale(1.05); /* Slight expansion instead of blue tint */
-  background: rgba(255, 255, 255, 0.15); /* Slightly more visible background */
-  border-color: rgba(255, 255, 255, 0.3); /* Slightly more visible border */
-  /* Remove blue color and glow effects */
-}
-
+/* Preserved for potential future use - navigation icon specific styling */
 .timeline-card__nav-icon-text {
   white-space: nowrap;
   font-family: var(--font-family-primary);
 }
 
-/* Light mode styling for navigation icons */
+/* Light mode navigation icons container styling */
 .timeline-card--light .timeline-card__navigation-icons {
   border-top-color: rgba(0, 0, 0, 0.1);
   border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
-.timeline-card--light .timeline-card__nav-icon {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.8);
-}
-
-.timeline-card--light .timeline-card__nav-icon:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.timeline-card--light .timeline-card__nav-icon--highlighted {
-  background: rgba(0, 0, 0, 0.1); /* Slightly more visible background for light mode */
-  border-color: rgba(0, 0, 0, 0.2); /* Slightly more visible border for light mode */
-}
+/* 
+  REMOVED GLASS MORPHISM STYLING - Now using clean-pill system:
+  - .timeline-card__nav-icon: Replaced with .clean-pill
+  - .timeline-card__nav-icon:hover: Handled by .clean-pill:hover  
+  - .timeline-card__nav-icon--highlighted: Replaced with .clean-pill--active
+  - Light mode variants: Handled by .clean-pill--light
+  
+  This eliminates glass-on-glass visual redundancy and creates 
+  clean white/orange pill design as specified.
+*/
 
 /* Description */
 .timeline-card__description {
