@@ -50,12 +50,12 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-/* Active pill styling - white highlight with underline */
+/* Active pill styling - subtle liquid glass highlight with underline */
 .left-sidebar__pill--active {
   color: rgba(255, 255, 255, 1); /* Pure white for click state */
   font-weight: 500;
   position: relative;
-  background: rgba(255, 255, 255, 0.15); /* White card background */
+  background: rgba(255, 255, 255, 0.05); /* Subtle liquid glass background */
   border-radius: var(--radius-sm);
   padding: var(--space-075) var(--space-100);
   /* Remove blue tint and glow effects */
@@ -76,7 +76,7 @@
 
 .left-sidebar--light .left-sidebar__pill--active {
   color: rgba(0, 0, 0, 1); /* Pure black for light mode */
-  background: rgba(0, 0, 0, 0.15); /* Dark card background for light mode */
+  background: rgba(0, 0, 0, 0.05); /* Subtle liquid glass background for light mode */
   /* Remove blue tint */
 }
 

@@ -27,21 +27,81 @@
   transition: all 0.3s ease;
 }
 
+/* Icon container for dual icon hover animation */
+.play-mode-toggle__icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+/* Primary icon (Pyramid) - visible by default */
+.play-mode-toggle__icon-primary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Secondary icon (Rainbow) - hidden by default */
+.play-mode-toggle__icon-secondary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: rotate(-180deg) scale(0.8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover animation: Primary icon spins out and fades */
+.play-mode-toggle:hover .play-mode-toggle__icon-primary {
+  opacity: 0;
+  transform: rotate(180deg) scale(0.8);
+}
+
+/* Hover animation: Secondary icon spins in and appears */
+.play-mode-toggle:hover .play-mode-toggle__icon-secondary {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
 /* Dark mode styling (default) */
-.dark-mode .play-mode-toggle__icon {
+.dark-mode .play-mode-toggle__icon,
+.dark-mode .play-mode-toggle__icon-primary,
+.dark-mode .play-mode-toggle__icon-secondary {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.dark-mode .play-mode-toggle:hover .play-mode-toggle__icon {
+.dark-mode .play-mode-toggle:hover .play-mode-toggle__icon,
+.dark-mode .play-mode-toggle:hover .play-mode-toggle__icon-primary,
+.dark-mode .play-mode-toggle:hover .play-mode-toggle__icon-secondary {
   color: rgba(255, 255, 255, 1);
 }
 
 /* Light mode styling */
-.light-mode .play-mode-toggle__icon {
+.light-mode .play-mode-toggle__icon,
+.light-mode .play-mode-toggle__icon-primary,
+.light-mode .play-mode-toggle__icon-secondary {
   color: rgba(0, 0, 0, 0.8);
 }
 
-.light-mode .play-mode-toggle:hover .play-mode-toggle__icon {
+.light-mode .play-mode-toggle:hover .play-mode-toggle__icon,
+.light-mode .play-mode-toggle:hover .play-mode-toggle__icon-primary,
+.light-mode .play-mode-toggle:hover .play-mode-toggle__icon-secondary {
   color: rgba(0, 0, 0, 1);
 }
 
