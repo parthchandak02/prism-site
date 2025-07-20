@@ -50,11 +50,13 @@
 }
 
 .lock-toggle.locked .lock-toggle__icon {
-  color: rgba(255, 215, 0, 0.9) !important; /* Golden color when locked - important to override light/dark mode */
+  color: var(--orange-bright) !important; /* Orange color when locked - consistent with site theme */
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4) !important; /* Subtle orange glow */
 }
 
 .lock-toggle.locked:hover .lock-toggle__icon {
-  color: rgba(255, 215, 0, 1) !important; /* Brighter golden on hover */
+  color: var(--orange-bright) !important; /* Maintain orange on hover */
+  filter: brightness(1.1) !important; /* Slightly brighter on hover */
 }
 
 /* Responsive design */

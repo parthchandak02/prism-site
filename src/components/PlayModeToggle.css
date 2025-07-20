@@ -45,13 +45,15 @@
   color: rgba(0, 0, 0, 1);
 }
 
-/* Simple yellow pause icon when in play mode - matches lock icon style */
+/* Orange pause icon when in play mode - matches lock icon style */
 .play-mode-toggle.play-mode .play-mode-toggle__icon {
-  color: rgba(255, 215, 0, 0.9) !important; /* Simple yellow like lock icon */
+  color: var(--orange-bright) !important; /* Orange color matching lock icon and site theme */
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4) !important; /* Subtle orange glow */
 }
 
 .play-mode-toggle.play-mode:hover .play-mode-toggle__icon {
-  color: rgba(255, 215, 0, 1) !important; /* Brighter yellow on hover */
+  color: var(--orange-bright) !important; /* Maintain orange on hover */
+  filter: brightness(1.1) !important; /* Slightly brighter on hover */
 }
 
 /* Paused state (showing Play icon) uses normal white/dark mode colors */
