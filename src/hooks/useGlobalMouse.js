@@ -11,12 +11,12 @@ const useGlobalMouse = () => {
     y: -(centerLeftY / window.innerHeight) * 2 + 1 
   });
   
-  // Lock state - when true, position is completely frozen
-  const [isLocked, setIsLocked] = useState(true);
+  // Lock state - when true, position is completely frozen (default: false to match play mode)
+  const [isLocked, setIsLocked] = useState(false);
   
   const hasUserMoved = useRef(false);
   // Use ref to store the current lock state for event handlers
-  const isLockedRef = useRef(true);
+  const isLockedRef = useRef(false);
   // Store the frozen position when locked
   const frozenPositionRef = useRef(null);
   // Store current live viewport position for capturing when locking
