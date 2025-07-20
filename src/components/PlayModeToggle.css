@@ -23,7 +23,7 @@
 
 .play-mode-toggle__icon svg {
   stroke: currentColor;
-  fill: currentColor;
+  fill: none;
   transition: all 0.3s ease;
 }
 

@@ -1,4 +1,4 @@
-import { Play, Pause } from 'lucide-react';
+import { Rainbow, Glasses } from 'lucide-react';
 import './PlayModeToggle.css';
 
 const PlayModeToggle = ({ isPlayMode, onToggle }) => {
@@ -6,10 +6,10 @@ const PlayModeToggle = ({ isPlayMode, onToggle }) => {
     <button
       className={`play-mode-toggle glass glass-interactive ${isPlayMode ? 'play-mode' : ''}`}
       onClick={onToggle}
-      aria-label={`Switch to ${isPlayMode ? 'resume reading' : 'play'} mode`}
+      aria-label={`Switch to ${isPlayMode ? 'reading mode' : 'rainbow play mode'}`}
     >
       <span className="play-mode-toggle__icon">
-        {isPlayMode ? <Pause size={18} /> : <Play size={18} />}
+        {isPlayMode ? <Glasses size={18} /> : <Rainbow size={18} />}
       </span>
     </button>
   );
