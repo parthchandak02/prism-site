@@ -82,7 +82,7 @@
     top: var(--space-150);
     transform: translateX(-50%);
     width: auto;
-    max-width: calc(100vw - var(--space-300));
+    max-width: calc(100vw - 140px); /* Reserve space for right buttons: 48px button + 20px margin + 72px safety = 140px total */
     max-height: none;
     overflow-y: visible;
   }
@@ -104,11 +104,23 @@
 @media (max-width: 768px) {
   .layout__left-sidebar {
     top: var(--space-100);
-    max-width: calc(100vw - var(--space-150));
+    max-width: calc(100vw - 120px); /* Reserve space for right buttons on smaller screens: 44px button + 16px margin + 60px safety = 120px total */
   }
   
   .layout__right-sidebar {
     bottom: var(--space-100);
     max-width: calc(100vw - var(--space-150));
+  }
+}
+
+@media (max-width: 480px) {
+  .layout__left-sidebar {
+    max-width: calc(100vw - 100px); /* Even more conservative spacing on very small screens to ensure no overlap */
+  }
+}
+
+@media (max-width: 375px) {
+  .layout__left-sidebar {
+    max-width: calc(100vw - 90px); /* Ultra-conservative spacing for very small phones like iPhone SE */
   }
 } 

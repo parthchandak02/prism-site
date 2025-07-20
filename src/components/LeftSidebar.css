@@ -15,108 +15,92 @@
 .left-sidebar__filters {
   display: flex;
   flex-direction: column;
-  gap: var(--space-075);
+  gap: var(--space-100);
   width: 100%;
 }
 
-/* Individual filter pills */
+/* Individual filter pills - now clean text buttons */
 .left-sidebar__pill {
   font-family: var(--font-family-primary);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: var(--space-100) var(--space-150);
-  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: var(--space-075) var(--space-100);
   width: 100%;
   text-align: center;
   
   background: transparent;
-  border: 1px solid transparent;
+  border: none;
   outline: none;
   cursor: pointer;
   
-  transition: var(--transition-standard);
-  color: inherit;
-  opacity: 0.7;
+  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.4); /* Light gray default */
 }
 
 .left-sidebar__pill:hover {
-  opacity: 1;
-  transform: translateX(2px);
-  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
 }
 
-/* Light/Dark mode text colors */
+/* Light mode colors */
 .left-sidebar--light .left-sidebar__pill {
-  color: var(--color-text-secondary);
+  color: rgba(0, 0, 0, 0.4); /* Light gray for light mode */
 }
 
 .left-sidebar--light .left-sidebar__pill:hover {
-  color: var(--color-text-primary);
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.left-sidebar--dark .left-sidebar__pill {
-  color: var(--color-text-secondary);
-}
-
-.left-sidebar--dark .left-sidebar__pill:hover {
-  color: var(--color-text-primary);
-}
-
-/* Active pill styling */
+/* Active pill styling - rich teal color with underline */
 .left-sidebar__pill--active {
-  opacity: 1;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
+  color: #4dd0e1; /* Richer, more vibrant teal */
+  font-weight: 500;
+  position: relative;
+  text-shadow: 0 0 8px rgba(77, 208, 225, 0.5); /* Subtle glow effect */
+}
+
+.left-sidebar__pill--active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: #4dd0e1; /* Rich teal underline matching text */
+  box-shadow: 0 0 6px rgba(77, 208, 225, 0.6); /* Glowing underline */
+  transition: all 0.2s ease;
 }
 
 .left-sidebar--light .left-sidebar__pill--active {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.12);
+  color: #00acc1; /* Richer teal for light mode */
+  text-shadow: 0 0 6px rgba(0, 172, 193, 0.4); /* Subtle glow for light mode */
 }
 
-.left-sidebar--dark .left-sidebar__pill--active {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
+.left-sidebar--light .left-sidebar__pill--active::after {
+  background: #00acc1; /* Rich teal underline for light mode */
+  box-shadow: 0 0 4px rgba(0, 172, 193, 0.5); /* Lighter glow for light mode */
 }
 
-/* Scroll-based highlight styling - more subtle than active */
+/* Scroll-based highlight styling - bright white but slightly less emphasis */
 .left-sidebar__pill--scroll-highlight {
-  opacity: 0.9;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
-  transform: translateX(1px);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 450;
 }
 
 .left-sidebar--light .left-sidebar__pill--scroll-highlight {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
+  color: rgba(0, 0, 0, 0.9);
 }
 
-.left-sidebar--dark .left-sidebar__pill--scroll-highlight {
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-/* Typewriter-based highlight styling - similar to scroll but with subtle difference */
+/* Typewriter-based highlight styling - rich teal color from rainbow */
 .left-sidebar__pill--typewriter-highlight {
-  opacity: 0.95;
-  font-weight: 500;
-  border: 1px solid rgba(147, 197, 253, 0.2);
-  background: rgba(147, 197, 253, 0.05);
-  transform: translateX(1px);
-  box-shadow: 0 0 8px rgba(147, 197, 253, 0.1);
+  color: #4dd0e1; /* Rich teal highlight from rainbow beam */
+  font-weight: 450;
+  text-shadow: 0 0 6px rgba(77, 208, 225, 0.4); /* Subtle glow effect */
 }
 
 .left-sidebar--light .left-sidebar__pill--typewriter-highlight {
-  border-color: rgba(147, 197, 253, 0.25);
-  background: rgba(147, 197, 253, 0.07);
-}
-
-.left-sidebar--dark .left-sidebar__pill--typewriter-highlight {
-  border-color: rgba(147, 197, 253, 0.2);
-  background: rgba(147, 197, 253, 0.05);
+  color: #00acc1; /* Richer teal for light mode visibility */
+  text-shadow: 0 0 4px rgba(0, 172, 193, 0.3); /* Subtle glow for light mode */
 }
 
 /* ========================================
@@ -127,38 +111,86 @@
   .left-sidebar {
     flex-direction: row;
     align-items: center;
-    padding: var(--space-100) var(--space-150);
-    width: auto;
+    padding: var(--space-125) var(--space-200);
+    width: 100%;
+    height: auto;
+    min-height: 140px;
     max-width: none;
+    overflow: visible;
+    min-width: 280px;
   }
   
   .left-sidebar__filters {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--space-075);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-075) var(--space-100);
     align-items: center;
-    justify-content: center;
+    justify-items: center;
+    width: 100%;
   }
   
   .left-sidebar__pill {
-    width: auto;
+    width: 100%;
+    max-width: 120px;
     white-space: nowrap;
-    padding: var(--space-075) var(--space-100);
-    font-size: 0.75rem;
-  }
-  
-  .left-sidebar__pill:hover {
-    transform: translateY(-1px);
+    padding: var(--space-075) var(--space-050);
+    font-size: 0.85rem;
+    text-align: center;
   }
 }
 
 @media (max-width: 768px) {
   .left-sidebar {
-    padding: var(--space-075) var(--space-100);
+    padding: var(--space-100) var(--space-150);
+    min-height: 120px;
+    min-width: 250px;
+  }
+  
+  .left-sidebar__filters {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-050) var(--space-075);
   }
   
   .left-sidebar__pill {
+    padding: var(--space-050) var(--space-025);
+    font-size: 0.8rem;
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .left-sidebar {
+    padding: var(--space-075) var(--space-100);
+    min-height: 100px;
+    min-width: 200px;
+  }
+  
+  .left-sidebar__filters {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-025) var(--space-050);
+  }
+  
+  .left-sidebar__pill {
+    padding: var(--space-050) var(--space-025);
+    font-size: 0.75rem;
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 375px) {
+  .left-sidebar {
     padding: var(--space-050) var(--space-075);
+    min-width: 180px;
+  }
+  
+  .left-sidebar__filters {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-025);
+  }
+  
+  .left-sidebar__pill {
+    padding: var(--space-025) var(--space-025);
     font-size: 0.7rem;
+    max-width: 70px;
   }
 } 

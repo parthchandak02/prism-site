@@ -33,8 +33,8 @@ export default function App() {
   // Single source of truth for all mouse state
   const { isLocked, toggleLock, viewportPosition } = useGlobalMouse();
   
-  // Filter state for the timeline
-  const [activeFilter, setActiveFilter] = useState('all');
+  // Filter state for the timeline - now supports multiple selected filters (toggle-based)
+  const [activeFilters, setActiveFilters] = useState([]);
   
   // Play mode state - toggle between interactive mode and resume reading mode
   const [isPlayMode, setIsPlayMode] = useState(false);
@@ -55,22 +55,34 @@ export default function App() {
     }
   };
   
-  // Track which category section is currently visible and centermost card when in 'all' mode
-  const { visibleCategory, centermostCard } = useScrollHighlight(activeFilter);
+  // Track which category section is currently visible and centermost card when no filters are active
+  const { visibleCategory, centermostCard } = useScrollHighlight(activeFilters.length === 0 ? 'all' : 'filtered');
 
-  // Get unique categories for filter buttons
+  // Get unique categories for filter buttons (excluding 'all')
   const categories = useMemo(() => {
-    const cats = ['all', ...new Set(timelineData.map(item => item.category?.toLowerCase()).filter(Boolean))];
-    return cats;
+    return [...new Set(timelineData.map(item => item.category?.toLowerCase()).filter(Boolean))];
   }, []);
 
   // Format filters for sidebar components
   const filters = useMemo(() => {
     return categories.map(category => ({
       key: category,
-      label: category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1)
+      label: category.charAt(0).toUpperCase() + category.slice(1)
     }));
   }, [categories]);
+
+  // Toggle filter function - single-select behavior (radio button style)
+  const toggleFilter = (categoryKey) => {
+    setActiveFilters(prev => {
+      if (prev.includes(categoryKey)) {
+        // If clicking the active filter, turn it off (show all)
+        return [];
+      } else {
+        // Turn off all others and activate only this one
+        return [categoryKey];
+      }
+    });
+  };
 
   // Sync html and body background with light mode to prevent edge bleeding
   useEffect(() => {
@@ -87,9 +99,9 @@ export default function App() {
         leftSidebar={!isPlayMode && categories.length > 1 ? (
           <LeftSidebar
             filters={filters}
-            activeFilter={activeFilter}
+            activeFilters={activeFilters}
             visibleCategory={visibleCategory}
-            onFilterChange={setActiveFilter}
+            onFilterToggle={toggleFilter}
             lightMode={lightMode}
           />
         ) : null}
@@ -124,7 +136,7 @@ export default function App() {
                 <GlassNavigation lightMode={lightMode} />
                 <Timeline 
                  data={timelineData}
-                 activeFilter={activeFilter}
+                 activeFilters={activeFilters}
                  showFilters={false} // Filters are now handled by LeftSidebar
                  lightMode={lightMode}
                  className="timeline-in-scroll"
