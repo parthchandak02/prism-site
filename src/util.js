@@ -28,11 +28,13 @@ export const balanceSidebarWidths = () => {
   const rightSidebar = document.querySelector('.layout__right-sidebar');
   
   if (!leftSidebar) {
+    // eslint-disable-next-line no-console
     console.warn('🚫 Sidebar balancing: Left sidebar not found');
     return;
   }
   
   if (!rightSidebar) {
+    // eslint-disable-next-line no-console
     console.warn('🚫 Sidebar balancing: Right sidebar not found');
     return;
   }
@@ -40,6 +42,7 @@ export const balanceSidebarWidths = () => {
   const leftSidebarWidth = leftSidebar.getBoundingClientRect().width;
   document.documentElement.style.setProperty('--left-sidebar-width', `${leftSidebarWidth}px`);
   
+  // eslint-disable-next-line no-console
   console.log(`✅ Sidebar balancing: Left=${leftSidebarWidth}px, CSS variable updated`);
 };
 
@@ -56,6 +59,7 @@ export const setupSidebarBalancing = () => {
     const rightSidebar = document.querySelector('.layout__right-sidebar');
     
     if (!leftSidebar || !rightSidebar) {
+      // eslint-disable-next-line no-console
       console.log('🔄 Retrying sidebar balancing in 100ms...');
       setTimeout(tryBalance, 100);
     }
@@ -173,20 +177,27 @@ if (typeof window !== 'undefined') {
     const leftSidebar = document.querySelector('.layout__left-sidebar');
     const rightSidebar = document.querySelector('.layout__right-sidebar');
     
+    // eslint-disable-next-line no-console
     console.log('🔍 Sidebar Debug Info:');
+    // eslint-disable-next-line no-console
     console.log(`  CSS Variable --left-sidebar-width: ${cssVar || 'NOT SET'}`);
+    // eslint-disable-next-line no-console
     console.log(`  Left sidebar element: ${leftSidebar ? 'FOUND' : 'NOT FOUND'}`);
+    // eslint-disable-next-line no-console
     console.log(`  Right sidebar element: ${rightSidebar ? 'FOUND' : 'NOT FOUND'}`);
     
     if (leftSidebar) {
       const leftRect = leftSidebar.getBoundingClientRect();
+      // eslint-disable-next-line no-console
       console.log(`  Left sidebar actual width: ${leftRect.width}px`);
     }
     
     if (rightSidebar) {
       const rightRect = rightSidebar.getBoundingClientRect();
       const computedStyle = getComputedStyle(rightSidebar);
+      // eslint-disable-next-line no-console
       console.log(`  Right sidebar actual width: ${rightRect.width}px`);
+      // eslint-disable-next-line no-console
       console.log(`  Right sidebar margin-left: ${computedStyle.marginLeft}`);
     }
   };
