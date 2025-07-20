@@ -9,7 +9,11 @@ export const timelineData = [
     date: "February 2022 - Present",
     category: "experience",
     location: "Zoox, Foster City, CA",
-    description: "Created a UX focused robot platform and creative lab for designing 20+ visual and sonic experience projects. Reduced design iteration time from weeks to 1-2 days (90% reduction). Tested 40+ digital and mechanical designs on autonomous vehicle platforms."
+    description: "Created a UX focused robot platform and creative lab for designing 20+ visual and sonic experience projects. Reduced design iteration time from weeks to 1-2 days (90% reduction). Tested 40+ digital and mechanical designs on autonomous vehicle platforms.",
+    typewriterTitle: "Creative Technologist",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"],
+    isTypewriterPrimary: true
   },
 
   // === RECENT ACHIEVEMENTS 2024-2025 ===
@@ -19,7 +23,11 @@ export const timelineData = [
     date: "June 2024",
     category: "patent",
     location: "Application #1/###,573; Ref. 1246-02850US1",
-    description: "Innovative patent pending for audio prioritization technology, demonstrating cutting-edge research in autonomous vehicle audio systems and user experience optimization."
+    description: "Innovative patent pending for audio prioritization technology, demonstrating cutting-edge research in autonomous vehicle audio systems and user experience optimization.",
+    typewriterTitle: "Patent Inventor",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Python", "C++", "Unity"],
+    isTypewriterPrimary: true
   },
   {
     id: 3,
@@ -103,7 +111,11 @@ export const timelineData = [
     date: "2025",
     category: "research",
     volume: "IJFMR, Volume 7, Issue 1",
-    description: "Systematic exploration of ethical frameworks and governance challenges in AI health assistants, focusing on user experience and regulatory compliance."
+    description: "Systematic exploration of ethical frameworks and governance challenges in AI health assistants, focusing on user experience and regulatory compliance.",
+    typewriterTitle: "Research Engineer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["MATLAB", "Python", "C++"],
+    isTypewriterPrimary: false
   },
   {
     id: 13,
@@ -121,7 +133,11 @@ export const timelineData = [
     date: "2024",
     category: "projects",
     description: "Comprehensive research platform leveraging large language models for automated research assistance and knowledge synthesis. Features AI-powered literature review, data analysis, and research workflow automation.",
-    url: "https://github.com/parthchandak02/research-assistant"
+    url: "https://github.com/parthchandak02/research-assistant",
+    typewriterTitle: "Full Stack Developer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Python", "JavaScript", "React", "Database"],
+    isTypewriterPrimary: true
   },
   {
     id: 15,
@@ -129,7 +145,11 @@ export const timelineData = [
     date: "2024",
     category: "projects",
     description: "Framework for integrating AI capabilities into Google Workspace applications using Apps Script and Gemini API. Enables automated document processing, intelligent data analysis, and workflow optimization.",
-    url: "https://github.com/parthchandak02/gapps-script-gemini"
+    url: "https://github.com/parthchandak02/gapps-script-gemini",
+    typewriterTitle: "Full Stack Developer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Python", "JavaScript", "React", "Database"],
+    isTypewriterPrimary: false
   },
   {
     id: 16,
@@ -137,7 +157,11 @@ export const timelineData = [
     date: "2024",
     category: "projects",
     description: "Comprehensive REST API interface for Interactive Brokers platform enabling automated trading, portfolio management, and real-time market data integration.",
-    url: "https://github.com/parthchandak02/ibkr-ibind-rest-api"
+    url: "https://github.com/parthchandak02/ibkr-ibind-rest-api",
+    typewriterTitle: "Full Stack Developer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Python", "JavaScript", "React", "Database"],
+    isTypewriterPrimary: false
   },
   {
     id: 17,
@@ -199,7 +223,11 @@ export const timelineData = [
     category: "education",
     location: "UC Berkeley Extension",
     description: "Comprehensive course in user experience design principles, methodologies, and practical application in product development. Achieved exceptional academic performance.",
-    volume: "Grade: 97.6/100"
+    volume: "Grade: 97.6/100",
+    typewriterTitle: "Creative Technologist",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"],
+    isTypewriterPrimary: false
   },
 
   // === MAJOR AWARDS & ACHIEVEMENTS ===
@@ -251,7 +279,11 @@ export const timelineData = [
     date: "2018",
     category: "projects",
     location: "Boeing Collaboration, WSU",
-    description: "Served as Team Technical Lead and Liaison. Developed innovative damping ratio analysis tool using advanced mathematical techniques for piloted aircraft systems, contributing to aerospace engineering research."
+    description: "Served as Team Technical Lead and Liaison. Developed innovative damping ratio analysis tool using advanced mathematical techniques for piloted aircraft systems, contributing to aerospace engineering research.",
+    typewriterTitle: "Research Engineer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["MATLAB", "Python", "C++"],
+    isTypewriterPrimary: true
   },
   {
     id: 30,
@@ -403,36 +435,20 @@ export const timelineData = [
   }
 ];
 
-// Typewriter data with direct references to timeline cards by ID
-export const typewriterData = [
-  {
-    prefix: 'I am a',
-    title: 'Creative Technologist',
-    navigationIcons: ['Figma', 'Blender', 'Unity', 'ProtoPie'],
-    timelineCardIds: [1, 23], // Creative Technologist (User Experience Prototyping), UC Berkeley Extension
-    sidebarCategories: ['experience']
-  },
-  {
-    prefix: 'I am a',
-    title: 'Full Stack Developer',
-    navigationIcons: ['Python', 'JavaScript', 'React', 'Database'],
-    timelineCardIds: [14, 15, 16], // LLM Assisted Research Platform, Google Apps Script, Trading API
-    sidebarCategories: ['projects']
-  },
-  {
-    prefix: 'I am a',
-    title: 'Research Engineer',
-    navigationIcons: ['MATLAB', 'Python', 'C++'],
-    timelineCardIds: [29, 12], // Boeing: Damping Ratios, Ethical AI Health Assistants
-    sidebarCategories: ['research']
-  },
-  {
-    prefix: 'I am a',
-    title: 'Patent Inventor',
-    navigationIcons: ['Python', 'C++', 'Unity'],
-    timelineCardIds: [2], // Audio Prioritization Patent (Pending)
-    sidebarCategories: ['patent']
-  }
-];
+// Helper function to get unique typewriter titles from timeline data
+export const getTypewriterData = () => {
+  const typewriterCards = timelineData.filter(item => item.typewriterTitle);
+  const uniqueTitles = [...new Set(typewriterCards.map(item => item.typewriterTitle))];
+  
+  return uniqueTitles.map(title => {
+    const card = typewriterCards.find(item => item.typewriterTitle === title);
+    return {
+      prefix: card.typewriterPrefix,
+      title: card.typewriterTitle,
+      navigationIcons: card.navigationIcons,
+      sidebarCategories: [card.category]
+    };
+  });
+};
 
 export default timelineData; 

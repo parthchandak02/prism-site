@@ -1,34 +1,47 @@
 import { createContext, useContext, useState } from 'react';
-import timelineData, { typewriterData } from '../data/timelineData';
+import timelineData, { getTypewriterData } from '../data/timelineData';
 
 /**
  * =============================================================================
- * TYPEWRITER HIGHLIGHT SYSTEM - SINGLE SOURCE OF TRUTH
+ * TYPEWRITER HIGHLIGHT SYSTEM - FULLY INTEGRATED WITH TIMELINE DATA
  * =============================================================================
  * 
- * ✅ All data now lives in timelineData.js - single source of truth!
- * ✅ Typewriter data directly references timeline cards by ID
- * ✅ No more string matching or sync issues
- * ✅ Cleaner architecture with data separated from logic
+ * ✅ Typewriter data is now embedded directly in timeline cards
+ * ✅ No more separate typewriter data structure
+ * ✅ Single source of truth in timelineData.js
+ * ✅ Cleaner architecture with no duplication
  */
 
-// Helper function to resolve timeline card IDs to card titles
-const resolveTimelineCards = (cardIds) => {
-  return cardIds.map(id => {
-    const card = timelineData.find(item => item.id === id);
-    return card ? card.title : `Unknown Card ${id}`;
+// Create highlight mappings from embedded typewriter data in timeline cards
+const createHighlightMappings = () => {
+  const mappings = {};
+  
+  // Get all timeline cards that have typewriter data
+  const typewriterCards = timelineData.filter(item => item.typewriterTitle);
+  
+  // Group cards by typewriter title
+  const cardsByTitle = typewriterCards.reduce((acc, card) => {
+    const title = card.typewriterTitle;
+    if (!acc[title]) {
+      acc[title] = [];
+    }
+    acc[title].push(card);
+    return acc;
+  }, {});
+
+  // Create mappings for each typewriter title
+  Object.entries(cardsByTitle).forEach(([title, cards]) => {
+    mappings[title] = {
+      navigationIcons: cards[0].navigationIcons || [],
+      timelineCards: cards.map(card => card.title),
+      sidebarCategories: [...new Set(cards.map(card => card.category))]
+    };
   });
+
+  return mappings;
 };
 
-// Create legacy highlight mappings from timelineData for backward compatibility
-const highlightMappings = typewriterData.reduce((acc, item) => {
-  acc[item.title] = {
-    navigationIcons: item.navigationIcons,
-    timelineCards: resolveTimelineCards(item.timelineCardIds),
-    sidebarCategories: item.sidebarCategories
-  };
-  return acc;
-}, {});
+const highlightMappings = createHighlightMappings();
 
 // Create the context
 const TypewriterHighlightContext = createContext();
@@ -56,12 +69,12 @@ export const TypewriterHighlightProvider = ({ children }) => {
     setIsUserActive(active);
   };
 
-  // Get typewriter data for the UITypewriter component (imported from timelineData.js)
-  const getTypewriterData = () => typewriterData;
+  // Get typewriter data for the UITypewriter component (now using embedded data)
+  const getTypewriterDataFromContext = () => getTypewriterData();
   
-  // Get full sentences for typing (generated from imported data)
+  // Get full sentences for typing (generated from embedded data)
   const getFullSentences = () => {
-    return typewriterData.map(item => `${item.prefix} ${item.title}`);
+    return getTypewriterData().map(item => `${item.prefix} ${item.title}`);
   };
 
   const value = {
@@ -71,7 +84,7 @@ export const TypewriterHighlightProvider = ({ children }) => {
     isUserActive,
     setUserActivity,
     highlightMappings,
-    getTypewriterData,
+    getTypewriterData: getTypewriterDataFromContext,
     getFullSentences
   };
 

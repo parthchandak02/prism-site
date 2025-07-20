@@ -253,6 +253,82 @@
   opacity: 1;
 }
 
+/* Navigation Icons */
+.timeline-card__navigation-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0 0;
+  padding: 8px 0 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure navigation icons are completely hidden when collapsed */
+.timeline-card.collapsed .timeline-card__navigation-icons {
+  display: none; /* Force hide in collapsed state */
+}
+
+.timeline-card.expanded .timeline-card__navigation-icons {
+  display: flex; /* Show in expanded state */
+}
+
+.timeline-card__nav-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.timeline-card__nav-icon:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.timeline-card__nav-icon--highlighted {
+  background: rgba(77, 208, 225, 0.2);
+  border-color: rgba(77, 208, 225, 0.4);
+  color: #4dd0e1;
+  box-shadow: 0 0 12px rgba(77, 208, 225, 0.3);
+}
+
+.timeline-card__nav-icon-text {
+  white-space: nowrap;
+  font-family: var(--font-family-primary);
+}
+
+/* Light mode styling for navigation icons */
+.timeline-card--light .timeline-card__navigation-icons {
+  border-top-color: rgba(0, 0, 0, 0.1);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.timeline-card--light .timeline-card__nav-icon {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.timeline-card--light .timeline-card__nav-icon:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.timeline-card--light .timeline-card__nav-icon--highlighted {
+  background: rgba(0, 172, 193, 0.15);
+  border-color: rgba(0, 172, 193, 0.3);
+  color: #00acc1;
+  box-shadow: 0 0 8px rgba(0, 172, 193, 0.2);
+}
+
 /* Description */
 .timeline-card__description {
   font-family: var(--font-family-primary);

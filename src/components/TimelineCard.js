@@ -1,6 +1,37 @@
 import { useState, useEffect } from 'react';
-import { ExternalLink, FileText, MapPin } from 'lucide-react';
+import { 
+  ExternalLink, FileText, MapPin,
+  // Navigation icons from the old GlassNavigation
+  Code, Database, GitBranch, Globe, Cpu, Terminal, Settings, Zap,
+  CircuitBoard, Microchip, Figma, Palette, Layers, Box,
+  Printer, PenTool, Gamepad2, Trello, Mail, Monitor
+} from 'lucide-react';
 import './TimelineCard.css';
+
+// Icon mapping for navigation icons
+const iconMap = {
+  'Python': Code,
+  'JavaScript': Terminal,
+  'React': Zap,
+  'Database': Database,
+  'C++': Settings,
+  'MATLAB': Cpu,
+  'Figma': Figma,
+  'Blender': Layers,
+  'Unity': Gamepad2,
+  'ProtoPie': Palette,
+  'Linux': Globe,
+  'Git': GitBranch,
+  'Arduino': CircuitBoard,
+  'Raspberry Pi': Microchip,
+  'SolidWorks': PenTool,
+  'Fusion 360': Box,
+  '3D Printing': Printer,
+  'Miro': Monitor,
+  'JIRA': Trello,
+  'G-Suite': Mail,
+  'Confluence': FileText
+};
 
 const TimelineCard = ({ 
   title,
@@ -10,11 +41,12 @@ const TimelineCard = ({
   location,
   volume,
   url, // New URL field for external links
+  navigationIcons = [], // Navigation icons for this card
+  isHighlighted = false,
   defaultExpanded = false,
   autoExpanded = false, // Auto-expansion controlled by scroll position
   lightMode = false,
   className = '',
-  isHighlighted = false,
   ...props 
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
@@ -94,11 +126,27 @@ const TimelineCard = ({
             </div>
           )}
           
-
-          
           {/* Description */}
           {description && (
             <p className="timeline-card__description">{description}</p>
+          )}
+          
+          {/* Navigation Icons - at the bottom */}
+          {navigationIcons && navigationIcons.length > 0 && (
+            <div className="timeline-card__navigation-icons">
+              {navigationIcons.map((iconName, index) => {
+                const IconComponent = iconMap[iconName];
+                return IconComponent ? (
+                  <div 
+                    key={index}
+                    className={`timeline-card__nav-icon ${isHighlighted ? 'timeline-card__nav-icon--highlighted' : ''}`}
+                  >
+                    <IconComponent size={16} />
+                    <span className="timeline-card__nav-icon-text">{iconName}</span>
+                  </div>
+                ) : null;
+              })}
+            </div>
           )}
         </div>
       </div>

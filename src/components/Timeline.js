@@ -75,10 +75,11 @@ const Timeline = ({
                   location={item.location}
                   volume={item.volume}
                   url={item.url}
+                  navigationIcons={item.navigationIcons || []}
                   lightMode={lightMode}
                   className="timeline__card"
                   isHighlighted={highlights.timelineCards.includes(item.title) || item.title === centermostCard}
-                  autoExpanded={activeFilters.length === 0 && item.title === centermostCard}
+                  autoExpanded={(activeFilters.length === 0 && item.title === centermostCard) || (highlights.timelineCards.includes(item.title) && item.isTypewriterPrimary)}
                 />
               </div>
             ))

@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from 'react';
 import Layout from './components/Layout';
 import Canvas3D from './components/Canvas3D';
-import GlassNavigation from './components/GlassNavigation';
+// GlassNavigation removed - replaced with white space placeholder
 import LightToggle from './components/LightToggle';
 import LockToggle from './components/LockToggle';
 import PlayModeToggle from './components/PlayModeToggle';
@@ -133,7 +133,15 @@ export default function App() {
             {/* Resume content - Hidden in play mode */}
             {!isPlayMode && (
               <>
-                <GlassNavigation lightMode={lightMode} />
+                {/* Empty space container to showcase prism/rainbow effects */}
+                <div className="navigation-placeholder" style={{
+                  width: '100%',
+                  height: '400px',
+                  minHeight: '35vh',
+                  marginBottom: '3rem'
+                }}>
+                  {/* Completely empty - just space for prism effects */}
+                </div>
                 <Timeline 
                  data={timelineData}
                  activeFilters={activeFilters}
