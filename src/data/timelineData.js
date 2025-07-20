@@ -280,7 +280,7 @@ export const timelineData = [
     category: "projects",
     location: "Boeing Collaboration, WSU",
     description: "Served as Team Technical Lead and Liaison. Developed innovative damping ratio analysis tool using advanced mathematical techniques for piloted aircraft systems, contributing to aerospace engineering research.",
-    typewriterTitle: "Research Engineer",
+    typewriterTitle: "Programmer",
     typewriterPrefix: "I am a",
     navigationIcons: ["MATLAB", "Python", "C++"],
     isTypewriterPrimary: true

@@ -5,20 +5,10 @@ import './UITypewriter.css';
 
 const UITypewriter = ({ lightMode }) => {
   const { updateCurrentPhrase, getTypewriterData, getFullSentences } = useTypewriterHighlight();
-  const [showCursor, setShowCursor] = useState(true);
   
   // Get professional titles and sentences from the centralized context
   const professionalTitles = getTypewriterData();
   const fullSentences = getFullSentences();
-
-  // Cursor blinking effect for static typewriter
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 530);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="ui-typewriter-container">
@@ -30,14 +20,7 @@ const UITypewriter = ({ lightMode }) => {
           startDelay={500}
           showCursor={false}
           loop={false}
-          onComplete={() => {
-            // Once the static typewriter is done, we can enable the cursor
-            setShowCursor(true);
-          }}
         />
-        <span className={`ui-typewriter__cursor ${showCursor ? 'ui-typewriter__cursor--visible' : ''}`}>
-          |
-        </span>
       </div>
       
       {/* Cycling professional titles typewriter */}

@@ -158,23 +158,68 @@
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
-/* Special styling for cycling typewriter title text - rich teal color from rainbow */
+/* Rainbow spectrum gradient effect matching the 3D prism - full ROYGBIV spectrum */
 .ui-typewriter-cycling.ui-typewriter--dark {
-  color: #4dd0e1; /* Richer, more vibrant teal */
-  text-shadow: 
-    0 1px 2px rgba(0, 0, 0, 0.5),
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    0 0 12px rgba(77, 208, 225, 0.6), /* Brighter teal glow */
-    0 0 24px rgba(77, 208, 225, 0.3), /* Extended bloom effect */
-    0 0 36px rgba(77, 208, 225, 0.1); /* Outer bloom */
+  background: linear-gradient(
+    135deg,
+    #ff6b6b 0%,     /* Red */
+    #ffa726 14%,    /* Orange */
+    #ffeb3b 28%,    /* Yellow */
+    #66bb6a 42%,    /* Green */
+    #42a5f5 57%,    /* Blue */
+    #5c6bc0 71%,    /* Indigo */
+    #ab47bc 85%,    /* Violet */
+    #ff6b6b 100%    /* Back to Red for seamless loop */
+  );
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: rainbowShimmer 4s ease-in-out infinite;
+  text-shadow: none; /* Remove cheap glow effect */
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1)); /* Subtle white depth for rainbow */
 }
 
 .ui-typewriter-cycling.ui-typewriter--light {
-  color: #00acc1; /* Richer teal for light mode */
-  text-shadow: 
-    0 1px 2px rgba(255, 255, 255, 0.5),
-    0 2px 4px rgba(255, 255, 255, 0.3),
-    0 0 8px rgba(0, 172, 193, 0.4); /* Subtle glow for light mode */
+  background: linear-gradient(
+    135deg,
+    #e53e3e 0%,     /* Darker Red for light mode */
+    #dd6b20 14%,    /* Darker Orange */
+    #d69e2e 28%,    /* Darker Yellow */
+    #38a169 42%,    /* Darker Green */
+    #3182ce 57%,    /* Darker Blue */
+    #553c9a 71%,    /* Darker Indigo */
+    #805ad5 85%,    /* Darker Violet */
+    #e53e3e 100%    /* Back to Red for seamless loop */
+  );
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: rainbowShimmer 4s ease-in-out infinite;
+  text-shadow: none;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)); /* Subtle dark shadow for light mode */
+}
+
+/* Rainbow spectrum animation - flows full ROYGBIV through text */
+@keyframes rainbowShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 200% 50%;
+  }
+  75% {
+    background-position: 300% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
 }
 
 /* Mobile responsive adjustments */

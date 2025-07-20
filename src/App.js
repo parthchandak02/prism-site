@@ -36,8 +36,8 @@ export default function App() {
   // Filter state for the timeline - now supports multiple selected filters (toggle-based)
   const [activeFilters, setActiveFilters] = useState([]);
   
-  // Play mode state - toggle between interactive mode and resume reading mode
-  const [isPlayMode, setIsPlayMode] = useState(false);
+  // Play mode state - toggle between interactive mode and resume reading mode (default: true for immediate fun experience)
+  const [isPlayMode, setIsPlayMode] = useState(true);
   const togglePlayMode = () => {
     const newPlayMode = !isPlayMode;
     setIsPlayMode(newPlayMode);
