@@ -5,6 +5,9 @@
   height: 100vh;
   overflow: hidden;
   transition: background-color 0.3s ease;
+  
+  /* CSS Custom Property for dynamic sidebar balancing */
+  --left-sidebar-width: 117px; /* Will be updated by JavaScript */
 }
 
 .layout--dark {
@@ -28,7 +31,7 @@
 /* Sidebar containers for desktop layout */
 .layout__left-sidebar {
   position: fixed;
-  left: calc(var(--space-150) + 20px); /* Move left sidebar further from center to balance visual weight */
+  left: var(--space-150); /* Equal spacing from left edge */
   top: 50%;
   transform: translateY(-50%);
   z-index: 30;
@@ -46,7 +49,7 @@
 
 .layout__right-sidebar {
   position: fixed;
-  right: var(--space-150); /* Keep right sidebar at normal distance since it's smaller */
+  right: var(--space-150); /* Back to original equal spacing from right edge */
   top: 50%;
   transform: translateY(-50%);
   z-index: 30;
@@ -62,14 +65,11 @@
   display: none;
 }
 
-/* Intermediate viewport adjustment - addresses stark contrast in square-ish viewports */
+/* Intermediate viewport adjustment - add extra margin for better balance */
 @media (min-width: 1025px) and (max-width: 1300px) {
-  .layout__left-sidebar {
-    left: calc(var(--space-150) + 40px); /* More aggressive offset for intermediate viewports */
-  }
-  
-  .layout__right-sidebar {
-    right: calc(var(--space-150) - 10px); /* Bring right sidebar slightly closer */
+  .right-sidebar {
+    /* Add extra margin to the dynamic width for intermediate viewports */
+    margin-left: calc(var(--left-sidebar-width, 117px) + 10px);
   }
 }
 

@@ -313,7 +313,7 @@ p, span, div, button, input, textarea {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* Back to perfect center for glass navigation */
   z-index: 10;
   height: 100vh;
   overflow-y: auto;
@@ -353,7 +353,7 @@ p, span, div, button, input, textarea {
   .main-content-scroll {
     left: var(--space-150); /* Reset offset for mobile - sidebars move to top/bottom */
     right: var(--space-150);
-    transform: none;
+    transform: none; /* Reset transform on mobile - standard positioning */
     width: calc(100% - var(--space-300));
     max-width: none;
     padding: var(--space-800) var(--space-200) var(--space-1000) var(--space-200);

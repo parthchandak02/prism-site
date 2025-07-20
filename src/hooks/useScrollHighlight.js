@@ -1,18 +1,21 @@
 import { useState, useEffect, useCallback } from 'react';
 
 /**
- * Custom hook to track which timeline category section is currently visible
- * and automatically highlight the corresponding sidebar filter
+ * Custom hook to track the centermost timeline card during scroll
+ * and highlight both the card and corresponding sidebar filter
  */
 const useScrollHighlight = (activeFilter) => {
   const [visibleCategory, setVisibleCategory] = useState('all');
+  const [centermostCard, setCentermostCard] = useState(null);
+  const [isThrottled, setIsThrottled] = useState(false);
 
-  const updateVisibleCategory = useCallback(() => {
-    // Only track when in 'all' mode
-    if (activeFilter !== 'all') {
-      return;
-    }
-
+  const updateCentermostCard = useCallback(() => {
+    // Throttle updates for smoother auto-expansion
+    if (isThrottled) return;
+    
+    setIsThrottled(true);
+    setTimeout(() => setIsThrottled(false), 100); // 100ms throttle for smoothness
+    
     const timelineItems = document.querySelectorAll('.timeline__item[data-category]');
     if (timelineItems.length === 0) {
       return;
@@ -24,54 +27,47 @@ const useScrollHighlight = (activeFilter) => {
     }
 
     const containerRect = scrollContainer.getBoundingClientRect();
-    const viewportTop = containerRect.top;
-    const viewportBottom = containerRect.bottom;
-    const viewportCenter = viewportTop + containerRect.height * 0.3; // 30% from top
+    const viewportCenter = containerRect.top + containerRect.height * 0.5; // True center of viewport
 
-    let bestCategory = 'all';
-    let bestScore = 0;
+    let centermostItem = null;
+    let smallestDistance = Infinity;
+    let centermostCategory = 'all';
 
-    // Check each timeline item to see which category is most prominent
-    timelineItems.forEach((item) => {
+    // Find the timeline item whose center is closest to the viewport center
+    timelineItems.forEach((item, index) => {
       const rect = item.getBoundingClientRect();
-      const category = item.getAttribute('data-category');
-      
-      if (!category) return;
-
-      // Calculate how much of this item is visible in the viewport
-      const visibleTop = Math.max(rect.top, viewportTop);
-      const visibleBottom = Math.min(rect.bottom, viewportBottom);
-      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-      const totalHeight = rect.bottom - rect.top;
-      const visibilityRatio = visibleHeight / totalHeight;
-
-      // Give extra weight to items near the center
-      const itemCenter = rect.top + rect.height / 2;
+      const itemCenter = rect.top + rect.height * 0.5;
       const distanceFromCenter = Math.abs(itemCenter - viewportCenter);
-      const centerWeight = Math.max(0, 1 - (distanceFromCenter / containerRect.height));
 
-      const score = visibilityRatio * (0.7 + 0.3 * centerWeight);
-
-      if (score > bestScore) {
-        bestScore = score;
-        bestCategory = category;
+      // Only consider items that are at least partially visible
+      const isVisible = rect.bottom > containerRect.top && rect.top < containerRect.bottom;
+      
+      if (isVisible && distanceFromCenter < smallestDistance) {
+        smallestDistance = distanceFromCenter;
+        centermostItem = item;
+        centermostCategory = item.getAttribute('data-category') || 'all';
       }
     });
 
-    // If we're at the very top, default to first category
-    if (scrollContainer.scrollTop < 50 && timelineItems.length > 0) {
-      const firstCategory = timelineItems[0].getAttribute('data-category');
-      if (firstCategory) {
-        bestCategory = firstCategory;
+    // Get the title of the centermost card for highlighting
+    let centermostTitle = null;
+    if (centermostItem) {
+      const titleElement = centermostItem.querySelector('.timeline-card__title');
+      if (titleElement) {
+        centermostTitle = titleElement.textContent;
       }
     }
-    setVisibleCategory(bestCategory);
-  }, [activeFilter]);
+
+    // Update both states
+    setCentermostCard(centermostTitle);
+    setVisibleCategory(centermostCategory);
+  }, [isThrottled]);
 
   useEffect(() => {
-    // Reset to 'all' when not in all mode
+    // Reset when not in 'all' mode
     if (activeFilter !== 'all') {
-      setVisibleCategory('all');
+      setVisibleCategory(activeFilter);
+      setCentermostCard(null);
       return;
     }
 
@@ -82,14 +78,14 @@ const useScrollHighlight = (activeFilter) => {
         return;
       }
       
-      // Initial check
-      updateVisibleCategory();
-
+      // NO initial check - only respond to actual scroll events
+      // This prevents the first card from being auto-expanded on page load
+      
       // Add scroll listener
-      scrollContainer.addEventListener('scroll', updateVisibleCategory);
+      scrollContainer.addEventListener('scroll', updateCentermostCard);
       
       // Add resize listener in case viewport changes
-      window.addEventListener('resize', updateVisibleCategory);
+      window.addEventListener('resize', updateCentermostCard);
     }, 100);
 
     // Cleanup
@@ -97,13 +93,16 @@ const useScrollHighlight = (activeFilter) => {
       clearTimeout(timeout);
       const scrollContainer = document.querySelector('.main-content-scroll');
       if (scrollContainer) {
-        scrollContainer.removeEventListener('scroll', updateVisibleCategory);
+        scrollContainer.removeEventListener('scroll', updateCentermostCard);
       }
-      window.removeEventListener('resize', updateVisibleCategory);
+      window.removeEventListener('resize', updateCentermostCard);
     };
-  }, [activeFilter, updateVisibleCategory]);
+  }, [activeFilter, updateCentermostCard]);
 
-  return visibleCategory;
+  return {
+    visibleCategory,
+    centermostCard
+  };
 };
 
 export default useScrollHighlight; 

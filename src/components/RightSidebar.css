@@ -5,11 +5,27 @@
   height: 100%;
   border-radius: var(--radius-lg);
   padding: var(--space-075); /* Further reduced padding for tighter fit */
+  /* Remove artificial margin - let's try a different approach */
+  margin-left: 0;
   transition: var(--transition-standard);
   pointer-events: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Remove artificial margin on mobile devices */
+@media (max-width: 1024px) {
+  .right-sidebar {
+    margin-left: 0; /* Reset to no margin on mobile */
+  }
+}
+
+/* Also remove margin when sidebars stack on mobile */
+@media (max-width: 1024px) {
+  .layout {
+    --left-sidebar-width: 0px; /* Reset the CSS custom property on mobile */
+  }
 }
 
 /* Social links container */

@@ -188,7 +188,7 @@ export const timelineData = [
     date: "2024",
     category: "projects",
     description: "Comprehensive research platform leveraging large language models for automated research assistance and knowledge synthesis. Features AI-powered literature review, data analysis, and research workflow automation.",
-    location: "github.com/parthchandak02/research-assistant"
+    url: "https://github.com/parthchandak02/research-assistant"
   },
   {
     id: 15,
@@ -197,7 +197,7 @@ export const timelineData = [
     date: "2024",
     category: "projects",
     description: "Framework for integrating AI capabilities into Google Workspace applications using Apps Script and Gemini API. Enables automated document processing, intelligent data analysis, and workflow optimization.",
-    location: "github.com/parthchandak02/gapps-script-gemini"
+    url: "https://github.com/parthchandak02/gapps-script-gemini"
   },
   {
     id: 16,
@@ -206,7 +206,7 @@ export const timelineData = [
     date: "2024",
     category: "projects",
     description: "Comprehensive REST API interface for Interactive Brokers platform enabling automated trading, portfolio management, and real-time market data integration.",
-    location: "github.com/parthchandak02/ibkr-ibind-rest-api"
+    url: "https://github.com/parthchandak02/ibkr-ibind-rest-api"
   },
   {
     id: 17,
@@ -215,7 +215,7 @@ export const timelineData = [
     date: "2024",
     category: "projects",
     description: "Advanced productivity system combining intelligent calendar management with context-aware alarm systems for optimized time management and task completion.",
-    location: "github.com/parthchandak02/cal-tag-app"
+    url: "https://github.com/parthchandak02/cal-tag-app"
   },
 
   // === PREVIOUS WORK EXPERIENCE ===

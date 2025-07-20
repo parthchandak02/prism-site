@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
+import { setupSidebarBalancing } from '../util';
 import './Layout.css';
 
 const Layout = ({ children, darkMode = false, leftSidebar, rightSidebar }) => {
+  // Set up automatic sidebar width balancing
+  useEffect(() => {
+    const cleanup = setupSidebarBalancing();
+    return cleanup;
+  }, [leftSidebar]); // Re-run when left sidebar content changes
   return (
     <div className={`layout ${darkMode ? 'layout--dark' : 'layout--light'}`}>
       {/* Left sidebar container */}

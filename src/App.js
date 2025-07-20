@@ -35,8 +35,8 @@ export default function App() {
   // Filter state for the timeline
   const [activeFilter, setActiveFilter] = useState('all');
   
-  // Track which category section is currently visible when in 'all' mode
-  const visibleCategory = useScrollHighlight(activeFilter);
+  // Track which category section is currently visible and centermost card when in 'all' mode
+  const { visibleCategory, centermostCard } = useScrollHighlight(activeFilter);
 
   // Get unique categories for filter buttons
   const categories = useMemo(() => {
@@ -103,6 +103,7 @@ export default function App() {
                showFilters={false} // Filters are now handled by LeftSidebar
                lightMode={lightMode}
                className="timeline-in-scroll"
+               centermostCard={centermostCard}
              />
           </div>
         </div>
