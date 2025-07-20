@@ -33,7 +33,11 @@ const useScrollHighlight = (activeFilter) => {
     let smallestDistance = Infinity;
     let centermostCategory = 'all';
 
+    // Calculate max possible distance for normalization
+    const maxDistance = containerRect.height * 0.75; // Use 75% of viewport height as max
+
     // Find the timeline item whose center is closest to the viewport center
+    // AND apply dynamic blur/opacity to all visible items
     timelineItems.forEach((item, index) => {
       const rect = item.getBoundingClientRect();
       const itemCenter = rect.top + rect.height * 0.5;
@@ -42,10 +46,26 @@ const useScrollHighlight = (activeFilter) => {
       // Only consider items that are at least partially visible
       const isVisible = rect.bottom > containerRect.top && rect.top < containerRect.bottom;
       
-      if (isVisible && distanceFromCenter < smallestDistance) {
-        smallestDistance = distanceFromCenter;
-        centermostItem = item;
-        centermostCategory = item.getAttribute('data-category') || 'all';
+      if (isVisible) {
+        // Find centermost for highlighting
+        if (distanceFromCenter < smallestDistance) {
+          smallestDistance = distanceFromCenter;
+          centermostItem = item;
+          centermostCategory = item.getAttribute('data-category') || 'all';
+        }
+
+        // Apply dynamic blur and opacity based on distance
+        const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1); // 0-1 scale
+        const blurIntensity = Math.max(0.3, 1 - normalizedDistance); // 0.3 to 1.0
+        const opacityValue = Math.max(0.4, 1 - normalizedDistance * 0.6); // 0.4 to 1.0
+
+        // Find the timeline card within this item
+        const timelineCard = item.querySelector('.timeline-card');
+        if (timelineCard) {
+          // Set CSS custom properties for dynamic styling
+          timelineCard.style.setProperty('--dynamic-blur-intensity', blurIntensity);
+          timelineCard.style.setProperty('--dynamic-opacity', opacityValue);
+        }
       }
     });
 

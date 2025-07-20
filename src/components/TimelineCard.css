@@ -10,6 +10,15 @@
   isolation: isolate;
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Dynamic blur and opacity based on distance from viewport center */
+  --dynamic-blur-intensity: 1; /* Default: full intensity */
+  --dynamic-opacity: 1; /* Default: full opacity */
+  
+  /* Apply dynamic backdrop filter and opacity */
+  backdrop-filter: blur(calc(var(--dynamic-blur-intensity) * 20px)) saturate(calc(var(--dynamic-blur-intensity) * 150%));
+  -webkit-backdrop-filter: blur(calc(var(--dynamic-blur-intensity) * 20px)) saturate(calc(var(--dynamic-blur-intensity) * 150%));
+  opacity: var(--dynamic-opacity);
 }
 
 /* Light/Dark Mode Text Colors - Following Design System */
