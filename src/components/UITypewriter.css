@@ -161,7 +161,7 @@
 /* Rainbow spectrum gradient effect matching the 3D prism - full ROYGBIV spectrum */
 .ui-typewriter-cycling.ui-typewriter--dark {
   background: linear-gradient(
-    135deg,
+    0deg,
     #ff6b6b 0%,     /* Red */
     #ffa726 14%,    /* Orange */
     #ffeb3b 28%,    /* Yellow */
@@ -183,7 +183,7 @@
 
 .ui-typewriter-cycling.ui-typewriter--light {
   background: linear-gradient(
-    135deg,
+    0deg,
     #e53e3e 0%,     /* Darker Red for light mode */
     #dd6b20 14%,    /* Darker Orange */
     #d69e2e 28%,    /* Darker Yellow */

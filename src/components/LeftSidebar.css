@@ -126,21 +126,17 @@
   font-weight: 500;
   border-radius: var(--radius-sm);
   padding: var(--space-075) var(--space-100);
-}
-
-/* Extend rainbow text utility for typewriter highlights */
-.left-sidebar__pill--typewriter-highlight {
-  /* Use consolidated rainbow text utility */
+  
+  /* Rainbow text effect using consolidated utilities */
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-sidebar-dark)
+  ) 0 0 / 100% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
   animation: rainbow-text-slide 2s linear infinite;
   text-shadow: none;
-  /* Use dark sidebar rainbow gradient */
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-sidebar-dark)
-  ) 0 0 / 100% 300%;
 }
 
 .left-sidebar--light .left-sidebar__pill--typewriter-highlight {

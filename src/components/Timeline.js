@@ -60,7 +60,8 @@ const Timeline = ({
         <div className="timeline__items">
           {sortedData.length > 0 ? (
             sortedData.map((item, index) => {
-              const shouldExpand = (activeFilters.length === 0 && item.title === centermostCard) || highlights.timelineCards.includes(item.title);
+              // Only expand for scroll-based highlighting, not typewriter highlights
+              const shouldExpand = activeFilters.length === 0 && item.title === centermostCard;
               
               return (
                 <div 
@@ -81,7 +82,8 @@ const Timeline = ({
                     navigationIcons={item.navigationIcons || []}
                     lightMode={lightMode}
                     className="timeline__card"
-                    isHighlighted={highlights.timelineCards.includes(item.title) || item.title === centermostCard}
+                    isScrollHighlighted={item.title === centermostCard}
+                    isTypewriterHighlighted={highlights.timelineCards.includes(item.title)}
                     autoExpanded={shouldExpand}
                   />
                 </div>

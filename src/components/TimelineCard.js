@@ -42,7 +42,8 @@ const TimelineCard = ({
   volume,
   url, // New URL field for external links
   navigationIcons = [], // Navigation icons for this card
-  isHighlighted = false,
+  isScrollHighlighted = false,
+  isTypewriterHighlighted = false,
   defaultExpanded = false,
   autoExpanded = false, // Auto-expansion controlled by scroll position
   lightMode = false,
@@ -69,7 +70,7 @@ const TimelineCard = ({
   
   return (
     <div 
-      className={`timeline-card glass glass-strong glass-interactive ${effectiveExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isHighlighted ? 'timeline-card--highlighted highlight-subtle' : ''} ${categoryClass} ${className}`} 
+      className={`timeline-card glass glass-strong glass-interactive ${effectiveExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isScrollHighlighted ? 'timeline-card--scroll-highlighted' : ''} ${isTypewriterHighlighted ? 'timeline-card--typewriter-highlighted' : ''} ${categoryClass} ${className}`} 
       {...props}
     >
       {/* Content container */}
@@ -139,7 +140,7 @@ const TimelineCard = ({
                 return IconComponent ? (
                   <div 
                     key={index}
-                    className={`timeline-card__nav-icon ${isHighlighted ? 'timeline-card__nav-icon--highlighted' : ''}`}
+                                          className={`timeline-card__nav-icon ${(isScrollHighlighted || isTypewriterHighlighted) ? 'timeline-card__nav-icon--highlighted' : ''}`}
                   >
                     <IconComponent size={16} />
                     <span className="timeline-card__nav-icon-text">{iconName}</span>

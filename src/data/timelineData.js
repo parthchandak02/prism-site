@@ -24,8 +24,8 @@ export const timelineData = [
     category: "patent",
     location: "Application #1/###,573; Ref. 1246-02850US1",
     description: "Innovative patent pending for audio prioritization technology, demonstrating cutting-edge research in autonomous vehicle audio systems and user experience optimization.",
-    typewriterTitle: "Patent Inventor",
-    typewriterPrefix: "I am a",
+    typewriterTitle: "Inventor",
+    typewriterPrefix: "I am an ",
     navigationIcons: ["Python", "C++", "Unity"],
     isTypewriterPrimary: true
   },
