@@ -77,8 +77,8 @@
 
 .ui-typewriter-cycling .title-part {
   font-weight: 700;
-  color: #4dd0e1; /* Richer, more vibrant teal */
-  text-shadow: 0 0 8px rgba(77, 208, 225, 0.4); /* Subtle glow */
+  color: #FF6B35; /* Vibrant orange matching the prism spectrum */
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.4); /* Subtle orange glow */
 }
 
 /* Text container */

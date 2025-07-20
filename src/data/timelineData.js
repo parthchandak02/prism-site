@@ -12,8 +12,7 @@ export const timelineData = [
     description: "Created a UX focused robot platform and creative lab for designing 20+ visual and sonic experience projects. Reduced design iteration time from weeks to 1-2 days (90% reduction). Tested 40+ digital and mechanical designs on autonomous vehicle platforms.",
     typewriterTitle: "Creative Technologist",
     typewriterPrefix: "I am a",
-    navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"],
-    isTypewriterPrimary: true
+    navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"]
   },
 
   // === RECENT ACHIEVEMENTS 2024-2025 ===
@@ -26,8 +25,7 @@ export const timelineData = [
     description: "Innovative patent pending for audio prioritization technology, demonstrating cutting-edge research in autonomous vehicle audio systems and user experience optimization.",
     typewriterTitle: "Inventor",
     typewriterPrefix: "I am an ",
-    navigationIcons: ["Python", "C++", "Unity"],
-    isTypewriterPrimary: true
+    navigationIcons: ["Python", "C++", "Unity"]
   },
   {
     id: 3,
@@ -114,8 +112,7 @@ export const timelineData = [
     description: "Systematic exploration of ethical frameworks and governance challenges in AI health assistants, focusing on user experience and regulatory compliance.",
     typewriterTitle: "Research Engineer",
     typewriterPrefix: "I am a",
-    navigationIcons: ["MATLAB", "Python", "C++"],
-    isTypewriterPrimary: false
+    navigationIcons: ["MATLAB", "Python", "C++"]
   },
   {
     id: 13,
@@ -137,7 +134,6 @@ export const timelineData = [
     typewriterTitle: "Full Stack Developer",
     typewriterPrefix: "I am a",
     navigationIcons: ["Python", "JavaScript", "React", "Database"],
-    isTypewriterPrimary: true
   },
   {
     id: 15,
@@ -149,7 +145,6 @@ export const timelineData = [
     typewriterTitle: "Full Stack Developer",
     typewriterPrefix: "I am a",
     navigationIcons: ["Python", "JavaScript", "React", "Database"],
-    isTypewriterPrimary: false
   },
   {
     id: 16,
@@ -161,7 +156,6 @@ export const timelineData = [
     typewriterTitle: "Full Stack Developer",
     typewriterPrefix: "I am a",
     navigationIcons: ["Python", "JavaScript", "React", "Database"],
-    isTypewriterPrimary: false
   },
   {
     id: 17,
@@ -227,7 +221,6 @@ export const timelineData = [
     typewriterTitle: "Creative Technologist",
     typewriterPrefix: "I am a",
     navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"],
-    isTypewriterPrimary: false
   },
 
   // === MAJOR AWARDS & ACHIEVEMENTS ===
@@ -283,7 +276,6 @@ export const timelineData = [
     typewriterTitle: "Programmer",
     typewriterPrefix: "I am a",
     navigationIcons: ["MATLAB", "Python", "C++"],
-    isTypewriterPrimary: true
   },
   {
     id: 30,
