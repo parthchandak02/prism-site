@@ -3,15 +3,16 @@
   border-radius: 16px;
   display: flex;
   align-items: flex-start;
-  padding: 20px;
-  margin-bottom: 16px;
+  padding: 10px 20px; /* Balanced padding for all states */
+  margin-bottom: 16px; /* Restored spacing between cards */
   width: 100%;
-  max-width: 600px;
   pointer-events: auto;
   isolation: isolate;
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
 
 /* Glass morphism highlighting for timeline cards */
 .timeline-card--highlighted {
@@ -60,13 +61,7 @@
   color: inherit;
 }
 
-.timeline-card.collapsed {
-  padding: 16px 20px;
-}
 
-.timeline-card.collapsed .timeline-card__header {
-  padding-bottom: 0;
-}
 
 /* Content container */
 .timeline-card__content {
@@ -75,24 +70,43 @@
   flex-direction: column;
 }
 
-/* Expandable content area */
+/* Expandable content area - Optimized for consistent smooth animation */
 .timeline-card__expandable {
+  /* Essential for smooth height animation */
+  display: grid;
+  grid-template-rows: 0fr;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
-
-.timeline-card__expandable.collapsed {
-  max-height: 0;
+  
+  /* Consistent smooth transition for all scenarios */
+  transition: 
+    grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.3s ease-out;
+  
+  /* Start collapsed */
   opacity: 0;
+  
+  /* Reduced motion fallback */
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity 0.2s ease;
+  }
 }
 
 .timeline-card__expandable.expanded {
-  max-height: 500px;
+  /* Expand the grid to show content */
+  grid-template-rows: 1fr;
   opacity: 1;
 }
 
+/* Content wrapper for proper grid collapse */
 .timeline-card__expandable > * {
-  margin-top: 8px;
+  overflow: hidden;
+  min-height: 0; /* Critical for grid collapse */
+  margin: 0; /* No margin in collapsed state */
+}
+
+/* Add margin only when expanded */
+.timeline-card.expanded .timeline-card__expandable > * {
+  margin-top: 12px; /* Comfortable spacing when expanded */
 }
 
 /* Header section */
@@ -101,36 +115,56 @@
   align-items: flex-start;
   justify-content: space-between;
   cursor: pointer;
-  padding-bottom: 8px;
+  padding-bottom: 2px; /* Small consistent bottom padding */
 }
 
+/* Header content */
 .timeline-card__header-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px; /* Balanced gap for readability */
   flex: 1;
 }
 
 /* Toggle button */
 .timeline-card__toggle {
   opacity: 0.7;
-  padding: 4px;
-  margin-left: 12px;
-  min-width: 24px;
-  height: 24px;
+  padding: 3px; /* Balanced padding */
+  margin-left: 10px; /* Balanced margin */
+  min-width: 22px; /* Comfortable size */
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
+  border-radius: 22px;
+  border: none !important; /* Remove any inherited border */
+  background: transparent !important; /* Ensure transparent background */
 }
 
 .timeline-card__toggle:hover {
   opacity: 0.9;
 }
 
+/* Light/Dark Mode Toggle Colors */
+.timeline-card--light .timeline-card__toggle {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.timeline-card--light .timeline-card__toggle:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+.timeline-card--dark .timeline-card__toggle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.timeline-card--dark .timeline-card__toggle:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
 /* Chevron icon */
 .timeline-card__chevron {
-  width: 16px;
+  width: 16px; /* Balanced size */
   height: 16px;
   transition: transform 0.3s ease;
 }
@@ -145,7 +179,7 @@
   font-size: 18px;
   font-weight: 600;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.3; /* Balanced line height */
 }
 
 /* Date */
@@ -154,6 +188,7 @@
   font-size: 14px;
   font-weight: 400;
   opacity: 0.8;
+  line-height: 1.4; /* Comfortable line height */
 }
 
 /* Meta information */
@@ -164,32 +199,45 @@
   flex-wrap: wrap;
 }
 
+/* Ensure meta information is completely hidden when collapsed */
+.timeline-card.collapsed .timeline-card__meta {
+  display: none; /* Force hide in collapsed state */
+}
+
+.timeline-card.expanded .timeline-card__meta {
+  display: flex; /* Show in expanded state */
+}
+
 .timeline-card__volume,
-.timeline-card__location {
-  border-radius: 24px;
+.timeline-card__location,
+.timeline-card__url {
   font-family: var(--font-family-primary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
-  opacity: 0.6;
+  opacity: 0.7;
+  color: inherit;
   display: flex;
   align-items: center;
-  padding: 2px 8px;
+  gap: 6px;
+  text-decoration: none;
 }
 
 .timeline-card__volume:hover,
-.timeline-card__location:hover {
-  opacity: 0.8;
+.timeline-card__location:hover,
+.timeline-card__url:hover {
+  opacity: 0.9;
 }
 
-.timeline-card__volume::before {
-  content: "📄";
-  margin-right: 4px;
+.timeline-card__url {
+  cursor: pointer;
+  transition: var(--transition-standard);
 }
 
-.timeline-card__location::before {
-  content: "📍";
-  margin-right: 4px;
+.timeline-card__url:hover {
+  color: var(--color-accent, #3b82f6);
 }
+
+
 
 /* Category tag */
 .timeline-card__category {
@@ -220,6 +268,15 @@
   opacity: 0.8;
   line-height: 1.5;
   margin: 0;
+}
+
+/* Ensure description is completely hidden when collapsed */
+.timeline-card.collapsed .timeline-card__description {
+  display: none; /* Force hide in collapsed state */
+}
+
+.timeline-card.expanded .timeline-card__description {
+  display: block; /* Show in expanded state */
 }
 
 /* Responsive design */
