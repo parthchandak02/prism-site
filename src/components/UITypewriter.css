@@ -69,6 +69,16 @@
   gap: 2px;
 }
 
+/* Styling for when we need to distinguish prefix vs title parts */
+.ui-typewriter-cycling .prefix-part {
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.ui-typewriter-cycling .title-part {
+  font-weight: 700;
+}
+
 /* Text container */
 .ui-typewriter__text {
   display: inline-block;

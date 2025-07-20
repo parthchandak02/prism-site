@@ -12,11 +12,11 @@ const useGlobalMouse = () => {
   });
   
   // Lock state - when true, position is completely frozen
-  const [isLocked, setIsLocked] = useState(false);
+  const [isLocked, setIsLocked] = useState(true);
   
   const hasUserMoved = useRef(false);
   // Use ref to store the current lock state for event handlers
-  const isLockedRef = useRef(false);
+  const isLockedRef = useRef(true);
   // Store the frozen position when locked
   const frozenPositionRef = useRef(null);
   // Store current live viewport position for capturing when locking
@@ -82,6 +82,13 @@ const useGlobalMouse = () => {
       return newLockState;
     });
   }, []); // No dependencies needed - we use refs for current values
+
+  // Initialize frozen position on mount since we start locked
+  useEffect(() => {
+    if (isLocked && !frozenPositionRef.current) {
+      frozenPositionRef.current = { ...currentViewportPositionRef.current };
+    }
+  }, [isLocked]);
 
   // Update ref whenever lock state changes
   useEffect(() => {

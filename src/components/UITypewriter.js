@@ -7,32 +7,35 @@ const UITypewriter = ({ lightMode }) => {
   const { updateCurrentPhrase } = useTypewriterHighlight();
   const [showCursor, setShowCursor] = useState(true);
   
-  // Professional titles for the cycling typewriter
+  // Professional titles with contextual prefixes
   const professionalTitles = [
-    'Full Stack Developer',
-    'Python Developer', 
-    'JavaScript Engineer',
-    'Systems Programmer',
-    'Hardware Engineer',
-    'Embedded Systems Developer',
-    'Robotics Engineer',
-    'CAD Specialist',
-    'UX Designer',
-    'Creative Technologist',
-    '3D Designer',
-    'Project Manager',
-    'Technical Lead',
-    'Game Developer',
-    'Manufacturing Engineer',
-    'Design Engineer', 
-    'Prototyping Expert',
-    'Research Engineer',
-    'AI Researcher',
-    'Patent Inventor',
-    'Technical Writer',
-    'Data Analyst',
-    'Automation Specialist'
+    { prefix: 'I am a', title: 'Full Stack Developer' },
+    { prefix: 'I am a', title: 'Python Developer' },
+    { prefix: 'I am a', title: 'JavaScript Engineer' },
+    { prefix: 'I am a', title: 'Systems Programmer' },
+    { prefix: 'I am a', title: 'Hardware Engineer' },
+    { prefix: 'I am an', title: 'Embedded Systems Developer' },
+    { prefix: 'I am a', title: 'Robotics Engineer' },
+    { prefix: 'I am a', title: 'CAD Specialist' },
+    { prefix: 'I am a', title: 'UX Designer' },
+    { prefix: 'I am a', title: 'Creative Technologist' },
+    { prefix: 'I am a', title: '3D Designer' },
+    { prefix: 'I am a', title: 'Project Manager' },
+    { prefix: 'I have been a', title: 'Team Lead' },
+    { prefix: 'I am a', title: 'Game Developer' },
+    { prefix: 'I was a', title: 'Manufacturing Engineer' },
+    { prefix: 'I am a', title: 'Design Engineer' },
+    { prefix: 'I am a', title: 'Prototyping Expert' },
+    { prefix: 'I am a', title: 'Research Engineer' },
+    { prefix: 'I do', title: 'AI Research' },
+    { prefix: 'I am a', title: 'Patent Inventor' },
+    { prefix: 'I am a', title: 'Technical Writer' },
+    { prefix: 'I am a', title: 'Data Analyst' },
+    { prefix: 'I am an', title: 'Automation Specialist' }
   ];
+
+  // Create the full sentences for typing
+  const fullSentences = professionalTitles.map(item => `${item.prefix} ${item.title}`);
 
   // Cursor blinking effect for static typewriter
   useEffect(() => {
@@ -66,7 +69,7 @@ const UITypewriter = ({ lightMode }) => {
       {/* Cycling professional titles typewriter */}
       <div className={`ui-typewriter-cycling ${lightMode ? 'ui-typewriter--light' : 'ui-typewriter--dark'}`}>
         <ReactTyped
-          strings={professionalTitles}
+          strings={fullSentences}
           typeSpeed={80}
           backSpeed={50}
           backDelay={2500}
@@ -75,8 +78,9 @@ const UITypewriter = ({ lightMode }) => {
           showCursor={true}
           smartBackspace={true}
           onStringTyped={(arrayPos) => {
-            const phrase = professionalTitles[arrayPos];
-            updateCurrentPhrase(phrase);
+            // Only pass the title part (not the prefix) to the highlight context
+            const titleOnly = professionalTitles[arrayPos].title;
+            updateCurrentPhrase(titleOnly);
           }}
           onDestroy={() => {
             updateCurrentPhrase('');

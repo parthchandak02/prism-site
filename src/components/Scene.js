@@ -63,8 +63,8 @@ const Scene = ({ lightMode, viewportPosition, isLocked }) => {
   }, []);
 
   useFrame((state) => {
-    // Only update positions when NOT locked and viewportPosition is available
-    if (!isLockedRef.current && viewportPosition) {
+    // Always update positions if viewportPosition is available (whether locked or not)
+    if (viewportPosition) {
       // Update flare position
       if (flare.current) {
         lerpV3(flare.current.position, [viewportPosition.x * 4, viewportPosition.y * 4, 5], 0.1);
