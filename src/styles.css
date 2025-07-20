@@ -63,19 +63,19 @@
      ======================================== */
   
   /* Experience Category - Purple theme */
-  --color-experience-bg-light: rgba(147, 51, 234, 0.12);
-  --color-experience-border-light: rgba(147, 51, 234, 0.25);
-  --color-experience-shadow-light: rgba(147, 51, 234, 0.15);
-  --color-experience-active-bg-light: rgba(147, 51, 234, 0.18);
-  --color-experience-active-border-light: rgba(147, 51, 234, 0.35);
-  --color-experience-active-shadow-light: rgba(147, 51, 234, 0.25);
+  --color-experience-bg-light: rgba(147, 51, 234, 0.06);
+  --color-experience-border-light: rgba(147, 51, 234, 0.12);
+  --color-experience-shadow-light: rgba(147, 51, 234, 0.08);
+  --color-experience-active-bg-light: rgba(147, 51, 234, 0.09);
+  --color-experience-active-border-light: rgba(147, 51, 234, 0.18);
+  --color-experience-active-shadow-light: rgba(147, 51, 234, 0.12);
   
-  --color-experience-bg-dark: rgba(196, 181, 253, 0.18);
-  --color-experience-border-dark: rgba(196, 181, 253, 0.3);
-  --color-experience-shadow-dark: rgba(196, 181, 253, 0.25);
-  --color-experience-active-bg-dark: rgba(196, 181, 253, 0.25);
-  --color-experience-active-border-dark: rgba(196, 181, 253, 0.4);
-  --color-experience-active-shadow-dark: rgba(196, 181, 253, 0.35);
+  --color-experience-bg-dark: rgba(196, 181, 253, 0.08);
+  --color-experience-border-dark: rgba(196, 181, 253, 0.15);
+  --color-experience-shadow-dark: rgba(196, 181, 253, 0.12);
+  --color-experience-active-bg-dark: rgba(196, 181, 253, 0.12);
+  --color-experience-active-border-dark: rgba(196, 181, 253, 0.2);
+  --color-experience-active-shadow-dark: rgba(196, 181, 253, 0.18);
 
   /* ========================================
      BORDER RADIUS SYSTEM
@@ -273,27 +273,25 @@
    CATEGORY-SPECIFIC HIGHLIGHTING
    ======================================== */
 
-/* Experience category highlighting - Purple theme */
+/* Experience category highlighting - Subtle purple theme */
 .timeline-card--category-experience.timeline-card--highlighted {
   background: var(--color-experience-bg) !important;
-  border-color: var(--color-experience-border) !important;
-  box-shadow: 
-    0 8px 32px var(--color-experience-shadow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 0 1px var(--color-experience-border) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  /* Remove prominent border and shadow effects for subtlety */
+  border-color: rgba(147, 51, 234, 0.1) !important;
+  /* Keep minimal backdrop blur */
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  /* Remove scale transform - keep it at normal size */
+  transform: none !important;
 }
 
 .timeline-card--category-experience.timeline-card--highlighted:hover {
   background: var(--color-experience-active-bg) !important;
-  border-color: var(--color-experience-active-border) !important;
-  box-shadow: 
-    0 12px 48px var(--color-experience-active-shadow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 0 0 2px var(--color-experience-active-border) !important;
-  backdrop-filter: blur(25px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+  border-color: rgba(147, 51, 234, 0.15) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  /* Keep subtle hover effect without dramatic scaling */
+  transform: translateY(-1px) !important;
 }
 
 /* ========================================
