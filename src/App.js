@@ -42,9 +42,16 @@ export default function App() {
     const newPlayMode = !isPlayMode;
     setIsPlayMode(newPlayMode);
     
-    // Automatically unlock the light beam when entering play mode for better UX
-    if (newPlayMode && isLocked) {
-      toggleLock();
+    if (newPlayMode) {
+      // Entering play mode: automatically unlock the light beam for better UX
+      if (isLocked) {
+        toggleLock();
+      }
+    } else {
+      // Exiting play mode (returning to resume): automatically lock to avoid distracting rainbow
+      if (!isLocked) {
+        toggleLock();
+      }
     }
   };
   
