@@ -1,64 +1,10 @@
-// Simple icon components using SVG
-const ExperienceIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h6V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h6z"/>
-  </svg>
-);
-
-const ResearchIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72L5.18 9L12 5.28L18.82 9zM17 15.99l-5 2.73l-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
-  </svg>
-);
-
-const AwardIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22L12 18.77L5.82 22L7 14.14l-5-4.87l6.91-1.01L12 2z"/>
-  </svg>
-);
-
-const ProjectIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-  </svg>
-);
-
-const EducationIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-  </svg>
-);
-
-const PatentIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-  </svg>
-);
-
-const VolunteerIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-  </svg>
-);
-
-const MediaIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2V8c0-1.11.89-2 2-2h6V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h6z"/>
-  </svg>
-);
-
-const SpeakingIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/>
-  </svg>
-);
+// Timeline data - using clean data structure without unused custom icons
 
 // Comprehensive timeline data from resume
 export const timelineData = [
   // === CURRENT WORK ===
   {
     id: 1,
-    icon: ExperienceIcon,
     title: "Creative Technologist (User Experience Prototyping)",
     date: "February 2022 - Present",
     category: "experience",
@@ -69,7 +15,6 @@ export const timelineData = [
   // === RECENT ACHIEVEMENTS 2024-2025 ===
   {
     id: 2,
-    icon: PatentIcon,
     title: "Audio Prioritization Patent (Pending)",
     date: "June 2024",
     category: "patent",
@@ -78,7 +23,6 @@ export const timelineData = [
   },
   {
     id: 3,
-    icon: SpeakingIcon,
     title: "A Practical Framework for Rapid Prototyping and Fidelity in Product Development",
     date: "June 2025",
     category: "speaking",
@@ -87,7 +31,6 @@ export const timelineData = [
   },
   {
     id: 4,
-    icon: VolunteerIcon,
     title: "BuildOn Nepal School Project - $55K Fundraising Lead",
     date: "January 2025",
     category: "volunteering",
@@ -96,7 +39,6 @@ export const timelineData = [
   },
   {
     id: 5,
-    icon: VolunteerIcon,
     title: "Manager, Team Innovation Program",
     date: "May 2025 - Present",
     category: "volunteering",
@@ -107,7 +49,6 @@ export const timelineData = [
   // === 2024 RESEARCH PUBLICATIONS ===
   {
     id: 6,
-    icon: ResearchIcon,
     title: "The Evolution of Haptic Feedback Systems and User Experience",
     date: "2024",
     category: "research",
@@ -116,7 +57,6 @@ export const timelineData = [
   },
   {
     id: 7,
-    icon: ResearchIcon,
     title: "Optimizing Bio-Inspired Phototropic Materials",
     date: "2024", 
     category: "research",
@@ -125,7 +65,6 @@ export const timelineData = [
   },
   {
     id: 8,
-    icon: ResearchIcon,
     title: "Advancing Telemedicine Through Adaptive UX",
     date: "August 2024",
     category: "research",
@@ -134,7 +73,6 @@ export const timelineData = [
   },
   {
     id: 9,
-    icon: ResearchIcon,
     title: "Systematic Review of Healthcare IoT and Rapid Prototyping",
     date: "August 2024",
     category: "research",
@@ -143,7 +81,6 @@ export const timelineData = [
   },
   {
     id: 10,
-    icon: ResearchIcon,
     title: "User-Centered Design in Healthcare Education Technologies",
     date: "2024",
     category: "research",
@@ -152,7 +89,6 @@ export const timelineData = [
   },
   {
     id: 11,
-    icon: ResearchIcon,
     title: "Integrating User-Centered Design in Rapid Robotic System Prototyping",
     date: "August 2024",
     category: "research",
@@ -163,7 +99,6 @@ export const timelineData = [
   // === 2025 RESEARCH PUBLICATIONS ===
   {
     id: 12,
-    icon: ResearchIcon,
     title: "Ethical, Governance, and Usability Challenges in AI-Powered Virtual Health Assistants",
     date: "2025",
     category: "research",
@@ -172,7 +107,6 @@ export const timelineData = [
   },
   {
     id: 13,
-    icon: ResearchIcon,
     title: "Augmented Reality Enhances Telemedicine Training",
     date: "2025",
     category: "research",
@@ -183,7 +117,6 @@ export const timelineData = [
   // === 2024 GITHUB PROJECTS ===
   {
     id: 14,
-    icon: ProjectIcon,
     title: "LLM Assisted Research Platform",
     date: "2024",
     category: "projects",
@@ -192,7 +125,6 @@ export const timelineData = [
   },
   {
     id: 15,
-    icon: ProjectIcon,
     title: "Google Apps Script AI Integration Framework",
     date: "2024",
     category: "projects",
@@ -201,7 +133,6 @@ export const timelineData = [
   },
   {
     id: 16,
-    icon: ProjectIcon,
     title: "Financial Trading API for Interactive Brokers (IBKR)",
     date: "2024",
     category: "projects",
@@ -210,7 +141,6 @@ export const timelineData = [
   },
   {
     id: 17,
-    icon: ProjectIcon,
     title: "Calendar and Alarm Productivity System",
     date: "2024",
     category: "projects",
@@ -221,7 +151,6 @@ export const timelineData = [
   // === PREVIOUS WORK EXPERIENCE ===
   {
     id: 18,
-    icon: ExperienceIcon,
     title: "Manufacturing Engineer, Advanced Hardware Manufacturing Operations",
     date: "October 2018 - January 2022",
     category: "experience",
@@ -230,7 +159,6 @@ export const timelineData = [
   },
   {
     id: 19,
-    icon: ExperienceIcon,
     title: "Engineering Intern, Charging Special Projects",
     date: "May 2018 - August 2018",
     category: "experience",
@@ -239,7 +167,6 @@ export const timelineData = [
   },
   {
     id: 20,
-    icon: ExperienceIcon,
     title: "Engineering and Manufacturing Assistant",
     date: "June 2017 - August 2017",
     category: "experience",
@@ -248,7 +175,6 @@ export const timelineData = [
   },
   {
     id: 21,
-    icon: ExperienceIcon,
     title: "Resident Advisor & Technology Assistant",
     date: "August 2015 - May 2018",
     category: "experience", 
@@ -259,7 +185,6 @@ export const timelineData = [
   // === EDUCATION ===
   {
     id: 22,
-    icon: EducationIcon,
     title: "Bachelor of Science: Mechanical Engineering",
     date: "May 2018",
     category: "education",
@@ -269,7 +194,6 @@ export const timelineData = [
   },
   {
     id: 23,
-    icon: EducationIcon,
     title: "Essentials of UX Design, User Experience",
     date: "June 2022 - August 2022",
     category: "education",
@@ -281,7 +205,6 @@ export const timelineData = [
   // === MAJOR AWARDS & ACHIEVEMENTS ===
   {
     id: 24,
-    icon: AwardIcon,
     title: "Harold Frank Engineering Entrepreneurship Kauffman Award",
     date: "2016 - 2018",
     category: "awards",
@@ -290,7 +213,6 @@ export const timelineData = [
   },
   {
     id: 25,
-    icon: AwardIcon,
     title: "Crimson Code Software Hackathon - 1st Place (Tier 1)",
     date: "2017",
     category: "awards",
@@ -299,7 +221,6 @@ export const timelineData = [
   },
   {
     id: 26,
-    icon: AwardIcon,
     title: "Guy E. Thornton Engineering Scholarship",
     date: "2016",
     category: "awards",
@@ -308,7 +229,6 @@ export const timelineData = [
   },
   {
     id: 27,
-    icon: AwardIcon,
     title: "Robert W. Finch Memorial Scholarship",
     date: "2015",
     category: "awards",
@@ -317,7 +237,6 @@ export const timelineData = [
   },
   {
     id: 28,
-    icon: AwardIcon,
     title: "International Merit Award",
     date: "2015 - 2018",
     category: "awards",
@@ -328,7 +247,6 @@ export const timelineData = [
   // === MAJOR PROJECTS ===
   {
     id: 29,
-    icon: ProjectIcon,
     title: "Boeing: Damping Ratios of Piloted Systems",
     date: "2018",
     category: "projects",
@@ -337,7 +255,6 @@ export const timelineData = [
   },
   {
     id: 30,
-    icon: ProjectIcon,
     title: "IEEE Hardware Hackathon - Sunlight-Following Robot",
     date: "2017",
     category: "projects",
@@ -346,7 +263,6 @@ export const timelineData = [
   },
   {
     id: 31,
-    icon: ProjectIcon,
     title: "Center for Materials Research - ACRT Furnace System",
     date: "2018",
     category: "projects",
@@ -357,7 +273,6 @@ export const timelineData = [
   // === HISTORICAL RESEARCH (2019-2023) ===
   {
     id: 32,
-    icon: ResearchIcon,
     title: "Leveraging Haptic Feedback in Mixed Reality",
     date: "July 2023",
     category: "research",
@@ -366,7 +281,6 @@ export const timelineData = [
   },
   {
     id: 33,
-    icon: ResearchIcon,
     title: "Rapid Prototyping Technologies and Design Frameworks",
     date: "2023",
     category: "research",
@@ -375,7 +289,6 @@ export const timelineData = [
   },
   {
     id: 34,
-    icon: ResearchIcon,
     title: "Integrating Advanced Sensor Fusion with User-Centered Design in Robotics",
     date: "2023",
     category: "research",
@@ -384,7 +297,6 @@ export const timelineData = [
   },
   {
     id: 35,
-    icon: ResearchIcon,
     title: "User-Centric Design in IoT Prototyping for Smart Agriculture",
     date: "2022",
     category: "research",
@@ -393,7 +305,6 @@ export const timelineData = [
   },
   {
     id: 36,
-    icon: ResearchIcon,
     title: "Rapid Prototyping Methodologies for Smart Shop Tools",
     date: "2022",
     category: "research",
@@ -402,7 +313,6 @@ export const timelineData = [
   },
   {
     id: 37,
-    icon: ResearchIcon,
     title: "Advancing Robotics-Enabled STEM Education in K-12",
     date: "2021",
     category: "research",
@@ -411,7 +321,6 @@ export const timelineData = [
   },
   {
     id: 38,
-    icon: ResearchIcon,
     title: "Advances in Human-Robot Interaction",
     date: "2021",
     category: "research",
@@ -420,7 +329,6 @@ export const timelineData = [
   },
   {
     id: 39,
-    icon: ResearchIcon,
     title: "Advancements in Electric Bicycle Technology",
     date: "2020",
     category: "research",
@@ -429,7 +337,6 @@ export const timelineData = [
   },
   {
     id: 40,
-    icon: ResearchIcon,
     title: "Growth and Characterization of Cadmium Telluride",
     date: "2019",
     category: "research",
@@ -440,7 +347,6 @@ export const timelineData = [
   // === MEDIA COVERAGE ===
   {
     id: 41,
-    icon: MediaIcon,
     title: "User-Centered Design Approaches for Manufacturing Systems",
     date: "2025",
     category: "media",
@@ -449,7 +355,6 @@ export const timelineData = [
   },
   {
     id: 42,
-    icon: MediaIcon,
     title: "The Creative Technologist: Bridging Engineering, UX, and Robotics",
     date: "2025",
     category: "media",
@@ -458,7 +363,6 @@ export const timelineData = [
   },
   {
     id: 43,
-    icon: MediaIcon,
     title: "Bridging the Trust Gap Between Humans and Autonomous Systems",
     date: "2025",
     category: "media",
@@ -467,7 +371,6 @@ export const timelineData = [
   },
   {
     id: 44,
-    icon: MediaIcon,
     title: "Leveraging Mixed Reality and Haptic Feedback for Immersive User Experiences",
     date: "2024",
     category: "media",
@@ -476,7 +379,6 @@ export const timelineData = [
   },
   {
     id: 45,
-    icon: MediaIcon,
     title: "Rapid Prototyping Methodologies for Complex Systems",
     date: "2023",
     category: "media",
@@ -485,7 +387,6 @@ export const timelineData = [
   },
   {
     id: 46,
-    icon: MediaIcon,
     title: "Advancing Human-Robot Interaction Through Intuitive Interfaces",
     date: "2022",
     category: "media",
@@ -494,7 +395,6 @@ export const timelineData = [
   },
   {
     id: 47,
-    icon: MediaIcon,
     title: "Freedom to Soar",
     date: "2018",
     category: "media",

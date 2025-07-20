@@ -3,7 +3,6 @@ import { ExternalLink, FileText, MapPin } from 'lucide-react';
 import './TimelineCard.css';
 
 const TimelineCard = ({ 
-  icon: Icon, 
   title,
   date,
   category,
