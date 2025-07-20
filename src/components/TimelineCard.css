@@ -86,12 +86,63 @@
   position: relative;
 }
 
-/* Enhanced state for highlighted cards (typewriter effect) */
-.timeline-card--highlighted {
+/* Scroll-based highlighting - Normal expansion behavior */
+.timeline-card--scroll-highlighted {
+  /* Enhanced visual feedback for scroll-based highlighting */
   transform: scale(1.02) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
   z-index: 5;
   position: relative;
+}
+
+/* Typewriter highlighting - Rainbow title text (no card expansion) */
+.timeline-card--typewriter-highlighted .timeline-card__title {
+  /* Enhanced rainbow text gradient for dark mode - vibrant and bright */
+  background: linear-gradient(
+    90deg,
+    hsl(0 100% 75%),
+    hsl(60 100% 75%),
+    hsl(120 100% 75%),
+    hsl(180 100% 75%),
+    hsl(240 100% 75%),
+    hsl(300 100% 75%),
+    hsl(0 100% 75%)
+  ) 0 0 / 300% 100%;
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: rainbow-text-slide 2s linear infinite;
+  font-weight: 700; /* Extra bold for better visibility */
+  text-shadow: none; /* Remove any conflicting shadows */
+}
+
+/* Light mode rainbow title text */
+.timeline-card--light.timeline-card--typewriter-highlighted .timeline-card__title {
+  /* Slightly darker colors for light mode for better contrast */
+  background: linear-gradient(
+    90deg,
+    hsl(0 100% 55%),
+    hsl(60 100% 55%),
+    hsl(120 100% 55%),
+    hsl(180 100% 55%),
+    hsl(240 100% 55%),
+    hsl(300 100% 55%),
+    hsl(0 100% 55%)
+  ) 0 0 / 300% 100%;
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: rainbow-text-slide 2s linear infinite;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+@keyframes rainbow-text-slide {
+  to {
+    background-position: 300% 0;
+  }
 }
 
 /* Light/Dark Mode Text Colors - Following Design System */
