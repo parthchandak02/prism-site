@@ -2,7 +2,10 @@
 .glass-navigation {
   width: 100%;
   max-width: 42rem;
-  margin: calc(50vh - 120px) auto var(--space-200) auto;
+  margin-top: var(--space-200);  /* Use simple margin instead of vh calc */
+  margin-bottom: var(--space-400); 
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 var(--space-250);
   pointer-events: auto;
   position: relative;
@@ -57,7 +60,8 @@
 
 @media (max-width: 768px) {
   .glass-navigation {
-    margin: calc(50vh - 80px) auto var(--space-150) auto;
+    margin-top: var(--space-150);
+    margin-bottom: var(--space-300);
     padding: var(--space-150) var(--space-200);
     max-width: 100%;
   }
@@ -84,8 +88,9 @@
 
 @media (max-width: 480px) {
   .glass-navigation {
+    margin-top: var(--space-100);
+    margin-bottom: var(--space-250);
     padding: var(--space-100) var(--space-150);
-    margin: calc(50vh - 60px) auto var(--space-100) auto;
   }
   
   .glass-navigation__compact-grid {
@@ -110,7 +115,8 @@
 
 @media (min-width: 1024px) {
   .glass-navigation {
-    margin: calc(50vh - 160px) auto var(--space-300) auto;
+    margin-top: var(--space-300);
+    margin-bottom: var(--space-500);
   }
   
   .glass-navigation__triangle {
@@ -125,7 +131,8 @@
 
 @media (min-width: 1440px) {
   .glass-navigation {
-    margin: calc(50vh - 180px) auto var(--space-300) auto;
+    margin-top: var(--space-400);
+    margin-bottom: var(--space-600);
   }
   
   .glass-navigation__triangle {
@@ -140,13 +147,15 @@
 /* Viewport height considerations */
 @media (max-height: 600px) {
   .glass-navigation {
-    margin: calc(50vh - 40px) auto var(--space-100) auto;
+    margin-top: var(--space-050);
+    margin-bottom: var(--space-150);
   }
 }
 
 @media (min-height: 1000px) {
   .glass-navigation {
-    margin: calc(50vh - 200px) auto var(--space-300) auto;
+    margin-top: var(--space-500);
+    margin-bottom: var(--space-800);
   }
 }
 

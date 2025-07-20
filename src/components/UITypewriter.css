@@ -147,9 +147,19 @@
 }
 
 /* Mobile responsive adjustments */
+@media (max-width: 1024px) {
+  .ui-typewriter-container {
+    /* Add space for left sidebar that moves to top on mobile */
+    margin: calc(var(--space-500) + 80px) auto var(--space-400) auto;
+    max-width: 95vw;
+    gap: var(--space-100);
+  }
+}
+
 @media (max-width: 768px) {
   .ui-typewriter-container {
-    margin: var(--space-500) auto var(--space-400) auto;
+    /* Adjust for smaller left sidebar height on smaller screens */
+    margin: calc(var(--space-500) + 65px) auto var(--space-400) auto;
     max-width: 95vw;
     gap: var(--space-100);
   }
@@ -171,7 +181,8 @@
 
 @media (max-width: 480px) {
   .ui-typewriter-container {
-    margin: var(--space-400) auto var(--space-300) auto;
+    /* Extra spacing for very small screens */
+    margin: calc(var(--space-400) + 90px) auto var(--space-300) auto;
     gap: var(--space-075);
   }
   
