@@ -65,7 +65,7 @@ const Timeline = ({
               
               return (
                 <div 
-                  key={index} 
+                  key={item.title} 
                   className="timeline__item"
                   data-category={item.category?.toLowerCase() || 'other'}
                   data-index={index}

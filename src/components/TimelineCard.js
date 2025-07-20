@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ExternalLink, FileText, MapPin } from 'lucide-react';
+import { ExternalLink, FileText, MapPin, Calendar } from 'lucide-react';
 import { iconMap } from '../data/timelineData';
 import './TimelineCard.css';
 
@@ -65,7 +65,12 @@ const TimelineCard = ({
         >
           <div className="timeline-card__header-content">
             <h3 className="timeline-card__title">{title}</h3>
-            <span className="timeline-card__date">{date}</span>
+            {date && (
+              <span className="timeline-card__date">
+                <Calendar size={14} />
+                {date}
+              </span>
+            )}
           </div>
           <button className="timeline-card__toggle glass glass-interactive">
             <svg 

@@ -3,7 +3,16 @@ import {
   // Navigation icons from Lucide React
   Code, Database, GitBranch, Globe, Cpu, Terminal, Settings, Zap,
   CircuitBoard, Microchip, Figma, Palette, Layers, Box,
-  Printer, PenTool, Gamepad2, Trello, Mail, Monitor, FileText
+  Printer, PenTool, Gamepad2, Trello, Mail, Monitor, FileText,
+  // Additional icons for experience section
+  Factory, Wrench, Users, Cog, ChartBar, TruckElectric, PencilRuler,
+  // New icons for enhanced navigation
+  FileJson, Presentation, DollarSign, Plane, Building, School,
+  Lightbulb, Crown, HeartHandshake, Handshake, Microscope, User,
+  Vibrate, Sun, Dna,
+  // Latest missing icons from new additions
+  Shell, BrainCircuit, HandCoins, Computer, Beaker, Glasses,
+  Award, Star, IterationCw
 } from 'lucide-react';
 
 // Centralized icon mapping - all navigation icons defined in one place
@@ -28,32 +37,68 @@ export const iconMap = {
   'Miro': Monitor,
   'JIRA': Trello,
   'G-Suite': Mail,
-  'Confluence': FileText
+  'Confluence': FileText,
+  // New icons for experience section
+  'Manufacturing': Factory,
+  'Tools': Wrench,
+  'Team Management': Users,
+  'Process Optimization': Cog,
+  'Data Analysis': ChartBar,
+  'Electric Vehicles': TruckElectric,
+  'CAD Design': PencilRuler,
+  // New icons for enhanced navigation
+  'JSON': FileJson,
+  'Presentation': Presentation,
+  'Fundraising': DollarSign,
+  'Travel': Plane,
+  'School Building': School,
+  'Innovation': Lightbulb,
+  'Leadership': Crown,
+  'Relationships': HeartHandshake,
+  'Collaboration': Handshake,
+  'Research': Microscope,
+  'User Experience': User,
+  'Haptics': Vibrate,
+  'Solar': Sun,
+  'Biomimicry': Dna,
+  // Latest missing icons from new additions
+  'Shell': Shell,
+  'LLMs': BrainCircuit,
+  'Google AppsScript': Settings,
+  'Javascript': Code,
+  'Finance': HandCoins,
+  'Typescript': Code,
+  'SQL': Database,
+  'Automation': IterationCw,
+  'Team Player': Users,
+  'Advisor': Award,
+  'Creativity': Star,
+  'Technology': Monitor,
+  'Robotics': CircuitBoard,
+  'Materials Science': Beaker,
+  'Computer Science': Computer,
+  'Wireframing': Palette,
+  'Prototyping': Box,
+  'Design': Palette,
+  'Mixed Reality': Glasses
 };
 
 // Comprehensive timeline data from resume
 export const timelineData = [
   // === CURRENT WORK ===
   {
-    id: 1,
     title: "Creative Technologist (User Experience Prototyping)",
     date: "February 2022 - Present",
     category: "experience",
     location: "Zoox, Foster City, CA",
-    description: "Created a UX focused robot platform and creative lab for designing 20+ visual and sonic experience projects. Reduced design iteration time from weeks to 1-2 days (90% reduction). Tested 40+ digital and mechanical designs on autonomous vehicle platforms.",
+    description: "Created a UX focused robot platform and creative lab for designing 20+ visual and sonic experience projects. Reduced design iteration and validation time from multiple weeks to 1-2 days (90% reduction). Tested 40+ digital and mechanical designs on various autonomous vehicle platforms to help in research and design validation. Created 15+ hardware and software prototypes, aiding and enhancing research and design studies.",
     typewriterTitle: "Creative Technologist",
     typewriterPrefix: "I am a",
-    navigationIcons: [
-      { component: iconMap.Figma, name: "Figma" },
-      { component: iconMap.Blender, name: "Blender" },
-      { component: iconMap.Unity, name: "Unity" },
-      { component: iconMap.ProtoPie, name: "ProtoPie" }
-    ]
+    navigationIcons: ["Figma", "Blender", "Unity", "ProtoPie"]
   },
 
   // === RECENT ACHIEVEMENTS 2024-2025 ===
   {
-    id: 2,
     title: "Audio Prioritization Patent (Pending)",
     date: "June 2024",
     category: "patent",
@@ -61,52 +106,71 @@ export const timelineData = [
     description: "Innovative patent pending for audio prioritization technology, demonstrating cutting-edge research in autonomous vehicle audio systems and user experience optimization.",
     typewriterTitle: "Inventor",
     typewriterPrefix: "I am an ",
-    navigationIcons: [iconMap.Python, iconMap["C++"], iconMap.Unity]
+    navigationIcons: ["JSON", "Linux"]
   },
   {
-    id: 3,
     title: "A Practical Framework for Rapid Prototyping and Fidelity in Product Development",
     date: "June 2025",
     category: "speaking",
     location: "ICETAIA Conference",
-    description: "Keynote presentation on innovative rapid prototyping methodologies and fidelity frameworks for modern product development, sharing insights from autonomous vehicle development."
+    description: "Keynote presentation on innovative rapid prototyping methodologies and fidelity frameworks for modern product development, sharing insights from autonomous vehicle development.",
+    typewriterTitle: "Keynote Speaker",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Presentation"]
   },
   {
-    id: 4,
     title: "BuildOn Nepal School Project - $55K Fundraising Lead",
     date: "January 2025",
     category: "volunteering",
     location: "Nepal",
-    description: "Raised $55,000 to build a school in Nepal, directly impacting 210+ students (including 108 girls) in a community of 2250 farmers. Led fundraising strategy and participated in construction trek."
+    description: "Raised $55,000 to build a school in Nepal, directly impacting 210+ students (including 108 girls) in a community of 2250 farmers. Led fundraising strategy and participated in construction trek.",
+    typewriterTitle: "Volunteer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Fundraising", "Travel", "School Building"]
   },
   {
-    id: 5,
     title: "Manager, Team Innovation Program",
     date: "May 2025 - Present",
     category: "volunteering",
     location: "Mentor Discover Inspire",
-    description: "Leading 3+ cross-team initiatives to enhance inter and intra team cohesion. Managing innovative mentorship programs and organizational development."
+    description: "Leading 3+ cross-team initiatives to enhance inter and intra team cohesion. Managing innovative mentorship programs and organizational development.",
+    typewriterTitle: "Team Leader",
+    typewriterPrefix: "I am an ",
+    navigationIcons: ["Team Management", "Process Optimization", "Innovation"]
+  },
+  {
+    title: "Team Leader",
+    date: "May 2025 - Present",
+    category: "volunteering",
+    location: "Mentor Discover Inspire",
+    description: "Expanded team from 6 to 12+ members (↑100%) ; organized 3+ community service and team-building events",
+    typewriterTitle: "Team Leader",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Leadership", "Relationships", "Collaboration"]
   },
 
   // === 2024 RESEARCH PUBLICATIONS ===
   {
-    id: 6,
     title: "The Evolution of Haptic Feedback Systems and User Experience",
     date: "2024",
     category: "research",
     volume: "JEAST, Volume 5, Issue 4",
-    description: "Comprehensive analysis of haptic feedback evolution and its impact on user experience design in modern interactive systems."
+    description: "Comprehensive analysis of haptic feedback evolution and its impact on user experience design in modern interactive systems.",
+    typewriterTitle: "Researcher",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Research", "User Experience", "Haptics"]
   },
   {
-    id: 7,
     title: "Optimizing Bio-Inspired Phototropic Materials",
     date: "2024", 
     category: "research",
     volume: "IJACT, Volume 2, Issue 4",
-    description: "Research on bio-inspired materials that respond to light, with applications in smart materials and autonomous systems."
+    description: "Research on bio-inspired materials that respond to light, with applications in smart materials and autonomous systems.",
+    typewriterTitle: "Researcher",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Research", "Solar", "Biomimicry"]
   },
   {
-    id: 8,
     title: "Advancing Telemedicine Through Adaptive UX",
     date: "August 2024",
     category: "research",
@@ -114,7 +178,6 @@ export const timelineData = [
     description: "Investigation of adaptive user experience design principles in telemedicine platforms, focusing on accessibility and user engagement."
   },
   {
-    id: 9,
     title: "Systematic Review of Healthcare IoT and Rapid Prototyping",
     date: "August 2024",
     category: "research",
@@ -122,7 +185,6 @@ export const timelineData = [
     description: "Comprehensive review of IoT applications in healthcare with focus on rapid prototyping methodologies for medical device development."
   },
   {
-    id: 10,
     title: "User-Centered Design in Healthcare Education Technologies",
     date: "2024",
     category: "research",
@@ -130,7 +192,6 @@ export const timelineData = [
     description: "Framework for implementing user-centered design principles in healthcare education technology development."
   },
   {
-    id: 11,
     title: "Integrating User-Centered Design in Rapid Robotic System Prototyping",
     date: "August 2024",
     category: "research",
@@ -140,7 +201,6 @@ export const timelineData = [
 
   // === 2025 RESEARCH PUBLICATIONS ===
   {
-    id: 12,
     title: "Ethical, Governance, and Usability Challenges in AI-Powered Virtual Health Assistants",
     date: "2025",
     category: "research",
@@ -148,10 +208,9 @@ export const timelineData = [
     description: "Systematic exploration of ethical frameworks and governance challenges in AI health assistants, focusing on user experience and regulatory compliance.",
     typewriterTitle: "Research Engineer",
     typewriterPrefix: "I am a",
-    navigationIcons: [iconMap.MATLAB, iconMap.Python, iconMap["C++"]]
+    navigationIcons: ["MATLAB", "Python", "C++"]
   },
   {
-    id: 13,
     title: "Augmented Reality Enhances Telemedicine Training",
     date: "2025",
     category: "research",
@@ -161,93 +220,101 @@ export const timelineData = [
 
   // === 2024 GITHUB PROJECTS ===
   {
-    id: 14,
     title: "LLM Assisted Research Platform",
     date: "2024",
     category: "projects",
     description: "Comprehensive research platform leveraging large language models for automated research assistance and knowledge synthesis. Features AI-powered literature review, data analysis, and research workflow automation.",
     url: "https://github.com/parthchandak02/research-assistant",
-    typewriterTitle: "Full Stack Developer",
+    typewriterTitle: "Programmer",
     typewriterPrefix: "I am a",
-    navigationIcons: [iconMap.Python, iconMap.JavaScript, iconMap.React, iconMap.Database],
+    navigationIcons: ["Python", "Shell", "LLMs"],
   },
   {
-    id: 15,
     title: "Google Apps Script AI Integration Framework",
     date: "2024",
     category: "projects",
     description: "Framework for integrating AI capabilities into Google Workspace applications using Apps Script and Gemini API. Enables automated document processing, intelligent data analysis, and workflow optimization.",
     url: "https://github.com/parthchandak02/gapps-script-gemini",
-    typewriterTitle: "Full Stack Developer",
+    typewriterTitle: "Programmer",
     typewriterPrefix: "I am a",
-    navigationIcons: [iconMap.Python, iconMap.JavaScript, iconMap.React, iconMap.Database],
+    navigationIcons: ["Google AppsScript", "Javascript", "LLMs"],
   },
   {
-    id: 16,
     title: "Financial Trading API for Interactive Brokers (IBKR)",
     date: "2024",
     category: "projects",
     description: "Comprehensive REST API interface for Interactive Brokers platform enabling automated trading, portfolio management, and real-time market data integration.",
     url: "https://github.com/parthchandak02/ibkr-ibind-rest-api",
-    typewriterTitle: "Full Stack Developer",
+    typewriterTitle: "Programmer",
     typewriterPrefix: "I am a",
-    navigationIcons: [iconMap.Python, iconMap.JavaScript, iconMap.React, iconMap.Database],
+    navigationIcons: ["Python", "Finance"],
   },
   {
-    id: 17,
     title: "Calendar and Alarm Productivity System",
     date: "2024",
     category: "projects",
     description: "Advanced productivity system combining intelligent calendar management with context-aware alarm systems for optimized time management and task completion.",
-    url: "https://github.com/parthchandak02/cal-tag-app"
+    url: "https://github.com/parthchandak02/cal-tag-app",
+    typewriterTitle: "Programmer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Typescript", "Javascript", "Shell"],
   },
 
   // === PREVIOUS WORK EXPERIENCE ===
   {
-    id: 18,
     title: "Manufacturing Engineer, Advanced Hardware Manufacturing Operations",
     date: "October 2018 - January 2022",
     category: "experience",
     location: "Zoox, Foster City, CA",
-    description: "Tracked 12,000+ parts with custom built scripts leading to less than 10 part traceability errors. Created tools and processes for 40+ technicians, improving manufacturing quality and testing workflows."
+    description: "Tracked 12,000+ parts with custom built scripts leading to less than 10 part traceability errors. Created tools and processes for 40+ technicians, the manufacturing quality, testing and decrease material workflows. Manufactured vehicle hardware for 10+ products in their life cycles, from DFMEA to OQC.",
+    navigationIcons: ["Python", "Javascript", "SQL", "Manufacturing", "CAD Design", "Automation"]
   },
   {
-    id: 19,
     title: "Engineering Intern, Charging Special Projects",
     date: "May 2018 - August 2018",
     category: "experience",
     location: "Tesla Motors, Fremont, CA",
-    description: "Planned and executed a 2000+ mile logistics trip with the Tesla Semi using VBA and PowerQuery. Designed 20+ Supercharger components library and 10+ civil/architectural sites for next-generation Supercharger."
+    description: "Planned and executed a 2000+ mile logistics trip with the Tesla Semi using VBA and PowerQuery for the truck charging program. Designed and built a model library of 20+ Supercharger components for architecture and engineering firms. Designed 10+ civil/architectural sites for next-generation Supercharger in SketchUp.",
+    navigationIcons: ["Data Analysis", "Electric Vehicles", "CAD Design"]
   },
   {
-    id: 20,
-    title: "Engineering and Manufacturing Assistant",
+    title: "Engineering and Manufacturing Intern",
     date: "June 2017 - August 2017",
     category: "experience",
     location: "BERG Manufacturing (now HDT Global), Spokane, WA",
-    description: "Achieved minimum 10% higher production rate with LEAN manufacturing and CAD/CAM prototyping for hard-wall shelters. Implemented efficiency improvements in manufacturing processes."
+    description: "Achieved a minimum 10% higher production rate with LEAN manufacturing and CAD/CAM prototyping for hard-wall shelters.",
+    navigationIcons: ["Manufacturing", "CAD Design", "Process Optimization"]
   },
   {
-    id: 21,
-    title: "Resident Advisor & Technology Assistant",
-    date: "August 2015 - May 2018",
+    title: "Resident Advisor (1y)",
+    date: "August 2015 - May 2016",
     category: "experience", 
-    location: "Washington State University, Pullman, WA",
-    description: "Enforced campus policies and organized technology-focused events for 400+ residents. Served as Resident Advisor (1 year) and Resident Technology Assistant (2 years)."
+    location: "Department of Residence Life, Washington State University, Pullman, WA",
+    description: "Enforced campus policies and organized events regarding technology in residence halls for 400+ residents.",
+    navigationIcons: ["Team Player", "Advisor", "Creativity"]
+  },
+  {
+    title: "Resident Technology Assistant (2y)",
+    date: "August 2016 - May 2018",
+    category: "experience",
+    location: "Department of Residence Life, Washington State University, Pullman, WA",
+    description: "Assisted students with technical issues, created technology awareness.",
+    navigationIcons: ["Team Player", "Technology", "Advisor", "Creativity"]
   },
 
   // === EDUCATION ===
   {
-    id: 22,
     title: "Bachelor of Science: Mechanical Engineering",
     date: "May 2018",
     category: "education",
     location: "Washington State University",
     description: "Graduated with GPA 3.7/4.0. Minors in Computer Science and Mathematics. Focused on robotics, automation, engineering design, and interdisciplinary technology integration.",
-    volume: "GPA: 3.7/4.0, Minors: Computer Science, Mathematics"
+    volume: "GPA: 3.7/4.0, Minors: Computer Science, Mathematics",
+    typewriterTitle: "Mechanical Engineer",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Robotics", "Automation", "CAD Design", "Materials Science", "Computer Science"]
   },
   {
-    id: 23,
     title: "Essentials of UX Design, User Experience",
     date: "June 2022 - August 2022",
     category: "education",
@@ -256,12 +323,11 @@ export const timelineData = [
     volume: "Grade: 97.6/100",
     typewriterTitle: "Creative Technologist",
     typewriterPrefix: "I am a",
-    navigationIcons: [iconMap.Figma, iconMap.Blender, iconMap.Unity, iconMap.ProtoPie],
+    navigationIcons: ["Wireframing", "Prototyping", "Presentation", "Design"],
   },
 
   // === MAJOR AWARDS & ACHIEVEMENTS ===
   {
-    id: 24,
     title: "Harold Frank Engineering Entrepreneurship Kauffman Award",
     date: "2016 - 2018",
     category: "awards",
@@ -269,7 +335,6 @@ export const timelineData = [
     description: "Prestigious multi-year award recognizing outstanding engineering entrepreneurship and innovation. Awarded for demonstrated excellence in combining engineering principles with entrepreneurial thinking."
   },
   {
-    id: 25,
     title: "Crimson Code Software Hackathon - 1st Place (Tier 1)",
     date: "2017",
     category: "awards",
@@ -277,7 +342,6 @@ export const timelineData = [
     description: "First place winner for developing advanced image processing capabilities for neural networks in robotic systems. Demonstrated innovation in computer vision and AI integration."
   },
   {
-    id: 26,
     title: "Guy E. Thornton Engineering Scholarship",
     date: "2016",
     category: "awards",
@@ -285,7 +349,6 @@ export const timelineData = [
     description: "Merit-based scholarship recognizing academic excellence and potential in engineering. Awarded for outstanding academic performance and engineering aptitude."
   },
   {
-    id: 27,
     title: "Robert W. Finch Memorial Scholarship",
     date: "2015",
     category: "awards",
@@ -293,7 +356,6 @@ export const timelineData = [
     description: "Scholarship awarded to incoming engineering students demonstrating exceptional academic potential and commitment to engineering excellence."
   },
   {
-    id: 28,
     title: "International Merit Award",
     date: "2015 - 2018",
     category: "awards",
@@ -303,7 +365,6 @@ export const timelineData = [
 
   // === MAJOR PROJECTS ===
   {
-    id: 29,
     title: "Boeing: Damping Ratios of Piloted Systems",
     date: "2018",
     category: "projects",
@@ -311,36 +372,39 @@ export const timelineData = [
     description: "Served as Team Technical Lead and Liaison. Developed innovative damping ratio analysis tool using advanced mathematical techniques for piloted aircraft systems, contributing to aerospace engineering research.",
     typewriterTitle: "Programmer",
     typewriterPrefix: "I am a",
-    navigationIcons: [iconMap.MATLAB, iconMap.Python, iconMap["C++"]],
+    navigationIcons: ["MATLAB", "Python", "C++"],
   },
   {
-    id: 30,
     title: "IEEE Hardware Hackathon - Sunlight-Following Robot",
     date: "2017",
     category: "projects",
     location: "Washington State University",
-    description: "Designed and programmed a centipede robot with phototropic behavior that autonomously follows sunlight. Integrated sensors, microcontrollers, and mechanical design for bio-inspired robotics."
+    description: "Designed and programmed a centipede robot with phototropic behavior that autonomously follows sunlight. Integrated sensors, microcontrollers, and mechanical design for bio-inspired robotics.",
+    typewriterTitle: "Programmer",
   },
   {
-    id: 31,
     title: "Center for Materials Research - ACRT Furnace System",
     date: "2018",
     category: "projects",
     location: "WSU Materials Research",
-    description: "Designed and assembled standardization system for accelerated crystal rotation technique (ACRT) furnace for SURCA research. Contributed to advanced materials science research."
+    description: "Designed and assembled standardization system for accelerated crystal rotation technique (ACRT) furnace for SURCA research. Contributed to advanced materials science research.",
+    typewriterTitle: "Researcher",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Materials Science", "CAD Design"],
   },
 
   // === HISTORICAL RESEARCH (2019-2023) ===
   {
-    id: 32,
     title: "Leveraging Haptic Feedback in Mixed Reality",
     date: "July 2023",
     category: "research",
     volume: "JEAST, Volume 5, Issue 4",
-    description: "Investigation of haptic feedback systems in mixed reality environments and their impact on user experience and task performance."
+    description: "Investigation of haptic feedback systems in mixed reality environments and their impact on user experience and task performance.",
+    typewriterTitle: "Researcher",
+    typewriterPrefix: "I am a",
+    navigationIcons: ["Haptics", "Mixed Reality", "User Experience"],
   },
   {
-    id: 33,
     title: "Rapid Prototyping Technologies and Design Frameworks",
     date: "2023",
     category: "research",
@@ -348,7 +412,6 @@ export const timelineData = [
     description: "Comprehensive study of rapid prototyping methodologies and their application in modern design frameworks across multiple industries."
   },
   {
-    id: 34,
     title: "Integrating Advanced Sensor Fusion with User-Centered Design in Robotics",
     date: "2023",
     category: "research",
@@ -356,7 +419,6 @@ export const timelineData = [
     description: "Research on combining advanced sensor technologies with human-centered design principles in robotic system development."
   },
   {
-    id: 35,
     title: "User-Centric Design in IoT Prototyping for Smart Agriculture",
     date: "2022",
     category: "research",
@@ -364,7 +426,6 @@ export const timelineData = [
     description: "Application of user-centered design principles in IoT system development for agricultural automation and smart farming solutions."
   },
   {
-    id: 36,
     title: "Rapid Prototyping Methodologies for Smart Shop Tools",
     date: "2022",
     category: "research",
@@ -372,7 +433,6 @@ export const timelineData = [
     description: "Development of rapid prototyping frameworks specifically designed for smart manufacturing tools and Industry 4.0 applications."
   },
   {
-    id: 37,
     title: "Advancing Robotics-Enabled STEM Education in K-12",
     date: "2021",
     category: "research",
@@ -380,7 +440,6 @@ export const timelineData = [
     description: "Research on integrating robotics platforms into K-12 STEM education to enhance learning outcomes and student engagement."
   },
   {
-    id: 38,
     title: "Advances in Human-Robot Interaction",
     date: "2021",
     category: "research",
@@ -388,7 +447,6 @@ export const timelineData = [
     description: "Comprehensive study of human-robot interaction principles and their application in developing intuitive robotic interfaces."
   },
   {
-    id: 39,
     title: "Advancements in Electric Bicycle Technology",
     date: "2020",
     category: "research",
@@ -396,7 +454,6 @@ export const timelineData = [
     description: "Technical analysis of electric bicycle innovations, focusing on battery technology, motor efficiency, and sustainable transportation solutions."
   },
   {
-    id: 40,
     title: "Growth and Characterization of Cadmium Telluride",
     date: "2019",
     category: "research",
@@ -406,7 +463,6 @@ export const timelineData = [
 
   // === MEDIA COVERAGE ===
   {
-    id: 41,
     title: "User-Centered Design Approaches for Manufacturing Systems",
     date: "2025",
     category: "media",
@@ -414,7 +470,6 @@ export const timelineData = [
     description: "Featured article discussing innovative approaches to user-centered design in modern manufacturing systems and Industry 4.0 applications."
   },
   {
-    id: 42,
     title: "The Creative Technologist: Bridging Engineering, UX, and Robotics",
     date: "2025",
     category: "media",
@@ -422,7 +477,6 @@ export const timelineData = [
     description: "Profile piece highlighting the intersection of engineering, user experience design, and robotics in autonomous vehicle development."
   },
   {
-    id: 43,
     title: "Bridging the Trust Gap Between Humans and Autonomous Systems",
     date: "2025",
     category: "media",
@@ -430,7 +484,6 @@ export const timelineData = [
     description: "Analysis of trust-building strategies in human-autonomous system interactions, drawing from automotive industry experience."
   },
   {
-    id: 44,
     title: "Leveraging Mixed Reality and Haptic Feedback for Immersive User Experiences",
     date: "2024",
     category: "media",
@@ -438,7 +491,6 @@ export const timelineData = [
     description: "Technical discussion of mixed reality applications and haptic feedback systems in creating immersive user experiences."
   },
   {
-    id: 45,
     title: "Rapid Prototyping Methodologies for Complex Systems",
     date: "2023",
     category: "media",
@@ -446,7 +498,6 @@ export const timelineData = [
     description: "In-depth coverage of rapid prototyping techniques for complex engineering systems, from concept to testing phases."
   },
   {
-    id: 46,
     title: "Advancing Human-Robot Interaction Through Intuitive Interfaces",
     date: "2022",
     category: "media",
@@ -454,7 +505,6 @@ export const timelineData = [
     description: "Discussion of innovative interface design approaches for improving human-robot interaction in various applications."
   },
   {
-    id: 47,
     title: "Freedom to Soar",
     date: "2018",
     category: "media",

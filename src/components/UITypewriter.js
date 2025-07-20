@@ -1,14 +1,25 @@
 // React import removed - not needed with modern JSX transform
+import { useRef, useEffect } from 'react';
 import { ReactTyped } from 'react-typed';
 import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
 import './UITypewriter.css';
 
 const UITypewriter = ({ lightMode }) => {
   const { updateCurrentPhrase, getTypewriterData, getFullSentences } = useTypewriterHighlight();
+  const highlightTimerRef = useRef(null);
+  const clearTimerRef = useRef(null);
   
   // Get professional titles and sentences from the centralized context
   const professionalTitles = getTypewriterData();
   const fullSentences = getFullSentences();
+
+  // Cleanup timers on component unmount
+  useEffect(() => {
+    return () => {
+      if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+      if (clearTimerRef.current) clearTimeout(clearTimerRef.current);
+    };
+  }, []);
 
   return (
     <div className="ui-typewriter-container">
@@ -42,12 +53,33 @@ const UITypewriter = ({ lightMode }) => {
           showCursor={true}
           smartBackspace={true}
           html={true} // Enable HTML parsing for spans
+          onBegin={() => {
+            // Clear highlighting when new typing begins (during deletion/new typing phase)
+            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+            if (clearTimerRef.current) clearTimeout(clearTimerRef.current);
+            updateCurrentPhrase('');
+          }}
           onStringTyped={(arrayPos) => {
-            // Only pass the title part (not the prefix) to the highlight context
+            // Clear any existing timers
+            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+            if (clearTimerRef.current) clearTimeout(clearTimerRef.current);
+            
             const titleOnly = professionalTitles[arrayPos].title;
-            updateCurrentPhrase(titleOnly);
+            
+            // Start highlighting after a brief delay (300ms) to ensure text is fully stable
+            highlightTimerRef.current = setTimeout(() => {
+              updateCurrentPhrase(titleOnly);
+              
+              // Clear highlighting 300ms before deletion starts (backDelay: 2500ms - 300ms = 2200ms)
+              clearTimerRef.current = setTimeout(() => {
+                updateCurrentPhrase('');
+              }, 2200);
+            }, 300);
           }}
           onDestroy={() => {
+            // Clear all timers and highlighting when component unmounts
+            if (highlightTimerRef.current) clearTimeout(highlightTimerRef.current);
+            if (clearTimerRef.current) clearTimeout(clearTimerRef.current);
             updateCurrentPhrase('');
           }}
         />

@@ -1,4 +1,4 @@
-/* Timeline Card Component - Modern Scroll-Driven Animations */
+/* Timeline Card Component - Modern Scroll-Driven Animations with Smooth Scaling */
 .timeline-card {
   border-radius: 16px;
   display: flex;
@@ -9,7 +9,22 @@
   pointer-events: auto;
   isolation: isolate;
   position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Enhanced smooth transitions with spring easing */
+  transition: 
+    transform 0.6s linear(
+      0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 
+      0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 
+      1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 
+      1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 
+      0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+    ),
+    box-shadow 0.4s ease-out,
+    opacity 0.4s ease-out;
+  
+  /* Initial state - slightly scaled down */
+  transform: scaleY(0.96);
+  opacity: 0.7;
 }
 
 /* Modern CSS Scroll-Driven Animation for smooth bidirectional expansion */
@@ -50,9 +65,13 @@
 /* Fallback for browsers without modern scroll-driven animations */
 @supports not (animation-timeline: view()) {
   .timeline-card {
-    opacity: 0.8;
-    transform: scaleY(0.98);
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Inherit the modern scaling approach */
+    opacity: 0.7;
+    transform: scaleY(0.96);
+    transition: 
+      transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+      opacity 0.4s ease-out,
+      box-shadow 0.4s ease-out;
   }
   
   /* Smooth visibility animations for scroll in fallback mode */
@@ -63,34 +82,60 @@
   
   /* Enhanced expansion for manually expanded cards in fallback */
   .timeline-card.expanded {
-    opacity: 1;
-    transform: scaleY(1.03) !important;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+    opacity: 1 !important;
+    transform: scaleY(1.02) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
   }
   
   /* Enhanced highlighting for typewriter effect in fallback */
-  .timeline-card--highlighted {
-    opacity: 1;
-    transform: scaleY(1.02) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  .timeline-card--typewriter-highlighted {
+    opacity: 1 !important;
+    transform: scaleY(1.01) !important;
+    box-shadow: 0 6px 24px rgba(255, 107, 53, 0.15) !important;
+  }
+}
+
+/* Reduced motion: simplified animations */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-card {
+    transition: opacity 0.2s ease, box-shadow 0.2s ease;
+    transform: none !important; /* Disable all scaling */
+  }
+  
+  .timeline-card.scroll-visible,
+  .timeline-card--scroll-highlighted,
+  .timeline-card.expanded,
+  .timeline-card--typewriter-highlighted {
+    transform: none !important; /* Ensure no scaling for accessibility */
   }
 }
 
 /* Enhanced modern card styling with smooth expansion */
 
-/* Enhanced state for manually expanded cards (via JavaScript) */
+/* Cards that are visible/in-view get full scale and opacity */
+.timeline-card.scroll-visible,
+.timeline-card--scroll-highlighted {
+  transform: scaleY(1) !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  z-index: 2;
+  position: relative;
+}
+
+/* Enhanced state for manually expanded cards */
 .timeline-card.expanded {
-  transform: scaleY(1.03) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+  transform: scaleY(1.02) !important;
+  opacity: 1 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
   z-index: 10;
   position: relative;
 }
 
-/* Scroll-based highlighting - Normal expansion behavior */
-.timeline-card--scroll-highlighted {
-  /* Enhanced visual feedback for scroll-based highlighting */
-  transform: scaleY(1.02) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+/* Typewriter highlighted cards get extra emphasis */
+.timeline-card--typewriter-highlighted {
+  transform: scaleY(1.01) !important;
+  opacity: 1 !important;
+  box-shadow: 0 6px 24px rgba(255, 107, 53, 0.15) !important;
   z-index: 5;
   position: relative;
 }
@@ -145,43 +190,98 @@
   flex-direction: column;
 }
 
-/* Expandable content area - Optimized for consistent smooth animation */
+/* Modern CSS height animation with interpolate-size */
+:root {
+  /* Enable native height: auto animations */
+  interpolate-size: allow-keywords;
+}
+
+/* Expandable content area - Modern height: auto animation */
 .timeline-card__expandable {
-  /* Essential for smooth height animation */
-  display: grid;
-  grid-template-rows: 0fr;
+  /* Start collapsed with height 0 */
+  height: 0;
   overflow: hidden;
   
-  /* Consistent smooth transition for all scenarios */
+  /* Modern spring-like easing for natural feel */
   transition: 
-    grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    opacity 0.3s ease-out;
+    height 0.6s linear(
+      0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 
+      0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 
+      1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 
+      1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 
+      0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
+    ),
+    opacity 0.4s ease-out 0.1s;
   
-  /* Start collapsed */
   opacity: 0;
+  
+  /* Fallback for browsers without interpolate-size support */
+  @supports not (interpolate-size: allow-keywords) {
+    display: grid;
+    grid-template-rows: 0fr;
+    height: auto;
+    transition: 
+      grid-template-rows 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.4s ease-out 0.1s;
+  }
   
   /* Reduced motion fallback */
   @media (prefers-reduced-motion: reduce) {
-    transition: opacity 0.2s ease;
+    transition: height 0.2s ease, opacity 0.2s ease;
+    
+    @supports not (interpolate-size: allow-keywords) {
+      transition: grid-template-rows 0.2s ease, opacity 0.2s ease;
+    }
   }
 }
 
 .timeline-card__expandable.expanded {
-  /* Expand the grid to show content */
-  grid-template-rows: 1fr;
+  /* Expand to natural height */
+  height: auto;
   opacity: 1;
+  
+  /* Fallback for browsers without interpolate-size support */
+  @supports not (interpolate-size: allow-keywords) {
+    grid-template-rows: 1fr;
+  }
 }
 
-/* Content wrapper for proper grid collapse */
+/* Content wrapper for proper animation */
 .timeline-card__expandable > * {
   overflow: hidden;
-  min-height: 0; /* Critical for grid collapse */
-  margin: 0; /* No margin in collapsed state */
+  min-height: 0;
+  margin: 0;
+  
+  /* Unified smooth entrance animation */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity 0.4s ease-out 0.2s,
+    transform 0.4s ease-out 0.2s,
+    margin 0.3s ease-out 0.3s;
 }
 
-/* Add margin only when expanded */
+/* Expanded state - all content appears together smoothly */
 .timeline-card.expanded .timeline-card__expandable > * {
-  margin-top: 12px; /* Comfortable spacing when expanded */
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 12px;
+}
+
+/* Fallback for grid-based animation */
+@supports not (interpolate-size: allow-keywords) {
+  .timeline-card__expandable > * {
+    /* Ensure proper grid collapse */
+    min-height: 0;
+  }
+}
+
+/* Reduced motion: simplified animation */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-card__expandable > * {
+    transform: none;
+    transition: opacity 0.2s ease, margin 0.2s ease;
+  }
 }
 
 /* Header section */
@@ -264,6 +364,9 @@
   font-weight: 400;
   opacity: 0.8;
   line-height: 1.4; /* Comfortable line height */
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Space between calendar icon and date text */
 }
 
 /* Meta information */
