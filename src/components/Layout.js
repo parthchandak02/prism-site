@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// React import removed - not needed
 import './Layout.css';
 
 const Layout = ({ children, darkMode = false, leftSidebar, rightSidebar }) => {
