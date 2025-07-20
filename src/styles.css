@@ -96,6 +96,12 @@
   --transition-bounce: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transform-scale-subtle: 1.02;
   --transform-scale-medium: 1.05;
+  
+  /* Rainbow gradient colors - reusable color stops */
+  --rainbow-gradient-dark: hsl(0 100% 75%), hsl(60 100% 75%), hsl(120 100% 75%), hsl(180 100% 75%), hsl(240 100% 75%), hsl(300 100% 75%), hsl(0 100% 75%);
+  --rainbow-gradient-light: hsl(0 100% 55%), hsl(60 100% 55%), hsl(120 100% 55%), hsl(180 100% 55%), hsl(240 100% 55%), hsl(300 100% 55%), hsl(0 100% 55%);
+  --rainbow-gradient-sidebar-dark: hsl(0 100% 70%), hsl(60 100% 70%), hsl(120 100% 70%), hsl(180 100% 70%), hsl(240 100% 70%), hsl(300 100% 70%), hsl(0 100% 70%);
+  --rainbow-gradient-sidebar-light: hsl(0 80% 50%), hsl(60 80% 50%), hsl(120 80% 50%), hsl(180 80% 50%), hsl(240 80% 50%), hsl(300 80% 50%), hsl(0 80% 50%);
 
   /* ========================================
      THEME SWITCHING - Dynamic Variables
@@ -225,16 +231,7 @@
   transition: var(--transition-bounce) !important;
 }
 
-/* Timeline cards get expansion highlighting - no blue tints */
-.timeline-card--highlighted {
-  /* Remove blue background - just use expansion */
-  transform: scaleY(1.02) !important; /* Vertical expansion as requested */
-  /* Keep minimal backdrop blur */
-  backdrop-filter: blur(20px) saturate(120%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(120%) !important;
-  transition: var(--transition-standard) !important;
-  /* Remove border color changes to avoid blue tints */
-}
+/* Timeline card highlighting is now handled in TimelineCard.css with separate classes */
 
 .glass-pill--highlighted:hover,
 .timeline__filter.active:hover {
@@ -399,6 +396,55 @@ p, span, div, button, input, textarea {
     width: calc(100% - var(--space-200));
     padding: var(--space-600) var(--space-150) var(--space-800) var(--space-150);
   }
-  
+}
 
+/* ========================================
+   RAINBOW TEXT ANIMATION UTILITIES
+   ======================================== */
+
+/* Base rainbow text utility - vertical gradient animation */
+.rainbow-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: rainbow-text-slide 2s linear infinite;
+  text-shadow: none;
+}
+
+/* Dark mode rainbow text (brighter for visibility) */
+.rainbow-text--dark {
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-dark)
+  ) 0 0 / 100% 300%;
+}
+
+/* Light mode rainbow text (darker for contrast) */
+.rainbow-text--light {
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-light)
+  ) 0 0 / 100% 300%;
+}
+
+/* Sidebar-specific rainbow text (slightly different colors) */
+.rainbow-text--sidebar-dark {
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-sidebar-dark)
+  ) 0 0 / 100% 300%;
+}
+
+.rainbow-text--sidebar-light {
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-sidebar-light)
+  ) 0 0 / 100% 300%;
+}
+
+/* Rainbow text animation keyframes */
+@keyframes rainbow-text-slide {
+  to {
+    background-position: 0 300%;
+  }
 }

@@ -112,21 +112,46 @@
   background: rgba(0, 0, 0, 0.6); /* Subtle dark underline for light mode */
 }
 
-/* Typewriter-based highlight styling - just white highlight, no underline */
+/* Typewriter-based highlight styling - Rainbow text animation */
+@supports (animation-timeline: view()) {
+  @property --rainbow-text-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+}
+
 .left-sidebar__pill--typewriter-highlight {
-  color: rgba(255, 255, 255, 1); /* Pure white highlight */
-  font-weight: 450;
-  background: rgba(255, 255, 255, 0.12); /* Subtle white background */
+  /* Component-specific styles */
+  font-weight: 500;
   border-radius: var(--radius-sm);
   padding: var(--space-075) var(--space-100);
-  /* Remove blue tint and glow effects */
+}
+
+/* Extend rainbow text utility for typewriter highlights */
+.left-sidebar__pill--typewriter-highlight {
+  /* Use consolidated rainbow text utility */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: rainbow-text-slide 2s linear infinite;
+  text-shadow: none;
+  /* Use dark sidebar rainbow gradient */
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-sidebar-dark)
+  ) 0 0 / 100% 300%;
 }
 
 .left-sidebar--light .left-sidebar__pill--typewriter-highlight {
-  color: rgba(0, 0, 0, 1); /* Pure black for light mode */
-  background: rgba(0, 0, 0, 0.12); /* Subtle dark background for light mode */
-  /* Remove blue tint */
+  /* Use light sidebar rainbow gradient from consolidated styles */
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-sidebar-light)
+  ) 0 0 / 100% 300%;
 }
+
+/* Rainbow keyframes now consolidated in styles.css */
 
 /* ========================================
    RESPONSIVE DESIGN

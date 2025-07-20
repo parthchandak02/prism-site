@@ -97,53 +97,32 @@
 
 /* Typewriter highlighting - Rainbow title text (no card expansion) */
 .timeline-card--typewriter-highlighted .timeline-card__title {
-  /* Enhanced rainbow text gradient for dark mode - vibrant and bright */
-  background: linear-gradient(
-    90deg,
-    hsl(0 100% 75%),
-    hsl(60 100% 75%),
-    hsl(120 100% 75%),
-    hsl(180 100% 75%),
-    hsl(240 100% 75%),
-    hsl(300 100% 75%),
-    hsl(0 100% 75%)
-  ) 0 0 / 300% 100%;
+  /* Component-specific styling for title */
+  font-weight: 700; /* Extra bold for better visibility */
   
+  /* Use consolidated rainbow text utility */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
   animation: rainbow-text-slide 2s linear infinite;
-  font-weight: 700; /* Extra bold for better visibility */
-  text-shadow: none; /* Remove any conflicting shadows */
+  text-shadow: none;
+  /* Use dark rainbow gradient for card titles */
+  background: linear-gradient(
+    0deg,
+    var(--rainbow-gradient-dark)
+  ) 0 0 / 100% 300%;
 }
 
 /* Light mode rainbow title text */
 .timeline-card--light.timeline-card--typewriter-highlighted .timeline-card__title {
-  /* Slightly darker colors for light mode for better contrast */
+  /* Use light rainbow gradient for card titles from consolidated styles */
   background: linear-gradient(
-    90deg,
-    hsl(0 100% 55%),
-    hsl(60 100% 55%),
-    hsl(120 100% 55%),
-    hsl(180 100% 55%),
-    hsl(240 100% 55%),
-    hsl(300 100% 55%),
-    hsl(0 100% 55%)
-  ) 0 0 / 300% 100%;
-  
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  animation: rainbow-text-slide 2s linear infinite;
-  font-weight: 700;
-  text-shadow: none;
+    0deg,
+    var(--rainbow-gradient-light)
+  ) 0 0 / 100% 300%;
 }
 
-@keyframes rainbow-text-slide {
-  to {
-    background-position: 300% 0;
-  }
-}
+/* Rainbow keyframes now consolidated in styles.css */
 
 /* Light/Dark Mode Text Colors - Following Design System */
 .timeline-card--light {
