@@ -32,9 +32,13 @@ const TimelineCard = ({
   
   // Use auto-expansion if specified, otherwise use internal state
   const effectiveExpanded = smoothAutoExpanded !== false ? smoothAutoExpanded : isExpanded;
+  
+  // Generate category-specific class name
+  const categoryClass = category ? `timeline-card--category-${category.toLowerCase()}` : '';
+  
   return (
     <div 
-      className={`timeline-card glass glass-strong glass-interactive ${effectiveExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isHighlighted ? 'timeline-card--highlighted highlight-subtle' : ''} ${className}`} 
+      className={`timeline-card glass glass-strong glass-interactive ${effectiveExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isHighlighted ? 'timeline-card--highlighted highlight-subtle' : ''} ${categoryClass} ${className}`} 
       {...props}
     >
       {/* Content container */}
