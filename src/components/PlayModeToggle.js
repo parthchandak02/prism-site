@@ -1,4 +1,4 @@
-import { Rainbow, Glasses, Pyramid } from 'lucide-react';
+import { Rainbow, Glasses, Pyramid, FileUser } from 'lucide-react';
 import './PlayModeToggle.css';
 
 const PlayModeToggle = ({ isPlayMode, onToggle }) => {
@@ -10,9 +10,16 @@ const PlayModeToggle = ({ isPlayMode, onToggle }) => {
     >
       <span className="play-mode-toggle__icon">
         {isPlayMode ? (
-          <Glasses size={18} />
+          <span className="play-mode-toggle__icon-container play-mode-toggle__icon-container--play-mode">
+            <span className="play-mode-toggle__icon-primary">
+              <Glasses size={18} />
+            </span>
+            <span className="play-mode-toggle__icon-secondary">
+              <FileUser size={18} />
+            </span>
+          </span>
         ) : (
-          <span className="play-mode-toggle__icon-container">
+          <span className="play-mode-toggle__icon-container play-mode-toggle__icon-container--reading-mode">
             <span className="play-mode-toggle__icon-primary">
               <Pyramid size={18} />
             </span>
