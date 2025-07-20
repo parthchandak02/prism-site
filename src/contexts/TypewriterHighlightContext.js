@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import timelineData, { getTypewriterData } from '../data/timelineData';
+import { timelineData, getTypewriterData } from '../data/timelineData';
 
 /**
  * =============================================================================
@@ -104,4 +104,4 @@ export const useTypewriterHighlight = () => {
   return context;
 };
 
-export default TypewriterHighlightContext; 
+// Removed unused default export 

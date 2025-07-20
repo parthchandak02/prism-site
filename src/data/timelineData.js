@@ -443,4 +443,4 @@ export const getTypewriterData = () => {
   });
 };
 
-export default timelineData; 
+// Removed duplicate default export - using named export instead 
