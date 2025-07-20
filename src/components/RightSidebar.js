@@ -47,7 +47,7 @@ const RightSidebar = ({
     { 
       icon: Calendar, 
       text: 'Book Meeting', 
-      url: 'https://tiny.cc/parthchandakboox', 
+      url: 'https://tiny.cc/parthchandakbook', 
       external: true 
     }
   ];
