@@ -97,11 +97,10 @@
   --transform-scale-subtle: 1.02;
   --transform-scale-medium: 1.05;
   
-  /* Rainbow gradient colors - reusable color stops */
-  --rainbow-gradient-dark: hsl(0 100% 75%), hsl(60 100% 75%), hsl(120 100% 75%), hsl(180 100% 75%), hsl(240 100% 75%), hsl(300 100% 75%), hsl(0 100% 75%);
-  --rainbow-gradient-light: hsl(0 100% 55%), hsl(60 100% 55%), hsl(120 100% 55%), hsl(180 100% 55%), hsl(240 100% 55%), hsl(300 100% 55%), hsl(0 100% 55%);
-  --rainbow-gradient-sidebar-dark: hsl(0 100% 70%), hsl(60 100% 70%), hsl(120 100% 70%), hsl(180 100% 70%), hsl(240 100% 70%), hsl(300 100% 70%), hsl(0 100% 70%);
-  --rainbow-gradient-sidebar-light: hsl(0 80% 50%), hsl(60 80% 50%), hsl(120 80% 50%), hsl(180 80% 50%), hsl(240 80% 50%), hsl(300 80% 50%), hsl(0 80% 50%);
+  /* Orange highlight colors - matching the prism spectrum */
+  --orange-bright: #FF6B35;
+  --orange-dark-mode: #FF6B35;
+  --orange-light-mode: #E55A2B;
 
   /* ========================================
      THEME SWITCHING - Dynamic Variables
@@ -399,52 +398,23 @@ p, span, div, button, input, textarea {
 }
 
 /* ========================================
-   RAINBOW TEXT ANIMATION UTILITIES
+   ORANGE TEXT HIGHLIGHT UTILITIES
    ======================================== */
 
-/* Base rainbow text utility - vertical gradient animation */
-.rainbow-text {
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  animation: rainbow-text-slide 2s linear infinite;
-  text-shadow: none;
+/* Base orange text utility for typewriter highlights */
+.orange-text {
+  color: var(--orange-bright);
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
 }
 
-/* Dark mode rainbow text (brighter for visibility) */
-.rainbow-text--dark {
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-dark)
-  ) 0 0 / 100% 300%;
+/* Dark mode orange text (vibrant) */
+.orange-text--dark {
+  color: var(--orange-dark-mode);
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
 }
 
-/* Light mode rainbow text (darker for contrast) */
-.rainbow-text--light {
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-light)
-  ) 0 0 / 100% 300%;
-}
-
-/* Sidebar-specific rainbow text (slightly different colors) */
-.rainbow-text--sidebar-dark {
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-sidebar-dark)
-  ) 0 0 / 100% 300%;
-}
-
-.rainbow-text--sidebar-light {
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-sidebar-light)
-  ) 0 0 / 100% 300%;
-}
-
-/* Rainbow text animation keyframes */
-@keyframes rainbow-text-slide {
-  to {
-    background-position: 0 300%;
-  }
+/* Light mode orange text (darker for contrast) */
+.orange-text--light {
+  color: var(--orange-light-mode);
+  text-shadow: 0 0 6px rgba(229, 90, 43, 0.2);
 }

@@ -95,9 +95,7 @@
   position: relative;
 }
 
-/* Rainbow text styles moved below for proper CSS cascade - see bottom of file */
-
-/* Rainbow keyframes now consolidated in styles.css */
+/* Orange text styles moved below for proper CSS cascade - see bottom of file */
 
 /* Light/Dark Mode Text Colors - Following Design System */
 .timeline-card--light {
@@ -120,30 +118,22 @@
   color: inherit;
 }
 
-/* IMPORTANT: Rainbow text overrides - must come after general color rules */
-/* Typewriter highlighting - Rainbow title text (higher specificity to override color: inherit) */
+/* IMPORTANT: Orange text overrides - must come after general color rules */
+/* Typewriter highlighting - Bright orange title text (higher specificity to override color: inherit) */
 .timeline-card--typewriter-highlighted .timeline-card__title {
   /* Component-specific styling for title */
   font-weight: 700 !important; /* Extra bold for better visibility */
   
-  /* Rainbow text effect using consolidated utilities */
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-dark)
-  ) 0 0 / 100% 300% !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  animation: rainbow-text-slide 2s linear infinite !important;
-  text-shadow: none !important;
+  /* Bright orange text effect matching the prism colors */
+  color: #FF6B35 !important; /* Vibrant orange from the rainbow spectrum */
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.3) !important; /* Subtle orange glow */
 }
 
-/* Light mode rainbow title text (higher specificity) */
+/* Light mode orange title text (higher specificity) */
 .timeline-card--light.timeline-card--typewriter-highlighted .timeline-card__title {
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-light)
-  ) 0 0 / 100% 300% !important;
+  /* Darker orange for better contrast on light backgrounds */
+  color: #E55A2B !important; /* Darker orange for light backgrounds */
+  text-shadow: 0 0 6px rgba(229, 90, 43, 0.2) !important; /* Lighter glow for light mode */
 }
 
 

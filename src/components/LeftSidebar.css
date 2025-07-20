@@ -127,27 +127,18 @@
   border-radius: var(--radius-sm);
   padding: var(--space-075) var(--space-100);
   
-  /* Rainbow text effect using consolidated utilities */
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-sidebar-dark)
-  ) 0 0 / 100% 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  animation: rainbow-text-slide 2s linear infinite;
-  text-shadow: none;
+  /* Bright orange text effect matching the prism colors */
+  color: #FF6B35 !important; /* Vibrant orange from the rainbow spectrum */
+  text-shadow: 0 0 8px rgba(255, 107, 53, 0.3); /* Subtle orange glow */
 }
 
 .left-sidebar--light .left-sidebar__pill--typewriter-highlight {
-  /* Use light sidebar rainbow gradient from consolidated styles */
-  background: linear-gradient(
-    0deg,
-    var(--rainbow-gradient-sidebar-light)
-  ) 0 0 / 100% 300%;
+  /* Bright orange for light mode - slightly darker for better contrast */
+  color: #E55A2B !important; /* Darker orange for light backgrounds */
+  text-shadow: 0 0 6px rgba(229, 90, 43, 0.2); /* Lighter glow for light mode */
 }
 
-/* Rainbow keyframes now consolidated in styles.css */
+/* Simple orange text - no animations needed */
 
 /* ========================================
    RESPONSIVE DESIGN
