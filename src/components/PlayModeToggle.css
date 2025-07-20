@@ -45,17 +45,26 @@
   color: rgba(0, 0, 0, 1);
 }
 
-/* Visual feedback for play mode - overrides light/dark mode */
-.play-mode-toggle.play-mode {
+/* Visual feedback for paused state (showing Play icon) - overrides light/dark mode */
+.play-mode-toggle:not(.play-mode) {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.play-mode-toggle.play-mode .play-mode-toggle__icon {
-  color: rgba(0, 255, 127, 0.9) !important; /* Green color when in play mode */
+.play-mode-toggle:not(.play-mode) .play-mode-toggle__icon {
+  color: rgba(255, 215, 0, 0.9) !important; /* Golden/yellow color when paused (like lock) */
 }
 
-.play-mode-toggle.play-mode:hover .play-mode-toggle__icon {
-  color: rgba(0, 255, 127, 1) !important; /* Brighter green on hover */
+.play-mode-toggle:not(.play-mode):hover .play-mode-toggle__icon {
+  color: rgba(255, 215, 0, 1) !important; /* Brighter golden on hover */
+}
+
+/* Playing state (showing Pause icon) uses normal white/dark mode colors */
+.play-mode-toggle.play-mode {
+  /* No special background or colors - uses default styling */
+}
+
+.play-mode-toggle.play-mode .play-mode-toggle__icon {
+  /* Uses the default light/dark mode colors defined above */
 }
 
 /* Responsive design */
