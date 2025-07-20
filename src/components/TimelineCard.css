@@ -21,6 +21,18 @@
   opacity: var(--dynamic-opacity);
 }
 
+/* Override dynamic styling for expanded cards - user wants to see them clearly */
+.timeline-card.expanded {
+  --dynamic-blur-intensity: 1 !important; /* Full blur intensity */
+  --dynamic-opacity: 1 !important; /* Full opacity */
+}
+
+/* Override dynamic styling for highlighted cards - they are in focus */
+.timeline-card--highlighted {
+  --dynamic-blur-intensity: 1 !important; /* Full blur intensity */
+  --dynamic-opacity: 1 !important; /* Full opacity */
+}
+
 /* Light/Dark Mode Text Colors - Following Design System */
 .timeline-card--light {
   color: rgba(0, 0, 0, 0.9);
