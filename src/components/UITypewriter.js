@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { ReactTyped } from 'react-typed';
 import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
 import './UITypewriter.css';
