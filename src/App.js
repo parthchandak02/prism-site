@@ -4,6 +4,7 @@ import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
 import LightToggle from './components/LightToggle';
 import LockToggle from './components/LockToggle';
+import PlayModeToggle from './components/PlayModeToggle';
 import Timeline from './components/Timeline';
 import LeftSidebar from './components/LeftSidebar';
 import RightSidebar from './components/RightSidebar';
@@ -35,6 +36,10 @@ export default function App() {
   // Filter state for the timeline
   const [activeFilter, setActiveFilter] = useState('all');
   
+  // Play mode state - toggle between interactive mode and resume reading mode
+  const [isPlayMode, setIsPlayMode] = useState(false);
+  const togglePlayMode = () => setIsPlayMode(!isPlayMode);
+  
   // Track which category section is currently visible and centermost card when in 'all' mode
   const { visibleCategory, centermostCard } = useScrollHighlight(activeFilter);
 
@@ -62,8 +67,9 @@ export default function App() {
   return (
     <TypewriterHighlightProvider>
       <Layout 
+        lightMode={lightMode}
         darkMode={!lightMode}
-        leftSidebar={categories.length > 1 ? (
+        leftSidebar={!isPlayMode && categories.length > 1 ? (
           <LeftSidebar
             filters={filters}
             activeFilter={activeFilter}
@@ -72,11 +78,11 @@ export default function App() {
             lightMode={lightMode}
           />
         ) : null}
-        rightSidebar={
+        rightSidebar={!isPlayMode ? (
           <RightSidebar
             lightMode={lightMode}
           />
-        }
+        ) : null}
       >
         {/* 3D Canvas Background */}
         <Canvas3D 
@@ -90,14 +96,16 @@ export default function App() {
           {/* Fixed UI Components */}
           <LightToggle lightMode={lightMode} onToggle={toggleLightMode} />
           <LockToggle isLocked={isLocked} onToggle={toggleLock} />
+          <PlayModeToggle isPlayMode={isPlayMode} onToggle={togglePlayMode} />
           
-          {/* Main Content Area with Timeline */}
-          <div className="main-content-scroll">
-            {/* Typewriter that scrolls with content */}
-            <UITypewriter lightMode={lightMode} />
-            
-            <GlassNavigation lightMode={lightMode} />
-            <Timeline 
+          {/* Main Content Area with Timeline - Hidden in play mode */}
+          {!isPlayMode && (
+            <div className="main-content-scroll">
+              {/* Typewriter that scrolls with content */}
+              <UITypewriter lightMode={lightMode} />
+              
+              <GlassNavigation lightMode={lightMode} />
+              <Timeline 
                data={timelineData}
                activeFilter={activeFilter}
                showFilters={false} // Filters are now handled by LeftSidebar
@@ -105,7 +113,8 @@ export default function App() {
                className="timeline-in-scroll"
                centermostCard={centermostCard}
              />
-          </div>
+            </div>
+          )}
         </div>
       </Layout>
     </TypewriterHighlightProvider>
