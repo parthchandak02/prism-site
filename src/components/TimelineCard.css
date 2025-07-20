@@ -360,9 +360,9 @@
   gap: 6px;
   padding: 6px 12px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: var(--glass-bg-base);
+  border: 1px solid var(--glass-border-base);
+  backdrop-filter: var(--glass-blur-subtle);
   transition: all 0.2s ease;
   font-size: 12px;
   font-weight: 500;
