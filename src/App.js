@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Layout from './components/Layout';
 import Canvas3D from './components/Canvas3D';
 import GlassNavigation from './components/GlassNavigation';
