@@ -1,17 +1,17 @@
 // Timeline data - using clean data structure with centralized icon mapping
 import { 
   // Navigation icons from Lucide React
-  Code, Database, GitBranch, Globe, Cpu, Terminal, Settings, Zap,
+  Code, Database, GitBranch, Cpu, Terminal, Settings, Zap,
   CircuitBoard, Microchip, Figma, Palette, Layers, Box,
   Printer, PenTool, Gamepad2, Trello, Mail, Monitor, FileText,
   // Additional icons for experience section
   Factory, Wrench, Users, Cog, ChartBar, TruckElectric, PencilRuler,
   // New icons for enhanced navigation
-  FileJson, Presentation, DollarSign, Plane, Building, School,
+  FileJson, Presentation, DollarSign, Plane, School,
   Lightbulb, Crown, HeartHandshake, Handshake, Microscope, User,
   Vibrate, Sun, Dna,
   // Latest missing icons from new additions
-  Shell, BrainCircuit, HandCoins, Computer, Beaker, Glasses,
+  BrainCircuit, HandCoins, Computer, Beaker, Glasses,
   Award, Star, IterationCw,
   // Research-specific icons
   BriefcaseMedical, Brain, Video, RadioTower, Leaf, GraduationCap,
