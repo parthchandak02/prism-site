@@ -174,9 +174,9 @@ export const timelineDataByCategory = {
         ]
     },
     {
-        "title": "Resident Advisor (1y)",
+        "title": "Resident Advisor",
         "company": "Washington State University",
-        "companyLogo": "/logos/washington-state-uni-logo.png",
+        "companyLogo": "/logos/wsu-logo.png",
         "date": "August 2015 - May 2016",
         "category": "experience",
         "location": "Pullman, WA",
@@ -188,9 +188,9 @@ export const timelineDataByCategory = {
         ]
     },
     {
-        "title": "Resident Technology Assistant (2y)",
+        "title": "Resident Technology Assistant",
         "company": "Washington State University",
-        "companyLogo": "/logos/washington-state-uni-logo.png",
+        "companyLogo": "/logos/wsu-logo.png",
         "date": "August 2016 - May 2018",
         "category": "experience",
         "location": "Pullman, WA",
@@ -208,6 +208,8 @@ export const timelineDataByCategory = {
         "title": "Audio Prioritization Patent (Pending)",
         "date": "June 2024",
         "category": "patent",
+        "company": "Zoox",
+        "companyLogo": "/logos/zoox-logo.png",
         "location": "Application #1/###,573; Ref. 1246-02850US1",
         "description": "Innovative patent pending for audio prioritization technology, demonstrating cutting-edge research in autonomous vehicle audio systems and user experience optimization.",
         "typewriterTitle": "Inventor",
@@ -225,8 +227,6 @@ export const timelineDataByCategory = {
         "category": "speaking",
         "location": "ICETAIA Conference",
         "description": "Keynote presentation on innovative rapid prototyping methodologies and fidelity frameworks for modern product development, sharing insights from autonomous vehicle development.",
-        "typewriterTitle": "Keynote Speaker",
-        "typewriterPrefix": "I am a",
         "skills": [
             "Presentation"
         ]
@@ -236,11 +236,11 @@ export const timelineDataByCategory = {
     {
         "title": "BuildOn Nepal School Project - $55K Fundraising Lead",
         "date": "January 2025",
+        "company": "BuildOn",
+        "companyLogo": "/logos/buildon-logo.png",
         "category": "volunteering",
         "location": "Nepal",
         "description": "Raised $55,000 to build a school in Nepal, directly impacting 210+ students (including 108 girls) in a community of 2250 farmers. Led fundraising strategy and participated in construction trek.",
-        "typewriterTitle": "Volunteer",
-        "typewriterPrefix": "I",
         "skills": [
             "Fundraising",
             "Travel",
@@ -251,6 +251,8 @@ export const timelineDataByCategory = {
         "title": "Manager, Team Innovation Program",
         "date": "May 2025 - Present",
         "category": "volunteering",
+        "company": "Mentor Discover Inspire",
+        "companyLogo": "/logos/mdi-logo.png",
         "location": "Mentor Discover Inspire",
         "description": "Leading 3+ cross-team initiatives to enhance inter and intra team cohesion. Managing innovative mentorship programs and organizational development.",
         "typewriterTitle": "Team Leader",
@@ -265,6 +267,8 @@ export const timelineDataByCategory = {
         "title": "Team Leader",
         "date": "May 2025 - Present",
         "category": "volunteering",
+        "company": "Mentor Discover Inspire",
+        "companyLogo": "/logos/mdi-logo.png",
         "location": "Mentor Discover Inspire",
         "description": "Expanded team from 6 to 12+ members (↑100%) ; organized 3+ community service and team-building events",
         "typewriterTitle": "Team Leader",
@@ -283,7 +287,7 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "IJFMR, Volume 7, Issue 1",
         "description": "Systematic exploration of ethical frameworks and governance challenges in AI health assistants, focusing on user experience and regulatory compliance.",
-        "typewriterTitle": "Research Engineer",
+        "typewriterTitle": "Researcher",
         "typewriterPrefix": "I am a",
         "skills": [
             "MATLAB",
@@ -298,6 +302,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "IJFMR, Volume 7, Issue 3",
         "description": "Research on AR applications in telemedicine training, demonstrating improved learning outcomes and practical skill development.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Mixed Reality",
             "Medical Research",
@@ -311,6 +317,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "ProMedSci, Volume 8, Issue E178",
         "description": "Investigation of adaptive user experience design principles in telemedicine platforms, focusing on accessibility and user engagement.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "User Experience",
             "Medical Research",
@@ -324,6 +332,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "ProMedSci, Volume 8, Issue E153",
         "description": "Comprehensive review of IoT applications in healthcare with focus on rapid prototyping methodologies for medical device development.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Medical Research",
             "IoT",
@@ -337,6 +347,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "IJIRMPS, Volume 12, Issue 4",
         "description": "Framework for incorporating user-centered design principles in rapid prototyping of robotic systems, with emphasis on human-robot interaction.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "User Experience",
             "Robotics",
@@ -380,6 +392,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "ProMedSci, Volume 9, Issue E174",
         "description": "Framework for implementing user-centered design principles in healthcare education technology development.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "User Experience",
             "Medical Research",
@@ -396,6 +410,7 @@ export const timelineDataByCategory = {
         "typewriterTitle": "Researcher",
         "typewriterPrefix": "I am a",
         "skills": [
+            "Research",
             "Haptics",
             "Mixed Reality",
             "User Experience",
@@ -408,6 +423,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "JMSMR, Volume 4, Issue 1",
         "description": "Comprehensive study of rapid prototyping methodologies and their application in modern design frameworks across multiple industries.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Prototyping",
             "Manufacturing",
@@ -421,6 +438,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "ISJEM, Volume 2, Issue 9",
         "description": "Research on combining advanced sensor technologies with human-centered design principles in robotic system development.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Robotics",
             "User Experience",
@@ -434,6 +453,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "IJIRMPS, Volume 10, Issue 2",
         "description": "Application of user-centered design principles in IoT system development for agricultural automation and smart farming solutions.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "User Experience",
             "IoT",
@@ -447,6 +468,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "URF Journals",
         "description": "Development of rapid prototyping frameworks specifically designed for smart manufacturing tools and Industry 4.0 applications.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Prototyping",
             "Manufacturing",
@@ -460,6 +483,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "IJSREM, Volume 5, Issue 12",
         "description": "Research on integrating robotics platforms into K-12 STEM education to enhance learning outcomes and student engagement.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Robotics",
             "Education",
@@ -473,6 +498,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "IJIRMPS, Volume 9, Issue 5",
         "description": "Comprehensive study of human-robot interaction principles and their application in developing intuitive robotic interfaces.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Robotics",
             "User Experience",
@@ -486,6 +513,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "Zenodo",
         "description": "Technical analysis of electric bicycle innovations, focusing on battery technology, motor efficiency, and sustainable transportation solutions.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Electric Vehicles",
             "Battery Tech",
@@ -499,6 +528,8 @@ export const timelineDataByCategory = {
         "category": "research",
         "volume": "IJFMR, Volume 1, Issue 2",
         "description": "Materials science research on cadmium telluride crystal growth and characterization for semiconductor applications.",
+        "typewriterTitle": "Researcher",
+        "typewriterPrefix": "I am a",
         "skills": [
             "Materials Science",
             "Solar",
@@ -542,6 +573,7 @@ export const timelineDataByCategory = {
         "title": "Financial Trading API for Interactive Brokers (IBKR)",
         "date": "2024",
         "category": "projects",
+        "companyLogo": "/logos/ibkr-logo.png",
         "description": "Comprehensive REST API interface for Interactive Brokers platform enabling automated trading, portfolio management, and real-time market data integration.",
         "url": "https://github.com/parthchandak02/ibkr-ibind-rest-api",
         "typewriterTitle": "Programmer",
@@ -571,6 +603,8 @@ export const timelineDataByCategory = {
         "date": "2018",
         "category": "projects",
         "location": "Boeing Collaboration, WSU",
+        "company": "Boeing",
+        "companyLogo": "/logos/boeing-logo.png",
         "projectImage": "/images/damping-ratios-of-piloted-systems.png",
         "description": "Served as Team Technical Lead and Liaison. Developed innovative damping ratio analysis tool using advanced mathematical techniques for piloted aircraft systems, contributing to aerospace engineering research.",
         "typewriterTitle": "Programmer",
@@ -586,9 +620,11 @@ export const timelineDataByCategory = {
         "date": "2018",
         "category": "projects",
         "location": "WSU Materials Research",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
         "projectImage": "/images/cleanroom-workbench-design-and-assembly.png",
         "description": "Designed and assembled standardization system for accelerated crystal rotation technique (ACRT) furnace for SURCA research. Contributed to advanced materials science research.",
-        "typewriterTitle": "Researcher",
+        "typewriterTitle": "Mechanical Engineer",
         "typewriterPrefix": "I am a",
         "skills": [
             "Materials Science",
@@ -600,9 +636,18 @@ export const timelineDataByCategory = {
         "date": "2017",
         "category": "projects",
         "location": "Washington State University",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
         "projectImage": "/images/engineering-gear-system-for-parallax-bot.png",
         "description": "Designed and programmed a centipede robot with phototropic behavior that autonomously follows sunlight. Integrated sensors, microcontrollers, and mechanical design for bio-inspired robotics.",
-        "typewriterTitle": "Programmer"
+        "typewriterTitle": "Maker",
+        "typewriterPrefix": "I am a",
+        "skills": [
+            "Robotics",
+            "Automation",
+            "CAD Design",
+            "Computer Science"
+        ]
     }
   ],
   education: [
@@ -610,6 +655,8 @@ export const timelineDataByCategory = {
         "title": "Bachelor of Science: Mechanical Engineering",
         "date": "May 2018",
         "category": "education",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
         "location": "Washington State University",
         "description": "Graduated with GPA 3.7/4.0. Minors in Computer Science and Mathematics. Focused on robotics, automation, engineering design, and interdisciplinary technology integration.",
         "volume": "GPA: 3.7/4.0, Minors: Computer Science, Mathematics",
@@ -627,6 +674,8 @@ export const timelineDataByCategory = {
         "title": "Essentials of UX Design, User Experience",
         "date": "June 2022 - August 2022",
         "category": "education",
+        "company": "UC Berkeley Extension",
+        "companyLogo": "/logos/berkeley-logo.png",
         "location": "UC Berkeley Extension",
         "description": "Comprehensive course in user experience design principles, methodologies, and practical application in product development. Achieved exceptional academic performance.",
         "volume": "Grade: 97.6/100",
@@ -645,35 +694,45 @@ export const timelineDataByCategory = {
         "title": "Harold Frank Engineering Entrepreneurship Kauffman Award",
         "date": "2016 - 2018",
         "category": "awards",
-        "location": "Washington State University",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
+        "location": "Pullman, WA",
         "description": "Prestigious multi-year award recognizing outstanding engineering entrepreneurship and innovation. Awarded for demonstrated excellence in combining engineering principles with entrepreneurial thinking."
     },
     {
         "title": "Crimson Code Software Hackathon - 1st Place (Tier 1)",
         "date": "2017",
         "category": "awards",
-        "location": "Washington State University",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
+        "location": "Pullman, WA",
         "description": "First place winner for developing advanced image processing capabilities for neural networks in robotic systems. Demonstrated innovation in computer vision and AI integration."
     },
     {
         "title": "Guy E. Thornton Engineering Scholarship",
         "date": "2016",
         "category": "awards",
-        "location": "Washington State University",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
+        "location": "Pullman, WA",
         "description": "Merit-based scholarship recognizing academic excellence and potential in engineering. Awarded for outstanding academic performance and engineering aptitude."
     },
     {
         "title": "Robert W. Finch Memorial Scholarship",
         "date": "2015",
         "category": "awards",
-        "location": "Washington State University",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
+        "location": "Pullman, WA",
         "description": "Scholarship awarded to incoming engineering students demonstrating exceptional academic potential and commitment to engineering excellence."
     },
     {
         "title": "International Merit Award",
         "date": "2015 - 2018",
         "category": "awards",
-        "location": "Washington State University",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
+        "location": "Pullman, WA",
         "description": "Multi-year merit award recognizing exceptional academic achievement and international student excellence throughout undergraduate career."
     }
   ],
@@ -760,6 +819,8 @@ export const timelineDataByCategory = {
         "title": "Freedom to Soar",
         "date": "2018",
         "category": "media",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
         "location": "WSU VCEA News",
         "description": "University feature highlighting academic achievements and entrepreneurial spirit during undergraduate engineering studies.",
         "skills": [

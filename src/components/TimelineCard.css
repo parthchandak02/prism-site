@@ -55,13 +55,9 @@
   position: relative;
 }
 
-/* Typewriter highlighted cards get extra emphasis */
+/* Typewriter highlighted cards - removed background highlighting, keeping only text highlighting */
 .timeline-card--typewriter-highlighted {
-  transform: scaleY(1.01) !important;
-  opacity: 1 !important;
-  box-shadow: 0 6px 24px rgba(255, 107, 53, 0.15) !important;
-  z-index: 5;
-  position: relative;
+  /* No background styling - only title text gets highlighted */
 }
 
 /* Orange text styles moved below for proper CSS cascade - see bottom of file */
