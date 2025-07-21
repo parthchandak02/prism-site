@@ -112,7 +112,7 @@
 
 .timeline__item {
   position: relative;
-  margin-bottom: 16px; /* Tighter spacing for cleaner look without dots */
+  margin-bottom: 32px; /* Spacing between timeline items - you can adjust this */
   /* Removed padding-left for clean layout without dots */
 }
 

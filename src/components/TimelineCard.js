@@ -1,40 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ExternalLink, FileText, MapPin, Calendar } from 'lucide-react';
 import { iconMap } from '../data/timelineData';
 import './TimelineCard.css';
 
 const TimelineCard = ({ 
   title,
+  company,
+  companyLogo,
+  projectImage,
   date,
   category,
   description,
   location,
   volume,
   url, // New URL field for external links
-  navigationIcons = [], // Navigation icons for this card
-  isScrollHighlighted = false,
+  skills = [], // Skill/technology icons for this card
+  // isScrollHighlighted = false, // REMOVED: No longer using scroll-based highlighting
   isTypewriterHighlighted = false,
   defaultExpanded = false,
-  autoExpanded = false, // Auto-expansion controlled by scroll position
+  // autoExpanded = false, // REMOVED: Auto-expansion controlled by scroll position
   lightMode = false,
   className = '',
   ...props 
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [clickedIcons, setClickedIcons] = useState(new Set()); // Track clicked nav icons
-  const [smoothAutoExpanded, setSmoothAutoExpanded] = useState(autoExpanded);
   
-  // Smooth out auto-expansion changes to prevent animation interruption
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSmoothAutoExpanded(autoExpanded);
-    }, 50); // Small delay to smooth rapid changes
-    
-    return () => clearTimeout(timer);
-  }, [autoExpanded]);
-  
-  // Use auto-expansion if specified, otherwise use internal state
-  const effectiveExpanded = smoothAutoExpanded !== false ? smoothAutoExpanded : isExpanded;
+  // Simplified expansion logic - just use isExpanded state
+  const effectiveExpanded = isExpanded;
 
   // Handle navigation icon clicks for persistent orange state
   const handleIconClick = (iconName, event) => {
@@ -53,7 +46,7 @@ const TimelineCard = ({
   
   return (
     <div 
-      className={`timeline-card glass glass-strong glass-interactive ${effectiveExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isScrollHighlighted ? 'timeline-card--scroll-highlighted' : ''} ${isTypewriterHighlighted ? 'timeline-card--typewriter-highlighted' : ''} ${categoryClass} ${className}`} 
+      className={`timeline-card glass glass-strong glass-interactive ${effectiveExpanded ? 'expanded' : 'collapsed'} ${lightMode ? 'timeline-card--light' : 'timeline-card--dark'} ${isTypewriterHighlighted ? 'timeline-card--typewriter-highlighted' : ''} ${categoryClass} ${className}`} 
       {...props}
     >
       {/* Content container */}
@@ -61,7 +54,7 @@ const TimelineCard = ({
         {/* Header section - always visible */}
         <div 
           className="timeline-card__header"
-          onClick={() => smoothAutoExpanded === false && setIsExpanded(!isExpanded)}
+          onClick={() => setIsExpanded(!isExpanded)}
         >
           <div className="timeline-card__header-content">
             <h3 className="timeline-card__title">{title}</h3>
@@ -72,6 +65,17 @@ const TimelineCard = ({
               </span>
             )}
           </div>
+          {/* Company logo - positioned to the left of toggle button */}
+          {companyLogo && (
+            <img 
+              src={companyLogo} 
+              alt={`${company || 'Company'} logo`}
+              className="timeline-card__company-logo timeline-card__company-logo--header"
+              onError={(e) => {
+                e.target.style.display = 'none'; // Hide logo if it fails to load
+              }}
+            />
+          )}
           <button className="timeline-card__toggle glass glass-interactive">
             <svg 
               viewBox="0 0 24 24" 
@@ -115,15 +119,29 @@ const TimelineCard = ({
             </div>
           )}
           
+          {/* Project Image - positioned between meta and description */}
+          {projectImage && (
+            <div className="timeline-card__project-image-container">
+              <img 
+                src={projectImage} 
+                alt={`${title} project`}
+                className="timeline-card__project-image"
+                onError={(e) => {
+                  e.target.style.display = 'none'; // Hide image if it fails to load
+                }}
+              />
+            </div>
+          )}
+          
           {/* Description */}
           {description && (
             <p className="timeline-card__description">{description}</p>
           )}
           
-          {/* Navigation Icons - at the bottom */}
-          {navigationIcons && navigationIcons.length > 0 && (
-            <div className="timeline-card__navigation-icons">
-              {navigationIcons.map((iconData, index) => {
+                      {/* Skills/Technology Icons - at the bottom */}
+          {skills && skills.length > 0 && (
+            <div className="timeline-card__skills">
+              {skills.map((iconData, index) => {
                 // Support both old string format and new object format
                 let IconComponent, iconName;
                 

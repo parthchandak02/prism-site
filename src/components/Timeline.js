@@ -9,7 +9,7 @@ const Timeline = ({
   showFilters = false, // Now controlled by parent
   activeFilters = [], // Now receives array of active filters instead of single activeFilter
   lightMode = false,
-  centermostCard = null, // Card title to highlight based on scroll position
+  // centermostCard = null, // REMOVED: Card title to highlight based on scroll position
   ...props 
 }) => {
   const { getCurrentHighlights } = useTypewriterHighlight();
@@ -60,8 +60,7 @@ const Timeline = ({
         <div className="timeline__items">
           {sortedData.length > 0 ? (
             sortedData.map((item, index) => {
-              // Only expand for scroll-based highlighting, not typewriter highlights
-              const shouldExpand = activeFilters.length === 0 && item.title === centermostCard;
+              // REMOVED: Scroll-based expansion logic
               
               return (
                 <div 
@@ -73,18 +72,20 @@ const Timeline = ({
                 >
                   <TimelineCard
                     title={item.title}
+                    company={item.company}
+                    companyLogo={item.companyLogo}
+                    projectImage={item.projectImage}
                     date={item.date}
                     category={item.category}
                     description={item.description}
                     location={item.location}
                     volume={item.volume}
                     url={item.url}
-                    navigationIcons={item.navigationIcons || []}
+                    skills={item.skills || []}
                     lightMode={lightMode}
                     className="timeline__card"
-                    isScrollHighlighted={item.title === centermostCard}
+                    // isScrollHighlighted={item.title === centermostCard} // REMOVED
                     isTypewriterHighlighted={highlights.timelineCards.includes(item.title)}
-                    autoExpanded={shouldExpand}
                   />
                 </div>
               );

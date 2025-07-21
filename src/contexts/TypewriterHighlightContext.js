@@ -32,7 +32,7 @@ const createHighlightMappings = () => {
   // Create mappings for each typewriter title
   Object.entries(cardsByTitle).forEach(([title, cards]) => {
     mappings[title] = {
-      navigationIcons: cards[0].navigationIcons || [],
+      skills: cards[0].skills || [],
       timelineCards: cards.map(card => card.title),
       sidebarCategories: [...new Set(cards.map(card => card.category))]
     };
@@ -54,9 +54,9 @@ export const TypewriterHighlightProvider = ({ children }) => {
   // Get current highlight configuration
   const getCurrentHighlights = () => {
     if (isUserActive || !currentPhrase) {
-      return { navigationIcons: [], timelineCards: [], sidebarCategories: [] };
+      return { skills: [], timelineCards: [], sidebarCategories: [] };
     }
-    return highlightMappings[currentPhrase] || { navigationIcons: [], timelineCards: [], sidebarCategories: [] };
+    return highlightMappings[currentPhrase] || { skills: [], timelineCards: [], sidebarCategories: [] };
   };
 
   // Update the current phrase (called by typewriter when phrase is complete)

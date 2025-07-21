@@ -3,7 +3,7 @@
   border-radius: 16px;
   display: flex;
   align-items: flex-start;
-  padding: 10px 20px; /* Balanced padding for all states */
+  padding: 20px 24px; /* More generous padding for better breathing room */
   margin-bottom: 48px; /* Triple spacing for better expansion visibility */
   width: 100%;
   pointer-events: auto;
@@ -22,78 +22,12 @@
     box-shadow 0.4s ease-out,
     opacity 0.4s ease-out;
   
-  /* Initial state - slightly scaled down */
-  transform: scaleY(0.96);
-  opacity: 0.7;
+  /* Initial state - ANIMATION DISABLED - fully visible */
+  transform: none;
+  opacity: 1;
 }
 
-/* Modern CSS Scroll-Driven Animation for smooth bidirectional expansion */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .timeline-card {
-      /* Use modern scroll-driven animation with proper entry/exit handling */
-      animation: timeline-card-smooth-expand linear both;
-      animation-timeline: view();
-      animation-range: entry 0% exit 100%;
-    }
-  }
-}
-
-/* Advanced keyframes with proper entry/exit timeline ranges for bidirectional animation */
-@keyframes timeline-card-smooth-expand {
-  /* Entry phase: smooth expansion as card enters viewport */
-  entry 0% {
-    opacity: 0.6;
-    transform: scaleY(0.95) translateY(20px);
-  }
-  entry 100% {
-    opacity: 1;
-    transform: scaleY(1) translateY(0);
-  }
-  
-  /* Exit phase: smooth contraction as card leaves viewport */
-  exit 0% {
-    opacity: 1;
-    transform: scaleY(1) translateY(0);
-  }
-  exit 100% {
-    opacity: 0.6;
-    transform: scaleY(0.95) translateY(-20px);
-  }
-}
-
-/* Fallback for browsers without modern scroll-driven animations */
-@supports not (animation-timeline: view()) {
-  .timeline-card {
-    /* Inherit the modern scaling approach */
-    opacity: 0.7;
-    transform: scaleY(0.96);
-    transition: 
-      transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-      opacity 0.4s ease-out,
-      box-shadow 0.4s ease-out;
-  }
-  
-  /* Smooth visibility animations for scroll in fallback mode */
-  .timeline-card.scroll-visible {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-  
-  /* Enhanced expansion for manually expanded cards in fallback */
-  .timeline-card.expanded {
-    opacity: 1 !important;
-    transform: scaleY(1.02) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
-  }
-  
-  /* Enhanced highlighting for typewriter effect in fallback */
-  .timeline-card--typewriter-highlighted {
-    opacity: 1 !important;
-    transform: scaleY(1.01) !important;
-    box-shadow: 0 6px 24px rgba(255, 107, 53, 0.15) !important;
-  }
-}
+/* REMOVED: Complex scroll-driven animations and fallbacks - keeping it simple */
 
 /* Reduced motion: simplified animations */
 @media (prefers-reduced-motion: reduce) {
@@ -102,8 +36,6 @@
     transform: none !important; /* Disable all scaling */
   }
   
-  .timeline-card.scroll-visible,
-  .timeline-card--scroll-highlighted,
   .timeline-card.expanded,
   .timeline-card--typewriter-highlighted {
     transform: none !important; /* Ensure no scaling for accessibility */
@@ -112,15 +44,7 @@
 
 /* Enhanced modern card styling with smooth expansion */
 
-/* Cards that are visible/in-view get full scale and opacity */
-.timeline-card.scroll-visible,
-.timeline-card--scroll-highlighted {
-  transform: scaleY(1) !important;
-  opacity: 1 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
-  z-index: 2;
-  position: relative;
-}
+/* REMOVED: Scroll-based card highlighting - keeping it simple */
 
 /* Enhanced state for manually expanded cards */
 .timeline-card.expanded {
@@ -287,8 +211,7 @@
 /* Header section */
 .timeline-card__header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center; /* Center align logo and toggle button with content */
   cursor: pointer;
   padding-bottom: 2px; /* Small consistent bottom padding */
 }
@@ -297,8 +220,8 @@
 .timeline-card__header-content {
   display: flex;
   flex-direction: column;
-  gap: 2px; /* Balanced gap for readability */
-  flex: 1;
+  gap: 6px; /* More breathing room between title and date */
+  flex: 1; /* Take up available space, pushing logo and toggle to the right */
 }
 
 /* Toggle button */
@@ -355,6 +278,80 @@
   font-weight: 600;
   margin: 0;
   line-height: 1.3; /* Balanced line height */
+}
+
+/* Company logo - general styles */
+.timeline-card__company-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain; /* Maintain aspect ratio */
+  border-radius: 8px; /* Subtle rounding */
+  background: transparent; /* Completely transparent to preserve glass effect */
+  transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+/* Company logo when positioned in header */
+.timeline-card__company-logo--header {
+  margin-left: 12px; /* Space between header content and logo */
+  margin-right: 8px; /* Space between logo and toggle button */
+  flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.timeline-card__company-logo:hover {
+  transform: scale(1.05); /* Slight hover effect */
+}
+
+/* Light mode logo - invert white logos for visibility on light backgrounds */
+.timeline-card--light .timeline-card__company-logo {
+  filter: invert(1) brightness(0.8); /* Invert white logos to dark for light mode */
+}
+
+/* Dark mode logo - keep original white appearance */
+.timeline-card--dark .timeline-card__company-logo {
+  filter: none; /* Keep original white logo in dark mode */
+}
+
+/* Project Image Container */
+.timeline-card__project-image-container {
+  display: flex;
+  justify-content: center; /* Center the image */
+  margin: 16px 0; /* Spacing above and below the image */
+}
+
+/* Project Image */
+.timeline-card__project-image {
+  max-width: 100%; /* Responsive - don't exceed container width */
+  max-height: 300px; /* Reasonable max height to prevent huge images */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 12px; /* Rounded corners as requested */
+  border: none; /* No borders as requested */
+  object-fit: contain; /* Maintain aspect ratio, fit within bounds */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Project Image hover effect */
+.timeline-card__project-image:hover {
+  transform: scale(1.02); /* Very subtle zoom on hover */
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Light mode project image - adjust shadow */
+.timeline-card--light .timeline-card__project-image {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* Lighter shadow for light mode */
+}
+
+.timeline-card--light .timeline-card__project-image:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover in light mode */
+}
+
+/* Ensure project image is hidden when collapsed */
+.timeline-card.collapsed .timeline-card__project-image-container {
+  display: none; /* Force hide in collapsed state */
+}
+
+.timeline-card.expanded .timeline-card__project-image-container {
+  display: flex; /* Show in expanded state */
 }
 
 /* Date */
@@ -438,8 +435,8 @@
   opacity: 1;
 }
 
-/* Navigation Icons */
-.timeline-card__navigation-icons {
+/* Skills/Technology Icons */
+.timeline-card__skills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -448,12 +445,12 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Ensure navigation icons are completely hidden when collapsed */
-.timeline-card.collapsed .timeline-card__navigation-icons {
+/* Ensure skills icons are completely hidden when collapsed */
+.timeline-card.collapsed .timeline-card__skills {
   display: none; /* Force hide in collapsed state */
 }
 
-.timeline-card.expanded .timeline-card__navigation-icons {
+.timeline-card.expanded .timeline-card__skills {
   display: flex; /* Show in expanded state */
 }
 
@@ -466,8 +463,8 @@
   font-family: var(--font-family-primary);
 }
 
-/* Light mode navigation icons container styling */
-.timeline-card--light .timeline-card__navigation-icons {
+/* Light mode skills icons container styling */
+.timeline-card--light .timeline-card__skills {
   border-top-color: rgba(0, 0, 0, 0.1);
   border-bottom-color: rgba(0, 0, 0, 0.1);
 }
