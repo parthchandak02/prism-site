@@ -44,16 +44,35 @@ const useGlobalMouse = () => {
     currentViewportPositionRef.current = { x: normalizedX, y: normalizedY };
   }, []); // No dependencies needed
 
+  // Helper function to identify UI elements that shouldn't affect ray tracking
+  const isUIElement = useCallback((element) => {
+    if (!element) return false;
+    
+    // Check if the element or any parent is the lock toggle
+    let current = element;
+    while (current && current !== document.body) {
+      if (current.classList && current.classList.contains('lock-toggle')) {
+        return true;
+      }
+      current = current.parentElement;
+    }
+    return false;
+  }, []);
+
   const updateMousePosition = useCallback((e) => {
+    // Ignore mouse events from UI elements
+    if (isUIElement(e.target)) return;
     updatePosition(e.clientX, e.clientY);
-  }, [updatePosition]);
+  }, [updatePosition, isUIElement]);
 
   const updateTouchPosition = useCallback((e) => {
+    // Ignore touch events from UI elements  
+    if (isUIElement(e.target)) return;
     const touch = e.touches[0] || e.changedTouches[0];
     if (touch) {
       updatePosition(touch.clientX, touch.clientY);
     }
-  }, [updatePosition]);
+  }, [updatePosition, isUIElement]);
 
   const setAutomaticPosition = useCallback((pixelX, pixelY) => {
     if (hasUserMoved.current || isLockedRef.current) return;
