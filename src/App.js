@@ -14,6 +14,7 @@ import useGlobalMouse from './hooks/useGlobalMouse';
 import useScrollHighlight from './hooks/useScrollHighlight';
 import { timelineData } from './data/timelineData';
 import { TypewriterHighlightProvider } from './contexts/TypewriterHighlightContext';
+import ScrollTypewriterController from './components/ScrollTypewriterController';
 
 /**
  * Main App component - Clean, modular structure following React 2024 best practices
@@ -93,6 +94,7 @@ export default function App() {
 
   return (
     <TypewriterHighlightProvider>
+      <ScrollTypewriterController />
       <Layout 
         lightMode={lightMode}
         darkMode={!lightMode}
