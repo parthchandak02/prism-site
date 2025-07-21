@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import TimelineCard from './TimelineCard';
 import { useTypewriterHighlight } from '../contexts/TypewriterHighlightContext';
+import { categoryOrder } from '../data/timelineData';
 import './Timeline.css';
 
 const Timeline = ({ 
@@ -29,9 +30,7 @@ const Timeline = ({
   const sortedData = useMemo(() => {
     return [...filteredData].sort((a, b) => {
       if (activeFilters.length === 0) {
-        // Define category order for sorting when showing all
-        const categoryOrder = ['experience', 'patent', 'speaking', 'volunteering', 'research', 'projects', 'education', 'awards', 'media'];
-        
+        // Use imported category order for sorting when showing all
         const aCategoryIndex = categoryOrder.indexOf(a.category?.toLowerCase() || '');
         const bCategoryIndex = categoryOrder.indexOf(b.category?.toLowerCase() || '');
         

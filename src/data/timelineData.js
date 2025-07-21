@@ -203,6 +203,45 @@ export const timelineDataByCategory = {
         ]
     }
   ],
+  education: [
+    {
+        "title": "Bachelor of Science: Mechanical Engineering",
+        "date": "May 2018",
+        "category": "education",
+        "company": "WSU",
+        "companyLogo": "/logos/wsu-logo.png",
+        "location": "Washington State University",
+        "description": "Graduated with GPA 3.7/4.0. Minors in Computer Science and Mathematics. Focused on robotics, automation, engineering design, and interdisciplinary technology integration.",
+        "volume": "GPA: 3.7/4.0, Minors: Computer Science, Mathematics",
+        "typewriterTitle": "Mechanical Engineer",
+        "typewriterPrefix": "I am a",
+        "skills": [
+            "Robotics",
+            "Automation",
+            "CAD Design",
+            "Materials Science",
+            "Computer Science"
+        ]
+    },
+    {
+        "title": "Essentials of UX Design, User Experience",
+        "date": "June 2022 - August 2022",
+        "category": "education",
+        "company": "UC Berkeley Extension",
+        "companyLogo": "/logos/berkeley-logo.png",
+        "location": "UC Berkeley Extension",
+        "description": "Comprehensive course in user experience design principles, methodologies, and practical application in product development. Achieved exceptional academic performance.",
+        "volume": "Grade: 97.6/100",
+        "typewriterTitle": "Creative Technologist",
+        "typewriterPrefix": "I am a",
+        "skills": [
+            "Wireframing",
+            "Prototyping",
+            "Presentation",
+            "Design"
+        ]
+    }
+  ],
   patent: [
     {
         "title": "Audio Prioritization Patent (Pending)",
@@ -650,45 +689,7 @@ export const timelineDataByCategory = {
         ]
     }
   ],
-  education: [
-    {
-        "title": "Bachelor of Science: Mechanical Engineering",
-        "date": "May 2018",
-        "category": "education",
-        "company": "WSU",
-        "companyLogo": "/logos/wsu-logo.png",
-        "location": "Washington State University",
-        "description": "Graduated with GPA 3.7/4.0. Minors in Computer Science and Mathematics. Focused on robotics, automation, engineering design, and interdisciplinary technology integration.",
-        "volume": "GPA: 3.7/4.0, Minors: Computer Science, Mathematics",
-        "typewriterTitle": "Mechanical Engineer",
-        "typewriterPrefix": "I am a",
-        "skills": [
-            "Robotics",
-            "Automation",
-            "CAD Design",
-            "Materials Science",
-            "Computer Science"
-        ]
-    },
-    {
-        "title": "Essentials of UX Design, User Experience",
-        "date": "June 2022 - August 2022",
-        "category": "education",
-        "company": "UC Berkeley Extension",
-        "companyLogo": "/logos/berkeley-logo.png",
-        "location": "UC Berkeley Extension",
-        "description": "Comprehensive course in user experience design principles, methodologies, and practical application in product development. Achieved exceptional academic performance.",
-        "volume": "Grade: 97.6/100",
-        "typewriterTitle": "Creative Technologist",
-        "typewriterPrefix": "I am a",
-        "skills": [
-            "Wireframing",
-            "Prototyping",
-            "Presentation",
-            "Design"
-        ]
-    }
-  ],
+  
   awards: [
     {
         "title": "Harold Frank Engineering Entrepreneurship Kauffman Award",
@@ -833,9 +834,11 @@ export const timelineDataByCategory = {
   ]
 };
 
+// Single source of truth for category ordering
+export const categoryOrder = ['experience', 'education', 'patent', 'projects', 'speaking', 'awards', 'research', 'media', 'volunteering'];
+
 // Flattened timeline data for backward compatibility (computed from categories)
 export const timelineData = (() => {
-  const categoryOrder = ['experience', 'patent', 'speaking', 'volunteering', 'research', 'projects', 'education', 'awards', 'media'];
   
   return categoryOrder.flatMap(category => 
     timelineDataByCategory[category] || []
